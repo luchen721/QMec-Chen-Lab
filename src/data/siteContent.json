@@ -1,0 +1,802 @@
+{
+  "version": "2026-05-26-public-content-v1",
+  "home": {
+    "hero": {
+      "labWordmark": "QMec Chen Lab",
+      "title": "Quantum materials under extreme conditions",
+      "subtitle": "We are an experimental condensed matter group studying quantum materials under extreme conditions, with a focus on unconventional superconductors, topological materials, and frustrated magnets.",
+      "actionLabel": "Join Us",
+      "actionHref": "/join-us",
+      "image": "/images/quantum-lab-hero.png",
+      "imageAlt": "Quantum materials lab illustration with electron wave functions, atomic lattice, dilution refrigerator, and magnetic field lines",
+      "imageFit": "cover",
+      "imagePosition": "center"
+    },
+    "recruitingTile": {
+      "eyebrow": "We are recruiting now",
+      "title": "Motivated researchers are welcome!",
+      "actionLabel": "Join Us",
+      "actionHref": "/join-us"
+    },
+    "about": {
+      "eyebrow": "Who we are",
+      "title": "Experimental Physicists Exploring Quantum Materials",
+      "body": "We discover, explore, and explain novel physics phenomena related to unconventional superconductors, topological materials, and frustrated magnets. We specialized in electrical transport, thermal transport, thermoelectric measurements, and torque differential magnetometry under extremely low temperatures and strong magnetic fields. Check out details in our",
+      "linkLabel": "Research page",
+      "linkHref": "/research"
+    },
+    "highlights": {
+      "eyebrow": "what we do",
+      "title": "Core Directions"
+    },
+    "news": {
+      "eyebrow": "what's New",
+      "title": "Latest Updates",
+      "visibleCount": 2
+    }
+  },
+  "research": {
+    "materials": {
+      "eyebrow": "WHAt we Study",
+      "title": "Why Quantum Materials?",
+      "intro": "Modern technologies fundamentally rely on the properties of materials, yet many of these properties cannot be understood solely from classical physics but rather from collective quantum motions of excitations with strong correlations. The unique non-classical properties emerging from these interactions give rise to the so-called quantum materials, among which superconductors, quantum spin liquids, and topological materials represent three central classes. Together, they embody rich quantum physics while also offering promising opportunities for future quantum technologies and next-generation electronic devices.",
+      "overviewLabel": "Material systems overview",
+      "overview": {
+        "image": "/images/research/quantum-materials-bulk-overview.png",
+        "imageAlt": "Three-dimensional bulk crystal lattice with metallic atoms, bonds, and translucent quantum electron-density waves.",
+        "caption": "Why Quantum materials ?",
+        "details": [
+          "Modern technologies fundamentally rely on the properties of materials, yet many of these properties cannot be understood solely from classical physics or from the behavior of isolated atoms. In many solid-state and bulk material systems, physical properties emerge from the collective interplay among multiple degrees of freedom, including charge, spin, orbital, and lattice dynamics. These interactions give rise to strongly correlated excitations and emergent quantum phases that often require new theoretical frameworks and advanced experimental approaches for their understanding, verification, and prediction. Superconductors, quantum spin liquids, and topological materials represent three central classes of quantum materials. Together, they embody rich and unconventional condensed matter physics while also offering promising opportunities for future quantum technologies and next-generation electronic devices."
+        ]
+      },
+      "systems": [
+        {
+          "title": "Unconventional Superconductors",
+          "summary": "We focus on the nodal structure of the superconducting gap and the behavior of quasiparticles by measuring its low-temperature thermal conductivity and thermal Hall conductivity.",
+          "image": "/images/research/ybco-phase-diagram.png",
+          "expandedImage": "/images/research/Uncon_supr.png",
+          "imageAlt": "YBCO phase diagram showing antiferromagnetic, pseudogap, and superconducting regions as temperature changes with carrier concentration.",
+          "caption": "Correlated phases can emerge from competing interactions in crystalline materials.",
+          "details": [
+            "Increasing the superconducting transition temperature, \\(T_c\\), has long been regarded as one of the central directions for promoting broader technological applications of superconducting materials. Fortunately, \\(T_c\\) has been dramatically enhanced since the discovery of high-temperature superconductors. However, understanding the pairing mechanism in these unconventional superconductors—whose properties cannot be fully explained by the conventional Bardeen–Cooper–Schrieffer (BCS) theory—remains one of the holy grails in the field of quantum materials.",
+            "Beyond superconductivity itself, unconventional superconductors often exhibit a variety of other exotic phenomena, including quantum criticality, strong electronic correlations, magnetism, pseudogap phases, and charge- or spin-density-wave orders. The interplay among these competing and intertwined phases gives rise to remarkably rich and complicated phase diagrams. The particular question that we would like to focus on is the identification of the nodal structure of the superconducting gap using a powerful experimental technique: low-temperature thermal conductivity measurements. Determining the superconducting gap structure is crucial for identifying the symmetry of the superconducting order parameter and for revealing the microscopic pairing mechanism underlying unconventional superconductivity."
+          ]
+        },
+        {
+          "title": "Topological Materials",
+          "summary": "We study Fermi surface of topological materials using quantum oscillations and angle-dependent magnetoresistance (ADMR) under extreme high magnetic fields.",
+          "image": "/images/research/topological-materials.png",
+          "expandedImage": "/images/research/Topo_Mat.png",
+          "imageAlt": "Topological band structure schematic showing red and blue cones meeting at a point.",
+          "caption": "Band topology changes transport signatures in strong magnetic fields.",
+          "details": [
+            "Topological materials are quantum materials whose electronic band structures possess nontrivial topological properties and protected electronic states. Classes of topological materials—including topological insulators, Dirac and Weyl semimetals, and topological superconductors—have emerged as promising platforms for next-generation electronic and quantum technologies. A central task in identifying and understanding topological materials is the determination of their Fermi surface structure and underlying electronic topology. The primary research problem that we aim to address is the detection and characterization of the Fermi surfaces of topological materials using high-magnetic-field experimental techniques, particularly quantum oscillation measurements and angle-dependent magnetoresistance (ADMR)."
+          ]
+        },
+        {
+          "title": "Quantum Spin Liquids",
+          "summary": "Our lab searches for fractionalized excitations such as spinons and Majorana fermions by low-temperature thermal conductivity and thermal Hall measurements.",
+          "image": "/images/research/unconventional-superconductors-2.png",
+          "expandedImage": "/images/research/QSL_2.png",
+          "imageAlt": "Honeycomb lattice schematic with x, y, and z bonds and alternating spin arrows.",
+          "caption": "Frustrated spin systems can host fractionalized excitations without conventional order.",
+          "details": [
+            "Quantum spin liquids (QSLs) are fascinating quantum materials that possess highly frustrated magnetic ground states and evade conventional magnetic ordering even at very low temperatures. The search for QSLs has attracted tremendous interest because of their potential to host non-Abelian statistics and other exotic fractionalized excitations, which could provide a foundation for fault-tolerant quantum computing. Although many materials have been proposed as candidate QSLs, none has yet been experimentally confirmed as a definitive realization of a true quantum spin liquid. Consequently, the discovery and experimental verification of achievable QSL materials remain among the major challenges in the field of quantum materials.",
+            "The identification and classification of QSL states in different candidate materials often rely on detecting and characterizing fractionalized excitations, such as spinons and Majorana fermions. The central questions that we aim to address are whether spinons can be detected through low-temperature thermal conductivity measurements and whether Majorana fermions can be identified using another powerful thermal transport technique, the thermal Hall effect."
+          ]
+        }
+      ]
+    },
+    "tools": {
+      "eyebrow": "How we study",
+      "title": "What are the Tools?",
+      "intro": "We employ a broad range of complementary low-temperature and high-magnetic-field experimental techniques to connect microscopic quantum states with macroscopic electrical, thermal, and magnetic properties in bulk quantum materials. Our primary experimental capabilities include electrical transport, thermal transport, torque differential magnetometry, and thermoelectric measurements, which together provide sensitive probes across multiple energy and length scales. In addition to advanced measurement capabilities, our group maintains an in-house crystal growth laboratory capable of synthesizing high-quality single crystals. The close integration of materials synthesis and precision measurements places our group on a unique and powerful platform for exploring fascinating physics in quantum materials. ",
+      "items": [
+        {
+          "title": "Electrical Transport",
+          "summary": "Angle-dependent magnetoresistance and related transport measurements connect carrier motion to Fermi-surface topology.",
+          "image": "/images/research/angle-dependent-transport.png",
+          "imageAlt": "Angle-dependent electrical transport schematic showing current through a sample and magnetic field orientation defined by theta and phi angles.",
+          "caption": "Figure_ADMR: Resistivity along c-axis changes when external B field points away from the crystal c-axis.",
+          "details": [
+            "Angle-dependent magnetoresistance (ADMR) can be used to map a Fermi surface when quantum oscillations are not detected, e.g. because of low sample quality. ADMR refers to the change of the out-of-plane resistivity, i.e. c-axis resistivity, when an external magnetic field is applied and rotated away from the crystal c-axis towards the ab plane. As a semiclassical effect, the topology of the Fermi surface will translate into the trajectory of charge carriers, which in turn affects the electrical conductivity of materials in an external magnetic field."
+          ]
+        },
+        {
+          "title": "Thermoelectric Measurements",
+          "summary": "Seebeck and Nernst measurements reveal longitudinal and transverse voltage responses to thermal gradients and magnetic fields.",
+          "image": "/images/research/thermoelectric.png",
+          "imageAlt": "Schematic showing longitudinal and transverse thermal voltage measurements under a thermal gradient and magnetic field.",
+          "caption": "Figure: Thermoelectric probes separate longitudinal and Hall-like thermal responses.",
+          "details": [
+            "The thermoelectric measurements include Seebeck and Nernst effects. Seebeck effect describes a longitudinal voltage generated by a longitudinal thermal gradient \\(V_{th}\\). Nernst effect is the appearance of a transverse voltage \\(V_{Hall}\\) when a longitudinal thermal gradient and perpendicular magnetic field are applied."
+          ]
+        },
+        {
+          "title": "Thermal Transport",
+          "summary": "Low-temperature thermal conductivity and thermal Hall conductivity probe charged and neutral excitations that carry entropy in quantum materials.",
+          "image": "/images/research/experimental-tools.png",
+          "imageAlt": "Thermal transport schematic showing a sample between a heater and heat sink with magnetic field and temperature gradients.",
+          "caption": "Figure: Thermal Hall Effect: \\(\\Delta T_y\\) induced by \\(\\Delta T_x\\) in the presence of \\(H\\)",
+          "details": [
+            "We use both low-temperature thermal conductivity and thermal Hall conductivity measurements to probe charged and neutral excitations that carry entropy in various quantum materials. The thermal Hall effect is the thermal analog of the electrical Hall effect. Instead of a transverse voltage induced by a perpendicular magnetic field in the presence of an electric current, a transverse temperature difference is induced in the presence of a heat current."
+          ]
+        },
+        {
+          "title": "Torque Differential Magnetometry",
+          "summary": "A qPlus-mode quartz tuning fork platform measures small magnetic signals at millikelvin temperatures and high magnetic fields.",
+          "image": "/images/research/torque-magnetometry.png",
+          "imageAlt": "Quartz tuning fork schematic with a sample mounted on a substrate and gold wires.",
+          "caption": "Figure: Schematic of tuning fork based torque differential magnetometry.",
+          "details": [
+            "A highly sensitive torque differential magnetometry using the qPlus mode of a miniature-sized quartz tuning fork has been developed to measure small magnetic signals down to a dilution refrigerator temperature of 25 mK and a strong magnetic field up to 65 T. We have successfully applied this technique under vacuum, in a liquid helium environment, in a DC or pulsed magnetic field."
+          ]
+        },
+        {
+          "title": "Single Crystal Growth",
+          "summary": "High-quality crystals are grown using solid-state reaction, chemical vapor transport, flux growth, and related methods.",
+          "image": "/images/research/single-crystals-microscope.png",
+          "imageAlt": "Microscope view of dark faceted single crystals on a red grid background.",
+          "caption": "Figure: High-quality single crystals grown by chemical vapor transport.",
+          "details": [
+            "High-quality single crystals provide definitive platform to resolve conflicting results in bulk materials, enabling intrinsic physical properties to be measured without extrinsic interference. Our lab specializes in their growth through a range of techniques, including solid-state reaction, chemical vapor transport (CVT), flux growth, and other related methods."
+          ]
+        }
+      ]
+    }
+  },
+  "peoplePage": {
+    "sections": {
+      "principalInvestigatorEyebrow": "Principal Investigator",
+      "principalInvestigatorTitle": "Lab Leadership",
+      "graduateStudentsEyebrow": "Research Professionals",
+      "graduateStudentsTitle": "Graduate Researchers",
+      "undergraduateStudentsTitle": "Undergraduate Researchers",
+      "labAiAgentsEyebrow": "Artificial Intelligence",
+      "labAiAgentsTitle": "Lab AI Assistants",
+      "undergraduateStudentsEyebrow": "Undergraduate Students"
+    },
+    "people": [
+      {
+        "group": "Principal Investigator",
+        "name": "Lu Chen",
+        "role": "Assistant professor, Department of Physics, 2026 - Now",
+        "department": "Physics",
+        "email": "lchen721[at]illinois[dot]edu",
+        "office": "MRL 204",
+        "image": "/images/people/lu-chen.jpg",
+        "details": [
+          "B.S. in physics, Peking University, 2014",
+          "PhD in physics, University of Michigan Ann Arbor, 2020",
+          "Prize Postdoc Fellow, Universite de Sherbrooke, 2024",
+          "Postdoc Fellow, University of California Berkeley, 2025"
+        ]
+      },
+      {
+        "group": "Graduate Students",
+        "name": "Lingyu Xie",
+        "role": "Ph.D. Candidate",
+        "department": "Physics",
+        "email": "lingyux2[at]illinois[dot]edu",
+        "image": "/images/people/lingyu-xie.jpg"
+      },
+      {
+        "group": "Graduate Students",
+        "name": "Jack Moriarty",
+        "role": "Ph.D. Candidate",
+        "department": "Physics",
+        "email": "jackmm4[at]illinois[dot]edu",
+        "image": "/images/people/jack-moriarty.jpg"
+      },
+      {
+        "group": "Undergraduate Students",
+        "name": "Wenjie Chou (Michael)",
+        "role": "Junior Undergraduate Student",
+        "department": "Physics",
+        "email": "wenjie5[at]illinois[dot]edu",
+        "image": "/images/people/wenjie-chou.jpg"
+      },
+      {
+        "group": "Undergraduate Students",
+        "name": "Vedang Nitin Mahajan",
+        "role": "Junior Undergraduate Student",
+        "department": "Physics",
+        "email": "vedang2[at]illinois[dot]edu",
+        "image": "/images/people/vedang-mahajan.jpg"
+      },
+      {
+        "group": "Undergraduate Students",
+        "name": "Xihong Xu (Gavin)",
+        "role": "Junior Undergraduate Student",
+        "department": "Physics",
+        "email": "gavinxu2[at]illinois[dot]edu",
+        "image": "/images/people/xihong-xu.jpg"
+      },
+      {
+        "group": "Lab AI Agents",
+        "name": "Flux",
+        "role": "AI Agent 24/7",
+        "department": "QMec Chen Lab",
+        "image": "/images/people/flux-liquid-glass.gif",
+        "details": [
+          "Supports website maintenance and content organization for QMec Chen Lab."
+        ]
+      }
+    ],
+    "joinSummary": {
+      "title": "Join Us",
+      "body": "We are recruiting now. Don't hesitate to contact us via Professor Chen's email: lchen721 [at] illinois [dot] edu",
+      "opportunities": [
+        {
+          "title": "Postdocs",
+          "summary": "Postdocs with a background in experimental condensed matter physics are encouraged to contact us via email."
+        },
+        {
+          "title": "Graduate students",
+          "summary": "We are actively recruiting highly motivated graduate students. Interested students are encouraged to apply for the",
+          "link": {
+            "label": "Ph.D. Program at physics department",
+            "href": "https://physics.illinois.edu/academics/graduates"
+          }
+        },
+        {
+          "title": "Undergraduate students",
+          "summary": "Highly motivated undergraduate students are welcome to do intern projects or summer research with us."
+        }
+      ]
+    }
+  },
+  "lab": {
+    "eyebrow": "QMEC Chen Laboratory Info",
+    "title": "Facilities and Platforms",
+    "intro": "The lab is being built across dedicated spaces for low-temperature and high-field measurements, sample preparation, and shared single crystal growth facilities.",
+    "panels": [
+      {
+        "title": "MRL B09: Measurement lab",
+        "paragraphs": [
+          "The basement measurement lab will host a Quantum Design Oxford ProteoxMX dilution refrigerator and a Quantum Design Oxford TeslatronPT system, each with a 14 T magnet.",
+          "Platforms support electrical transport, thermal transport, thermoelectric, torque differential magnetometry at low temperature and high field."
+        ],
+        "status": "Renovation complete.",
+        "photos": [
+          {
+            "src": "/images/news/mrl-b09-concrete-finished.jpg",
+            "alt": "New concrete floor work in MRL B09 for the measurement lab",
+            "date": "April 2026"
+          },
+          {
+            "src": "/images/lab/measurement-lab.png",
+            "alt": "MRL B09 measurement lab during renovation",
+            "date": "March 2026"
+          }
+        ]
+      },
+      {
+        "title": "ESB 120: Sample growth facility",
+        "paragraphs": [
+          "This shared centralized growth facility will host multiple muffle, tube, two-zone, and optical floating-zone furnaces plus a glove box.",
+          "Methods include solid-state reaction, chemical vapor transport, flux growth, and floating-zone synthesis."
+        ],
+        "status": "Under renovation.",
+        "photos": [
+          {
+            "src": "/images/lab/ESB_120_pic_2.jpg",
+            "alt": "Future ESB 120 sample growth facility photo placeholder",
+            "date": "May 2026"
+          },
+          {
+            "src": "/images/lab/sample-growth-facility.png",
+            "alt": "ESB 120 shared sample growth facility during renovation",
+            "date": "March 2026"
+          }
+        ]
+      },
+      {
+        "title": "MRL 234: Sample preparation lab",
+        "paragraphs": [
+          "This lab supports sample preparation under microscopes.",
+          "Sample preparation processes include cutting, polishing, mounting, and contacting samples for various types of experiments."
+        ],
+        "status": "Renovation complete.",
+        "photos": [
+          {
+            "src": "/images/lab/sample-preparation-lab.png",
+            "alt": "MRL 234 sample preparation lab with microscope workstations",
+            "date": "March 2026"
+          },
+          {
+            "src": "/images/lab/lab-photo-mockup.svg",
+            "alt": "Future MRL 234 sample preparation lab photo placeholder",
+            "date": "Future"
+          }
+        ]
+      }
+    ]
+  },
+  "manuscriptsInPrep": [],
+  "publications": [
+    {
+      "year": "2026",
+      "title": "Thermal Hall conductivity of electron-doped cuprates: Electrons and phonons",
+      "authors": "Marie-Eve Boulanger, Lu Chen, Vincent Oliviero, David Vignolles, Gaël Grissonnanche, Ke-Jun Xu, Zhi-Xun Shen, Cyril Proust, Jordan Baglo, Louis Taillefer",
+      "venue": "Physical Review B 113(9), 094511 (2026)",
+      "cardStyle": "basic_publication_card",
+      "starCount": 0,
+      "links": [
+        {
+          "label": "Physical Review B",
+          "href": "https://link.aps.org/doi/10.1103/tyf9-thv8"
+        },
+        {
+          "label": "arXiv:2310.15892",
+          "href": "https://arxiv.org/abs/2310.15892"
+        }
+      ]
+    },
+    {
+      "year": "2024",
+      "title": "Planar Thermal Hall Effect from Phonons in Cuprates",
+      "authors": "Lu Chen, Léna Le Roux, Gaël Grissonnanche, Marie-Eve Boulanger, Steven Thériault, Ruixing Liang, D. A. Bonn, W. N. Hardy, S. Pyon, T. Takayama, H. Takagi, Ke-Jun Xu, Zhi-Xun Shen, Louis Taillefer",
+      "venue": "Physical Review X 14(4), 041011 (2024)",
+      "cardStyle": "selected_publication_card",
+      "links": [
+        {
+          "label": "Physical Review X",
+          "href": "https://link.aps.org/doi/10.1103/PhysRevX.14.041011"
+        },
+        {
+          "label": "arXiv:2310.07696",
+          "href": "https://arxiv.org/abs/2310.07696"
+        }
+      ],
+      "starCount": 5
+    },
+    {
+      "year": "2024",
+      "title": "Role of magnetic ions in the thermal Hall effect of the paramagnetic insulator \\(\\mathbf{TmVO_4}\\) test",
+      "authors": "Ashvini Vallipuram, Lu Chen, Emma Campillo, Manel Mezidi, Gaël Grissonnanche, Marie-Eve Boulanger, Étienne Lefrançois, Mark P. Zic, Yuntian Li, Ian R. Fisher, Jordan Baglo, Louis Taillefer",
+      "venue": "Physical Review B 110(4), 045144 (2024)",
+      "links": [
+        {
+          "label": "Physical Review B",
+          "href": "https://link.aps.org/doi/10.1103/PhysRevB.110.045144"
+        },
+        {
+          "label": "arXiv:2310.10643",
+          "href": "https://arxiv.org/abs/2310.10643"
+        }
+      ]
+    },
+    {
+      "year": "2024",
+      "title": "Planar thermal Hall effect from phonons in a Kitaev candidate material",
+      "authors": "Lu Chen, Étienne Lefrançois, Ashvini Vallipuram, Quentin Barthélemy, Amirreza Ataei, Weiliang Yao, Yuan Li, Louis Taillefer",
+      "venue": "Nature Communications 15(1), Article 3513 (2024)",
+      "cardStyle": "selected_publication_card",
+      "links": [
+        {
+          "label": "Nature Communications",
+          "href": "https://www.nature.com/articles/s41467-024-47858-5"
+        },
+        {
+          "label": "arXiv:2309.17231",
+          "href": "https://arxiv.org/abs/2309.17231"
+        }
+      ],
+      "starCount": 5
+    },
+    {
+      "year": "2024",
+      "title": "Phonon chirality from impurity scattering in the antiferromagnetic phase of \\(\\mathbf{Sr_2IrO_4}\\)",
+      "authors": "A. Ataei, G. Grissonnanche, M.-E. Boulanger, L. Chen, É. Lefrançois, V. Brouet, L. Taillefer",
+      "venue": "Nature Physics 20(4), 585-588 (2024)",
+      "links": [
+        {
+          "label": "Nature Physics",
+          "href": "https://www.nature.com/articles/s41567-024-02384-5"
+        }
+      ]
+    },
+    {
+      "year": "2023",
+      "title": "Reconciling scaling of the optical conductivity of cuprate superconductors with Planckian resistivity and specific heat",
+      "authors": "Bastien Michon, Christophe Berthod, Carl Willem Rischau, Amirreza Ataei, Lu Chen, Seiki Komiya, Shimpei Ono, Louis Taillefer, Dirk van der Marel, Antoine Georges",
+      "venue": "Nature Communications 14(1), Article 3033 (2023)",
+      "links": [
+        {
+          "label": "Nature Communications",
+          "href": "https://www.nature.com/articles/s41467-023-38762-5"
+        },
+        {
+          "label": "arXiv:2205.04030",
+          "href": "https://arxiv.org/abs/2205.04030"
+        }
+      ]
+    },
+    {
+      "year": "2022",
+      "title": "Large phonon thermal Hall conductivity in the antiferromagnetic insulator \\(\\mathbf{Cu_3TeO_6}\\)",
+      "authors": "Lu Chen, Marie-Eve Boulanger, Zhi-Cheng Wang, Fazel Tafti, Louis Taillefer",
+      "venue": "Proceedings of the National Academy of Sciences 119(34), e2208016119 (2022)",
+      "links": [
+        {
+          "label": "Proceedings of the National Academy of Sciences",
+          "href": "https://pnas.org/doi/full/10.1073/pnas.2208016119"
+        }
+      ],
+      "cardStyle": "selected_publication_card",
+      "starCount": 5
+    },
+    {
+      "year": "2022",
+      "title": "Magnetic field effects on the quantum spin liquid behaviors of NaYbS₂",
+      "authors": "Jiangtao Wu, Jianshu Li, Zheng Zhang, Changle Liu, Yong Hao Gao, Erxi Feng, Guochu Deng, Qingyong Ren, Zhe Wang, Rui Chen, Jan Embs, Fengfeng Zhu, Qing Huang, Ziji Xiang, Lu Chen, Yan Wu, E. S. Choi, Zhe Qu, Lu Li, Junfeng Wang, Haidong Zhou, Yixi Su, Xiaoqun Wang, Gang Chen, Qingming Zhang, Jie Ma",
+      "venue": "Quantum Frontiers 1(1), Article 13 (2022)",
+      "links": [
+        {
+          "label": "Quantum Frontiers",
+          "href": "https://link.springer.com/article/10.1007/s44214-022-00011-z"
+        }
+      ]
+    },
+    {
+      "year": "2022",
+      "title": "Electrons with Planckian scattering obey standard orbital motion in a magnetic field",
+      "authors": "Amirreza Ataei, A. Gourgout, G. Grissonnanche, L. Chen, J. Baglo, M.-E. Boulanger, F. Laliberté, S. Badoux, N. Doiron-Leyraud, V. Oliviero, S. Benhabib, D. Vignolles, J.-S. Zhou, S. Ono, H. Takagi, C. Proust, Louis Taillefer",
+      "venue": "Nature Physics 18(12), 1420-1424 (2022)",
+      "links": [
+        {
+          "label": "Nature Physics",
+          "href": "https://www.nature.com/articles/s41567-022-01763-0"
+        },
+        {
+          "label": "arXiv:2203.05035",
+          "href": "https://arxiv.org/abs/2203.05035"
+        }
+      ]
+    },
+    {
+      "year": "2022",
+      "title": "Hall Anomaly, Quantum Oscillations and Possible Lifshitz Transitions in Kondo Insulator \\(\\mathbf{YbB_{12}}\\): Evidence for Unconventional Charge Transport",
+      "authors": "Ziji Xiang, Kuan-Wen Chen, Lu Chen, Tomoya Asaba, Yuki Sato, Nan Zhang, Dechen Zhang, Yuichi Kasahara, Fumitoshi Iga, William A. Coniglio, Yuji Matsuda, John Singleton, Lu Li",
+      "venue": "Physical Review X 12(2), 021050 (2022)",
+      "links": [
+        {
+          "label": "Physical Review X",
+          "href": "https://link.aps.org/doi/10.1103/PhysRevX.12.021050"
+        }
+      ]
+    },
+    {
+      "year": "2022",
+      "title": "Seebeck Coefficient in a Cuprate Superconductor: Particle-Hole Asymmetry in the Strange Metal Phase and Fermi Surface Transformation in the Pseudogap Phase",
+      "authors": "A. Gourgout, G. Grissonnanche, F. Laliberté, A. Ataei, L. Chen, S. Verret, J.-S. Zhou, J. Mravlje, A. Georges, N. Doiron-Leyraud, Louis Taillefer",
+      "venue": "Physical Review X 12(1), 011037 (2022)",
+      "links": [
+        {
+          "label": "Physical Review X",
+          "href": "https://link.aps.org/doi/10.1103/PhysRevX.12.011037"
+        },
+        {
+          "label": "arXiv:2106.05959",
+          "href": "https://arxiv.org/abs/2106.05959"
+        }
+      ]
+    },
+    {
+      "year": "2021",
+      "title": "Survival of itinerant excitations and quantum spin state transitions in \\(\\mathbf{YbMgGaO_4}\\) with chemical disorder",
+      "authors": "X. Rao, G. Hussain, Q. Huang, W. J. Chu, N. Li, X. Zhao, Z. Dun, E. S. Choi, T. Asaba, L. Chen, L. Li, X. Y. Yue, N. N. Wang, J.-G. Cheng, Y. H. Gao, Y. Shen, J. Zhao, G. Chen, H. D. Zhou, X. F. Sun",
+      "venue": "Nature Communications 12(1), Article 4949 (2021)",
+      "links": [
+        {
+          "label": "Nature Communications",
+          "href": "https://www.nature.com/articles/s41467-021-25247-6"
+        }
+      ]
+    },
+    {
+      "year": "2021",
+      "title": "Topological surface conduction in Kondo insulator \\(\\mathbf{YbB_{12}}\\)",
+      "authors": "Y. Sato, Z. Xiang, Y. Kasahara, S. Kasahara, L. Chen, C. Tinsman, F. Iga, J. Singleton, N. L. Nair, N. Maksimovic, J. G. Analytis, Lu Li, Y. Matsuda",
+      "venue": "Journal of Physics D: Applied Physics 54(40), 404002 (2021)",
+      "links": [
+        {
+          "label": "Journal of Physics D: Applied Physics",
+          "href": "https://iopscience.iop.org/article/10.1088/1361-6463/ac10d9"
+        },
+        {
+          "label": "arXiv:2107.00912",
+          "href": "https://arxiv.org/abs/2107.00912"
+        }
+      ]
+    },
+    {
+      "year": "2021",
+      "title": "Unusual high-field metal in a Kondo insulator",
+      "authors": "Ziji Xiang, Lu Chen, Kuan-Wen Chen, Colin Tinsman, Yuki Sato, Tomoya Asaba, Helen Lu, Yuichi Kasahara, Marcelo Jaime, Fedor Balakirev, Fumitoshi Iga, Yuji Matsuda, John Singleton, Lu Li",
+      "venue": "Nature Physics 17(7), 788-793 (2021)",
+      "links": [
+        {
+          "label": "Nature Physics",
+          "href": "https://www.nature.com/articles/s41567-021-01216-0"
+        },
+        {
+          "label": "arXiv:2102.13311",
+          "href": "https://arxiv.org/abs/2102.13311"
+        }
+      ],
+      "cardStyle": "selected_publication_card",
+      "starCount": 5
+    },
+    {
+      "year": "2020",
+      "title": "Spontaneous Nernst effect in the iron-based superconductor \\(\\mathbf{Fe_{1+y}Te_{1-x}Se_x}\\)",
+      "authors": "Lu Chen, Ziji Xiang, Colin Tinsman, Bin Lei, Xianhui Chen, G. D. Gu, Lu Li",
+      "venue": "Physical Review B 102(5), 054503 (2020)",
+      "links": [
+        {
+          "label": "Physical Review B",
+          "href": "https://link.aps.org/doi/10.1103/PhysRevB.102.054503"
+        }
+      ],
+      "cardStyle": "selected_publication_card"
+    },
+    {
+      "year": "2019",
+      "title": "Unconventional thermal metallic state of charge-neutral fermions in an insulator",
+      "authors": "Y. Sato, Z. Xiang, Y. Kasahara, T. Taniguchi, S. Kasahara, L. Chen, T. Asaba, C. Tinsman, H. Murayama, O. Tanaka, Y. Mizukami, T. Shibauchi, F. Iga, J. Singleton, Lu Li, Y. Matsuda",
+      "venue": "Nature Physics 15(9), 954-959 (2019)",
+      "links": [
+        {
+          "label": "Nature Physics",
+          "href": "https://www.nature.com/articles/s41567-019-0552-2"
+        }
+      ]
+    },
+    {
+      "year": "2019",
+      "title": "Anomalous thermal conductivity across the structural transition in \\(\\mathbf{SmBaMn_2O_6}\\) single crystals",
+      "authors": "Lu Chen, Ziji Xiang, Colin Tinsman, Qing Huang, K. G. Reynolds, Haidong Zhou, Lu Li",
+      "venue": "Applied Physics Letters 114(25), 251904 (2019)",
+      "cardStyle": "basic_publication_card",
+      "links": [
+        {
+          "label": "Applied Physics Letters",
+          "href": "https://pubs.aip.org/apl/article/114/25/251904/37368/Anomalous-thermal-conductivity-across-the"
+        }
+      ]
+    },
+    {
+      "year": "2018",
+      "title": "Magnetic Field Enhanced Superconductivity in Epitaxial Thin Film \\(\\mathbf{WTe_2}\\)",
+      "authors": "Tomoya Asaba, Yongjie Wang, Gang Li, Ziji Xiang, Colin Tinsman, Lu Chen, Shangnan Zhou, Songrui Zhao, David Laleyan, Yi Li, Zetian Mi, Lu Li",
+      "venue": "Scientific Reports 8(1), Article 6520 (2018)",
+      "links": [
+        {
+          "label": "Scientific Reports",
+          "href": "https://www.nature.com/articles/s41598-018-24736-x"
+        }
+      ]
+    },
+    {
+      "year": "2018",
+      "title": "Quantum oscillations of electrical resistivity in an insulator",
+      "authors": "Z. Xiang, Y. Kasahara, T. Asaba, B. Lawson, C. Tinsman, Lu Chen, K. Sugimoto, S. Kawaguchi, Y. Sato, G. Li, S. Yao, Y. L. Chen, F. Iga, John Singleton, Y. Matsuda, Lu Li",
+      "venue": "Science 362(6410), 65-69 (2018)",
+      "links": [
+        {
+          "label": "Science",
+          "href": "https://www.science.org/doi/10.1126/science.aap9607"
+        },
+        {
+          "label": "arXiv:1905.05140",
+          "href": "https://arxiv.org/abs/1905.05140"
+        }
+      ]
+    },
+    {
+      "year": "2018",
+      "title": "Enhancement of thermal conductivity across the metal-insulator transition in vanadium dioxide",
+      "authors": "Lu Chen, Ziji Xiang, Colin Tinsman, Tomoya Asaba, Qing Huang, Haidong Zhou, Lu Li",
+      "venue": "Applied Physics Letters 113(6), 061902 (2018)",
+      "links": [
+        {
+          "label": "Applied Physics Letters",
+          "href": "https://pubs.aip.org/apl/article/113/6/061902/903985/Enhancement-of-thermal-conductivity-across-the"
+        }
+      ]
+    },
+    {
+      "year": "2018",
+      "title": "Torque Differential Magnetometry Using the qPlus Mode of a Quartz Tuning Fork",
+      "authors": "Lu Chen, Fan Yu, Ziji Xiang, Tomoya Asaba, Colin Tinsman, Benjamin Lawson, Paul M. Sass, Weida Wu, B. L. Kang, Xianhui Chen, Lu Li",
+      "venue": "Physical Review Applied 9(2), 024005 (2018)",
+      "cardStyle": "selected_publication_card",
+      "links": [
+        {
+          "label": "Physical Review Applied",
+          "href": "https://link.aps.org/doi/10.1103/PhysRevApplied.9.024005"
+        }
+      ],
+      "starCount": 5
+    },
+    {
+      "year": "2017",
+      "title": "Bulk Rotational Symmetry Breaking in Kondo Insulator \\(\\mathbf{SmB_6}\\)",
+      "authors": "Z. Xiang, B. Lawson, T. Asaba, C. Tinsman, Lu Chen, C. Shang, X. H. Chen, Lu Li",
+      "venue": "Physical Review X 7(3), 031054 (2017)",
+      "links": [
+        {
+          "label": "Physical Review X",
+          "href": "https://link.aps.org/doi/10.1103/PhysRevX.7.031054"
+        },
+        {
+          "label": "arXiv:1710.08945",
+          "href": "https://arxiv.org/abs/1710.08945"
+        }
+      ]
+    },
+    {
+      "year": "2017",
+      "title": "Rotational Symmetry Breaking in a Trigonal Superconductor Nb-doped \\(\\mathbf{Bi_2Se_3}\\)",
+      "authors": "Tomoya Asaba, B. J. Lawson, Colin Tinsman, Lu Chen, Paul Corbae, Gang Li, Y. Qiu, Y. S. Hor, Liang Fu, Lu Li",
+      "venue": "Physical Review X 7(1), 011009 (2017)",
+      "links": [
+        {
+          "label": "Physical Review X",
+          "href": "https://link.aps.org/doi/10.1103/PhysRevX.7.011009"
+        },
+        {
+          "label": "arXiv:1603.04040",
+          "href": "https://arxiv.org/abs/1603.04040"
+        }
+      ]
+    },
+    {
+      "year": "2013",
+      "title": "Doping-Dependent Photon Scattering Resonance in the Model High-Temperature Superconductor \\(\\mathbf{HgBa_2CuO_{4+\\delta}}\\) Revealed by Raman Scattering and Optical Ellipsometry",
+      "authors": "Yuan Li, M. Le Tacon, Y. Matiks, A. V. Boris, T. Loew, C. T. Lin, Lu Chen, M. K. Chan, C. Dorow, L. Ji, N. Barišić, X. Zhao, M. Greven, B. Keimer",
+      "venue": "Physical Review Letters 111(18), 187001 (2013)",
+      "links": [
+        {
+          "label": "Physical Review Letters",
+          "href": "https://link.aps.org/doi/10.1103/PhysRevLett.111.187001"
+        }
+      ]
+    }
+  ],
+  "news": {
+    "latestEyebrow": "what's new",
+    "latestTitle": "Latest Lab Updates",
+    "archiveEyebrow": "Archive",
+    "visibleLatestCount": 2,
+    "visibleArchiveCount": 2,
+    "rotationIntervalMs": 1000,
+    "items": [
+      {
+        "date": "May 2026",
+        "image": "/images/news/first-maglab-trip.jpg",
+        "imageAlt": "First MagLab trip with two people standing above a measurement setup",
+        "sortDate": "2099-01-01",
+        "title": "Trip to MagLab",
+        "summary": "Lu and her graduate student Lingyu ran the group's first experiment at [National High Magnetic Field Laboratory](https://nationalmaglab.org) in Tallahassee, FL. This experiment is part of the collaboration work with [Professor Analytis's Group](https://physics.berkeley.edu/research-faculty/research-groups/analytis-lab) in UC Berkeley. Lu and Lingyu ran measurements on unconventional superconductors up to 41 Tesla and down to He-3 temperature. The data may further advance researchers' understanding of the Fermi Surface Structure of these materials. "
+      },
+      {
+        "date": "April TEST 2026",
+        "image": "/images/news/mrl-b09-concrete-finished.jpg",
+        "imageAlt": "New concrete floor work in MRL B09 for the measurement lab",
+        "sortDate": "2026-04-01",
+        "title": "Concrete work finished in MRL B09",
+        "summary": "Our renovation team at MRL has just completed the floor work on both the south and north sides of B09. Metal rebars have been removed and replaced with new concrete. The space is now ready to welcome our Teslatron PT and ProteoxMX dilution refrigerator from Quantum Design Oxford. Many thanks to MRL and PHYSICS for making this happen."
+      },
+      {
+        "date": "March 2026",
+        "image": "/images/news/mrl-b09-concrete-started.jpg",
+        "imageAlt": "MRL B09 concrete preparation work underway",
+        "sortDate": "2026-03-01",
+        "title": "Concrete work started in MRL B09",
+        "summary": "Good news! Our renovation team at MRL has started the key preparation steps for our measurement lab at MRL B09, cutting concrete and removing metal rebars in the ground. Then the space will be ready to welcome our Teslatron PT and ProteoxMX dilution refrigerator from Quantum Design Oxford. TEST"
+      },
+      {
+        "date": "February 2026",
+        "image": "/images/news/gavin-joins.jpg",
+        "imageAlt": "Gavin in the Chen Lab",
+        "imageFit": "contain",
+        "sortDate": "2026-02-01",
+        "title": "Gavin joins the group as an undergraduate student",
+        "summary": "Gavin has joined the lab and will work on designing and building a thermoelectric measurement puck on a rotator probe in the PPMS system."
+      },
+      {
+        "date": "January 2026",
+        "image": "/images/news/jack-joins.jpg",
+        "imageAlt": "Jack in the Chen Lab",
+        "sortDate": "2026-01-15",
+        "title": "Jack joins the group as a PhD student",
+        "summary": "Jack has joined the lab and will develop a comprehensive data acquisition program for the 14 T Teslatron PT system."
+      },
+      {
+        "date": "January 2026",
+        "image": "/images/news/vedang-joins.jpg",
+        "imageAlt": "Vedang in the Chen Lab",
+        "imagePosition": "center 26%",
+        "sortDate": "2026-01-01",
+        "title": "Vedang joins the group as an undergraduate student",
+        "summary": "Vedang has joined the lab and will build a low-noise nanovolt DC amplifier for the thermal transport system."
+      },
+      {
+        "date": "December 2025",
+        "image": "/images/news/sample-prep-lab-ready.jpg",
+        "imageAlt": "Sample preparation lab space at MRL 234",
+        "sortDate": "2025-12-01",
+        "title": "Sample prep lab is ready",
+        "summary": "Renovation of the sample preparation lab at MRL 234 is complete. The updated space supports sample preparation, and sample mounting equipment is being brought online."
+      },
+      {
+        "date": "September 2025",
+        "image": "/images/news/lingyu-joins.jpg",
+        "imageAlt": "Lingyu in the Chen Lab",
+        "sortDate": "2025-09-01",
+        "title": "Lingyu joins the group as a PhD student",
+        "summary": "Lingyu has joined the lab and will work on designing and assembling the cold finger in the dilution refrigerator and quantum oscillation measurements in unconventional superconductors."
+      },
+      {
+        "date": "March 2025",
+        "image": "/images/news/wenjie-joins.jpg",
+        "imageAlt": "Wenjie in the Chen Lab",
+        "imageFit": "contain",
+        "sortDate": "2025-03-01",
+        "title": "Wenjie joins the group as an undergraduate student",
+        "summary": "Wenjie (Michael) has joined the lab and will work on designing and assembling a thermal transport puck in the PPMS system."
+      }
+    ]
+  },
+  "gallery": {
+    "eyebrow": "colorful memories",
+    "title": "Under Construction",
+    "intro": "Coming online soon",
+    "items": [
+      "Picture 1",
+      "Picture 2",
+      "Picture 3",
+      "Picture 4",
+      "Picture 5",
+      "Picture 6"
+    ]
+  },
+  "join": {
+    "eyebrow": "Join Us / Contact",
+    "title": "We are Recruiting Now",
+    "intro": "Researchers interested in experimental condensed matter physics and quantum materials are encouraged to contact the lab.",
+    "groups": [
+      {
+        "title": "Postdoc Position",
+        "summary": "Postdocs with a background in experimental condensed matter physics are encouraged to contact us via email."
+      },
+      {
+        "title": "Graduate Position",
+        "summary": "We are actively recruiting highly motivated graduate students. Interested students are encouraged to apply for the",
+        "link": {
+          "label": "Ph.D. Program at physics department",
+          "href": "https://physics.illinois.edu/academics/graduates"
+        }
+      },
+      {
+        "title": "Undergraduate Position",
+        "summary": "Highly motivated undergraduate students are welcome to do intern projects during regular semesters and summer with us."
+      }
+    ],
+    "contactTitle": "Contact",
+    "contactDepartment": "Chen Lab, Department of Physics, The Grainger College of Engineering",
+    "contactAddress": "Materials Research Laboratory, 104 S Goodwin Ave, Urbana, IL 61801",
+    "contactEmail": "lchen721 [at] illinois [dot] edu"
+  },
+  "footer": {
+    "labName": "Chen Lab",
+    "labHref": "https://physics.illinois.edu/people/directory/profile/lchen721",
+    "email": "lchen721 [at] illinois [dot] edu",
+    "department": "Department of Physics, The Grainger College of Engineering",
+    "address": "Materials Research Laboratory, 104 S Goodwin Ave, Urbana, IL 61801",
+    "image": "/images/Grainger-Engineering-logo.png"
+  }
+}

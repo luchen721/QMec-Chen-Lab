@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Default research tool mockup illustration</title>
+  <desc id="desc">A stylized low-temperature measurement setup with a sample stage, magnetic field coils, and data traces.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fbff"/>
+      <stop offset="0.52" stop-color="#e5eef2"/>
+      <stop offset="1" stop-color="#f5efe5"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fbfd"/>
+      <stop offset="0.46" stop-color="#b6c7cf"/>
+      <stop offset="1" stop-color="#738993"/>
+    </linearGradient>
+    <linearGradient id="copper" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f5c06e"/>
+      <stop offset="0.5" stop-color="#b5683e"/>
+      <stop offset="1" stop-color="#6f3d2d"/>
+    </linearGradient>
+    <filter id="softShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#203642" flood-opacity="0.16"/>
+    </filter>
+    <pattern id="panelGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M60 0H0v60" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="640" fill="url(#background)"/>
+  <rect width="960" height="640" fill="url(#panelGrid)" opacity="0.55"/>
+  <g fill="none" stroke-linecap="round" opacity="0.75">
+    <path d="M70 168c104-52 166 52 270 0s166 52 270 0 166 52 280 0" stroke="#2c88a8" stroke-width="6" stroke-opacity="0.22"/>
+    <path d="M90 492c118-84 206 74 324-10s218 44 356-54" stroke="#b15b43" stroke-width="6" stroke-opacity="0.24"/>
+  </g>
+  <g filter="url(#softShadow)">
+    <rect x="216" y="150" width="528" height="332" rx="28" fill="#fdfdfb" stroke="#c8d4d8" stroke-width="5"/>
+    <rect x="260" y="190" width="440" height="86" rx="18" fill="#183342"/>
+    <path d="M292 236c38-38 62 38 100 0s62 38 100 0 62 38 100 0 62 38 100 0" fill="none" stroke="#79d7f4" stroke-width="8" stroke-linecap="round"/>
+    <path d="M292 248c52 26 92-34 140-12s82 20 132-14 72 12 128-8" fill="none" stroke="#f2a85d" stroke-width="5" stroke-linecap="round"/>
+    <g transform="translate(300 318)">
+      <rect x="0" y="70" width="360" height="34" rx="17" fill="url(#metal)"/>
+      <rect x="96" y="0" width="168" height="86" rx="20" fill="#eef6f8" stroke="#9eb4bd" stroke-width="5"/>
+      <rect x="126" y="26" width="108" height="34" rx="10" fill="#1d3f52"/>
+      <path d="M138 44h84" stroke="#79d7f4" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="58" cy="26" r="36" fill="url(#copper)" stroke="#f9fbfb" stroke-width="5"/>
+      <circle cx="302" cy="26" r="36" fill="url(#copper)" stroke="#f9fbfb" stroke-width="5"/>
+      <path d="M58 62v56M302 62v56M180 86v64" stroke="#4d6c77" stroke-width="8" stroke-linecap="round"/>
+      <path d="M48 26h20M292 26h20" stroke="#fee4ae" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <g fill="none" stroke="#2c5268" stroke-opacity="0.48" stroke-width="6">
+      <path d="M258 516h444"/>
+      <path d="M322 482v64M638 482v64"/>
+      <path d="M180 318h120M660 318h120"/>
+      <path d="M180 318c0-84 54-144 132-164M780 318c0-84-54-144-132-164"/>
+    </g>
+    <g fill="#fdfdfb" stroke="#2c5268" stroke-opacity="0.55" stroke-width="5">
+      <circle cx="180" cy="318" r="34"/>
+      <circle cx="780" cy="318" r="34"/>
+    </g>
+    <g fill="none" stroke="#b5683e" stroke-width="5" stroke-linecap="round">
+      <path d="M180 318h-70"/>
+      <path d="M780 318h70"/>
+      <path d="M110 318v74h108"/>
+      <path d="M850 318v74H742"/>
+    </g>
+  </g>
+</svg>

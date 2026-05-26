@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Default quantum material mockup illustration</title>
+  <desc id="desc">A stylized crystalline lattice with quantum wave contours and orbital highlights.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7fbff"/>
+      <stop offset="0.5" stop-color="#dfeef6"/>
+      <stop offset="1" stop-color="#f8f2e8"/>
+    </linearGradient>
+    <radialGradient id="orbitalBlue" cx="50%" cy="45%" r="62%">
+      <stop offset="0" stop-color="#75d8ff" stop-opacity="0.86"/>
+      <stop offset="0.62" stop-color="#2b86b8" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#1f4f6f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orbitalCopper" cx="50%" cy="45%" r="62%">
+      <stop offset="0" stop-color="#f6b35f" stop-opacity="0.9"/>
+      <stop offset="0.55" stop-color="#b25d34" stop-opacity="0.36"/>
+      <stop offset="1" stop-color="#7a3426" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#19313f" flood-opacity="0.16"/>
+    </filter>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0v80" fill="none" stroke="#ffffff" stroke-opacity="0.58" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="640" fill="url(#background)"/>
+  <rect width="960" height="640" fill="url(#grid)" opacity="0.65"/>
+  <g fill="none" stroke-linecap="round" opacity="0.75">
+    <path d="M80 420C210 310 305 470 455 360s255-12 425-140" stroke="#2c88a8" stroke-width="8" stroke-opacity="0.28"/>
+    <path d="M90 475c155-92 245 50 392-48s240-12 386-118" stroke="#b15b43" stroke-width="6" stroke-opacity="0.22"/>
+    <path d="M130 220c130 84 225-74 360 16s230 58 340-44" stroke="#4a9f72" stroke-width="5" stroke-opacity="0.22"/>
+  </g>
+  <g filter="url(#softShadow)">
+    <g stroke="#2c5268" stroke-opacity="0.42" stroke-width="5">
+      <path d="M190 185 355 112 520 185 685 112 835 185"/>
+      <path d="M190 185v160l165 88 165-88 165 88 150-88V185"/>
+      <path d="m355 112 165 233 165-233"/>
+      <path d="m190 345 165-233 165 233 165-233 150 233"/>
+      <path d="M355 433V112M520 345V185M685 433V112"/>
+    </g>
+    <g opacity="0.88">
+      <ellipse cx="190" cy="185" rx="84" ry="42" fill="url(#orbitalBlue)" transform="rotate(-18 190 185)"/>
+      <ellipse cx="355" cy="112" rx="70" ry="36" fill="url(#orbitalCopper)" transform="rotate(18 355 112)"/>
+      <ellipse cx="520" cy="185" rx="94" ry="46" fill="url(#orbitalBlue)" transform="rotate(-12 520 185)"/>
+      <ellipse cx="685" cy="112" rx="70" ry="36" fill="url(#orbitalCopper)" transform="rotate(18 685 112)"/>
+      <ellipse cx="835" cy="185" rx="82" ry="40" fill="url(#orbitalBlue)" transform="rotate(-18 835 185)"/>
+      <ellipse cx="355" cy="433" rx="80" ry="38" fill="url(#orbitalCopper)" transform="rotate(-10 355 433)"/>
+      <ellipse cx="520" cy="345" rx="96" ry="46" fill="url(#orbitalBlue)" transform="rotate(14 520 345)"/>
+      <ellipse cx="685" cy="433" rx="80" ry="38" fill="url(#orbitalCopper)" transform="rotate(-10 685 433)"/>
+    </g>
+    <g stroke="#f8fbfd" stroke-opacity="0.92" stroke-width="5">
+      <circle cx="190" cy="185" r="24" fill="#237fa8"/>
+      <circle cx="355" cy="112" r="21" fill="#af5b32"/>
+      <circle cx="520" cy="185" r="28" fill="#237fa8"/>
+      <circle cx="685" cy="112" r="21" fill="#af5b32"/>
+      <circle cx="835" cy="185" r="24" fill="#237fa8"/>
+      <circle cx="190" cy="345" r="22" fill="#af5b32"/>
+      <circle cx="355" cy="433" r="26" fill="#237fa8"/>
+      <circle cx="520" cy="345" r="30" fill="#af5b32"/>
+      <circle cx="685" cy="433" r="26" fill="#237fa8"/>
+      <circle cx="835" cy="345" r="22" fill="#af5b32"/>
+    </g>
+  </g>
+  <g fill="none" stroke="#19313f" stroke-opacity="0.18" stroke-width="3">
+    <ellipse cx="510" cy="306" rx="360" ry="180"/>
+    <ellipse cx="510" cy="306" rx="300" ry="136"/>
+    <ellipse cx="510" cy="306" rx="228" ry="92"/>
+  </g>
+</svg>

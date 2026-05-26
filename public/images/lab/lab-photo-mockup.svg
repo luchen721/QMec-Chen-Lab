@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Lab photo mockup placeholder</title>
+  <desc id="desc">A simple placeholder illustration for future laboratory photos.</desc>
+  <defs>
+    <linearGradient id="wall" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#eef3f1"/>
+      <stop offset="1" stop-color="#d7e1de"/>
+    </linearGradient>
+    <linearGradient id="bench" x1="0" x2="1">
+      <stop offset="0" stop-color="#556766"/>
+      <stop offset="1" stop-color="#263737"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="720" fill="url(#wall)"/>
+  <rect x="0" y="505" width="1200" height="215" fill="#c4d0cc"/>
+  <rect x="90" y="370" width="1020" height="98" rx="12" fill="url(#bench)"/>
+  <rect x="130" y="468" width="160" height="155" fill="#314241"/>
+  <rect x="342" y="468" width="160" height="155" fill="#314241"/>
+  <rect x="698" y="468" width="160" height="155" fill="#314241"/>
+  <rect x="910" y="468" width="160" height="155" fill="#314241"/>
+  <rect x="144" y="392" width="210" height="52" rx="8" fill="#ecf1ef"/>
+  <rect x="392" y="394" width="135" height="48" rx="8" fill="#dfe7e4"/>
+  <rect x="566" y="324" width="100" height="120" rx="12" fill="#edf2f0"/>
+  <rect x="704" y="392" width="230" height="52" rx="8" fill="#ecf1ef"/>
+  <rect x="966" y="336" width="74" height="108" rx="10" fill="#e4ece9"/>
+  <path d="M174 320h852" stroke="#93a29e" stroke-width="10" stroke-linecap="round" stroke-dasharray="1 28"/>
+  <path d="M210 292h780" stroke="#b15a3b" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="230" cy="236" r="52" fill="#0e7775"/>
+  <circle cx="970" cy="236" r="52" fill="#0e7775"/>
+  <path d="M254 236h692" stroke="#0e7775" stroke-width="18" stroke-linecap="round"/>
+  <text x="600" y="248" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" text-anchor="middle">
+    Future lab photo
+  </text>
+  <text x="600" y="660" fill="#43504f" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700" text-anchor="middle">
+    Mock image location
+  </text>
+</svg>

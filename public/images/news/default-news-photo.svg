@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="title desc">
+  <title id="title">Default news photo mockup illustration</title>
+  <desc id="desc">A stylized lab news photo placeholder with a measurement setup, railings, and data traces.</desc>
+  <defs>
+    <linearGradient id="wall" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f7fbff"/>
+      <stop offset="0.55" stop-color="#e3eef2"/>
+      <stop offset="1" stop-color="#f4efe5"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0" stop-color="#cad7d7"/>
+      <stop offset="0.5" stop-color="#e7ece8"/>
+      <stop offset="1" stop-color="#b7c8c8"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fbfd"/>
+      <stop offset="0.48" stop-color="#bccbd0"/>
+      <stop offset="1" stop-color="#778c92"/>
+    </linearGradient>
+    <filter id="softShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#1d3340" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+  <rect width="960" height="640" fill="url(#wall)"/>
+  <path d="M0 418h960v222H0z" fill="url(#floor)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.56" stroke-width="2">
+    <path d="M0 110h960M0 220h960M0 330h960"/>
+    <path d="M138 0v418M312 0v418M486 0v418M660 0v418M834 0v418"/>
+  </g>
+  <g filter="url(#softShadow)">
+    <rect x="222" y="214" width="516" height="244" rx="26" fill="#fdfdfb" stroke="#c9d5d9" stroke-width="5"/>
+    <rect x="270" y="252" width="420" height="70" rx="16" fill="#183342"/>
+    <path d="M298 286c40-35 68 35 108 0s68 35 108 0 68 35 108 0" stroke="#79d7f4" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M300 303c58 22 96-26 146-8s78 18 132-12 76 12 116-6" stroke="#f0aa63" stroke-width="5" stroke-linecap="round" fill="none"/>
+    <g transform="translate(330 356)">
+      <rect x="0" y="70" width="300" height="30" rx="15" fill="url(#metal)"/>
+      <rect x="90" y="0" width="120" height="82" rx="18" fill="#edf5f6" stroke="#a9bbc1" stroke-width="5"/>
+      <rect x="114" y="24" width="72" height="30" rx="9" fill="#1d4052"/>
+      <path d="M126 39h48" stroke="#79d7f4" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <path d="M178 350h148M634 350h148M206 292v174M754 292v174" stroke="#d4a72e" stroke-width="16" stroke-linecap="round" fill="none"/>
+    <g stroke="#2c5268" stroke-opacity="0.5" stroke-width="6" fill="none">
+      <path d="M170 500h620"/>
+      <path d="M245 458v68M715 458v68"/>
+      <path d="M190 330c0-82 54-140 134-162"/>
+      <path d="M770 330c0-82-54-140-134-162"/>
+    </g>
+    <g fill="#fdfdfb" stroke="#2c5268" stroke-opacity="0.55" stroke-width="5">
+      <circle cx="190" cy="330" r="32"/>
+      <circle cx="770" cy="330" r="32"/>
+    </g>
+  </g>
+</svg>
