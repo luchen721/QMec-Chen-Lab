@@ -1,6 +1,8 @@
 # File Structure
 
-This document explains the folder layout under `/Users/lukema/Documents/Prof_Chen_Webpage/QMec-Chen-Lab/`.
+This document explains the folder layout in this repo.
+
+It keeps only the public website source, public content data, public assets, build configuration, deployment workflow, and human documentation.
 
 ## Top-Level Layout
 
@@ -141,6 +143,23 @@ Utilities are small public helpers:
 - `assetPath.ts`: prefixes public asset paths with the Vite base URL.
 - `paragraphs.ts`: normalizes string or string-array content into paragraph objects.
 
+## Excluded Source-Corpus Folders
+
+The source corpus has folders and files for authoring support, test automation, linting, and generated review output. They are intentionally not present here:
+
+```text
+lite-edit/
+tests/
+ESLint/
+scripts/
+output/
+playwright.config.ts
+eslint.config.js
+tsconfig.lite-edit.json
+```
+
+Those files are not needed to build the public website. Keeping them out of this repo makes the public source easier to read and reduces the chance of confusing the deployable website with private authoring tooling.
+
 ## TypeScript Config Files
 
 ```text
@@ -184,4 +203,3 @@ node_modules/
 ```
 
 `node_modules/` is generated dependency output. It is ignored by Git and can be recreated from `package-lock.json`.
-

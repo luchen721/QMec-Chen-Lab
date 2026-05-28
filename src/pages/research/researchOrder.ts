@@ -23,4 +23,3 @@ export function normalizeOrderedIndexes(
 
   return normalizedIndexes;
 }
-

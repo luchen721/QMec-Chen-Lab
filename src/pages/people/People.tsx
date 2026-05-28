@@ -53,11 +53,6 @@ export function People() {
         <div className="team-section">
           <div className="section-heading">
             <div>
-              {peoplePage.sections.undergraduateStudentsEyebrow ? (
-                <p className="eyebrow">
-                  <TextWithMath value={peoplePage.sections.undergraduateStudentsEyebrow} />
-                </p>
-              ) : null}
               <h2>
                 <TextWithMath value={peoplePage.sections.undergraduateStudentsTitle} />
               </h2>
@@ -124,4 +119,3 @@ export function People() {
     </>
   );
 }
-

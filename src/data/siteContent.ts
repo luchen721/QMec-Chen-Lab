@@ -115,7 +115,6 @@ export type PeopleContent = {
     graduateStudentsEyebrow: string;
     graduateStudentsTitle: string;
     undergraduateStudentsTitle: string;
-    undergraduateStudentsEyebrow?: string;
     labAiAgentsEyebrow: string;
     labAiAgentsTitle: string;
   };
@@ -226,4 +225,3 @@ export type SiteContent = {
 };
 
 export const siteContent = siteContentData as SiteContent;
-

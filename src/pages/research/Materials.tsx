@@ -1,6 +1,6 @@
 import {
   type KeyboardEvent,
-  type MouseEvent,
+  type PointerEvent,
   useLayoutEffect,
   useRef,
   useState,
@@ -15,40 +15,24 @@ type MaterialsProps = {
   materials: ResearchContent['materials'];
 };
 
-type MaterialCardInteractionPhase =
-  | 'transitioning'
-  | 'static-open'
-  | 'static-closed';
-
 const RESEARCH_CARD_MOTION_MS = 1800;
-const RESEARCH_CARD_MOTION_GUARD_MS = 2040;
+const RESEARCH_CARD_MOTION_GUARD_MS = RESEARCH_CARD_MOTION_MS + 240;
+const TOUCH_HOVER_SUPPRESSION_MS = 800;
 
 export function Materials({ materials }: MaterialsProps) {
   const [expandedSystemIndexes, setExpandedSystemIndexes] = useState<Set<number>>(
     () => new Set(),
   );
-  const [closingSystemIndexes, setClosingSystemIndexes] = useState<Set<number>>(
-    () => new Set(),
-  );
   const [orderedSystemIndexes, setOrderedSystemIndexes] = useState<number[]>([]);
   const cardRefs = useRef(new Map<number, HTMLElement>());
-  const closingSystemIndexesRef = useRef<Set<number>>(new Set());
-  const closingSystemTokensRef = useRef(new Map<number, number>());
   const detailRefs = useRef(new Map<number, HTMLElement>());
   const expandedSystemIndexesRef = useRef<Set<number>>(new Set());
   const hoverSuppressedIndexesRef = useRef<Set<number>>(new Set());
-  const imageMotionTokensRef = useRef(new Map<number, number>());
-  const imageRefs = useRef(new Map<number, HTMLElement>());
   const movingSystemIndexesRef = useRef<Set<number>>(new Set());
-  const cardMotionDeltasRef = useRef(
-    new Map<number, { deltaX: number; deltaY: number }>(),
-  );
-  const nextImageLayoutsRef = useRef(new Map<number, DOMRect>());
   const orderedSystemIndexesRef = useRef<number[]>([]);
   const previousCardLayoutsRef = useRef(new Map<number, DOMRect>());
-  const previousImageLayoutsRef = useRef(new Map<number, DOMRect>());
   const systemMotionTokensRef = useRef(new Map<number, number>());
-  const lastPointerPositionRef = useRef<{ x: number; y: number } | null>(null);
+  const touchHoverSuppressionUntilRef = useRef(0);
 
   const visibleSystems = indexedItems(materials.systems)
     .map(({ index, item: theme }) => ({ index, theme }));
@@ -103,16 +87,6 @@ export function Materials({ materials }: MaterialsProps) {
     previousCardLayoutsRef.current = layouts;
   };
 
-  const recordImageLayout = (index: number) => {
-    const image = imageRefs.current.get(index);
-
-    if (!image) {
-      return;
-    }
-
-    previousImageLayoutsRef.current.set(index, image.getBoundingClientRect());
-  };
-
   const measureSystemDetail = (index: number) => {
     const detail = detailRefs.current.get(index);
 
@@ -142,45 +116,11 @@ export function Materials({ materials }: MaterialsProps) {
     setOrderedSystemIndexes(orderedIndexes);
   };
 
-  const setClosingSystems = (indexes: Set<number>) => {
-    closingSystemIndexesRef.current = indexes;
-    setClosingSystemIndexes(indexes);
-  };
-
-  const clearClosingSystem = (index: number) => {
-    if (!closingSystemIndexesRef.current.has(index)) {
-      return;
-    }
-
-    const nextIndexes = new Set(closingSystemIndexesRef.current);
-    nextIndexes.delete(index);
-    setClosingSystems(nextIndexes);
-  };
-
-  const markSystemAsClosing = (index: number) => {
-    const nextIndexes = new Set(closingSystemIndexesRef.current);
-    nextIndexes.add(index);
-    setClosingSystems(nextIndexes);
-
-    const token = (closingSystemTokensRef.current.get(index) ?? 0) + 1;
-    closingSystemTokensRef.current.set(index, token);
-
-    window.setTimeout(() => {
-      if (closingSystemTokensRef.current.get(index) !== token) {
-        return;
-      }
-
-      closingSystemTokensRef.current.delete(index);
-      clearClosingSystem(index);
-    }, RESEARCH_CARD_MOTION_GUARD_MS);
-  };
-
   const expandSystem = (index: number) => {
     if (expandedSystemIndexesRef.current.has(index)) {
       return;
     }
 
-    clearClosingSystem(index);
     measureSystemDetail(index);
     hoverSuppressedIndexesRef.current.delete(index);
     const nextIndexes = new Set(expandedSystemIndexesRef.current);
@@ -201,25 +141,14 @@ export function Materials({ materials }: MaterialsProps) {
     );
   };
 
-  const getSystemCardInteractionPhase = (
-    index: number,
-  ): MaterialCardInteractionPhase => {
-    if (hasSystemCardTransitionMotion(index)) {
-      return 'transitioning';
-    }
-
-    return expandedSystemIndexesRef.current.has(index)
-      ? 'static-open'
-      : 'static-closed';
-  };
-
   const shouldIgnoreSystemHoverInteraction = (index: number) => (
+    window.performance.now() < touchHoverSuppressionUntilRef.current ||
     hoverSuppressedIndexesRef.current.has(index) ||
-    getSystemCardInteractionPhase(index) === 'transitioning'
+    hasSystemCardTransitionMotion(index)
   );
 
   const shouldIgnoreSystemToggleInteraction = (index: number) => (
-    getSystemCardInteractionPhase(index) === 'transitioning'
+    hasSystemCardTransitionMotion(index)
   );
 
   const expandSystemFromHover = (index: number) => {
@@ -234,9 +163,7 @@ export function Materials({ materials }: MaterialsProps) {
     const nextIndexes = new Set(expandedSystemIndexesRef.current);
 
     if (nextIndexes.has(index)) {
-      recordImageLayout(index);
       nextIndexes.delete(index);
-      markSystemAsClosing(index);
 
       if (suppressHoverAfterClose) {
         hoverSuppressedIndexesRef.current.add(index);
@@ -246,18 +173,21 @@ export function Materials({ materials }: MaterialsProps) {
       return;
     }
 
-    clearClosingSystem(index);
     measureSystemDetail(index);
     hoverSuppressedIndexesRef.current.delete(index);
     nextIndexes.add(index);
     setExpandedSystems(nextIndexes, getInPlaceSystemOrder(index));
   };
 
-  const recordPointerPosition = (event: MouseEvent<HTMLElement>) => {
-    lastPointerPositionRef.current = {
-      x: event.clientX,
-      y: event.clientY,
-    };
+  const suppressSyntheticTouchHover = () => {
+    touchHoverSuppressionUntilRef.current =
+      window.performance.now() + TOUCH_HOVER_SUPPRESSION_MS;
+  };
+
+  const handlePointerDown = (event: PointerEvent<HTMLElement>) => {
+    if (event.pointerType !== 'mouse') {
+      suppressSyntheticTouchHover();
+    }
   };
 
   const handleSystemKeyDown = (event: KeyboardEvent<HTMLElement>, index: number) => {
@@ -277,30 +207,14 @@ export function Materials({ materials }: MaterialsProps) {
     const isMoving =
       movingSystemIndexesRef.current.has(index) ||
       element.getAnimations().some((animation) => animation.playState === 'running');
-    const pointerIsInsideElement = () => {
-      const pointerPosition = lastPointerPositionRef.current;
 
-      if (!pointerPosition) {
-        return false;
-      }
-
-      const rect = element.getBoundingClientRect();
-
-      return (
-        pointerPosition.x >= rect.left &&
-        pointerPosition.x <= rect.right &&
-        pointerPosition.y >= rect.top &&
-        pointerPosition.y <= rect.bottom
-      );
-    };
-
-    if (!pointerIsInsideElement()) {
+    if (!element.matches(':hover')) {
       hoverSuppressedIndexesRef.current.delete(index);
       return;
     }
 
     window.setTimeout(() => {
-      if (!pointerIsInsideElement()) {
+      if (!element.matches(':hover')) {
         hoverSuppressedIndexesRef.current.delete(index);
       }
     }, isMoving ? RESEARCH_CARD_MOTION_GUARD_MS : 0);
@@ -331,11 +245,6 @@ export function Materials({ materials }: MaterialsProps) {
     }
 
     const isReducedMotion = prefersReducedMotion();
-    const cardMotionDeltas = new Map<
-      number,
-      { deltaX: number; deltaY: number }
-    >();
-    const nextImageLayouts = new Map<number, DOMRect>();
 
     cardRefs.current.forEach((element, index) => {
       const previousRect = previousCardLayouts.get(index);
@@ -345,11 +254,6 @@ export function Materials({ materials }: MaterialsProps) {
       }
 
       const nextRect = element.getBoundingClientRect();
-      const image = imageRefs.current.get(index);
-      if (image) {
-        nextImageLayouts.set(index, image.getBoundingClientRect());
-      }
-
       const deltaX = previousRect.left - nextRect.left;
       const deltaY = previousRect.top - nextRect.top;
       const hasTranslationMotion = hasMeaningfulTranslation(deltaX, deltaY);
@@ -361,7 +265,6 @@ export function Materials({ materials }: MaterialsProps) {
       const token = (systemMotionTokensRef.current.get(index) ?? 0) + 1;
       systemMotionTokensRef.current.set(index, token);
       movingSystemIndexesRef.current.add(index);
-      cardMotionDeltas.set(index, { deltaX, deltaY });
       const baseTransform = window.getComputedStyle(element).transform;
       const targetTransform =
         baseTransform === 'none' ? 'translate(0, 0)' : baseTransform;
@@ -390,92 +293,8 @@ export function Materials({ materials }: MaterialsProps) {
         });
     });
 
-    cardMotionDeltasRef.current = cardMotionDeltas;
-    nextImageLayoutsRef.current = nextImageLayouts;
     previousCardLayoutsRef.current = new Map();
   }, [expandedSystemIndexes, orderedSystemIndexes]);
-
-  useLayoutEffect(() => {
-    const previousImageLayouts = previousImageLayoutsRef.current;
-
-    if (previousImageLayouts.size === 0) {
-      cardMotionDeltasRef.current = new Map();
-      nextImageLayoutsRef.current = new Map();
-      return;
-    }
-
-    const isReducedMotion = prefersReducedMotion();
-
-    previousImageLayouts.forEach((previousRect, index) => {
-      const image = imageRefs.current.get(index);
-
-      if (!image) {
-        return;
-      }
-
-      const nextRect =
-        nextImageLayoutsRef.current.get(index) ?? image.getBoundingClientRect();
-
-      if (
-        nextRect.width <= 0 ||
-        nextRect.height <= 0 ||
-        previousRect.width <= 0 ||
-        previousRect.height <= 0
-      ) {
-        return;
-      }
-
-      const cardMotionDelta = cardMotionDeltasRef.current.get(index);
-      const deltaX =
-        previousRect.left - nextRect.left - (cardMotionDelta?.deltaX ?? 0);
-      const deltaY =
-        previousRect.top - nextRect.top - (cardMotionDelta?.deltaY ?? 0);
-      const scaleX = previousRect.width / nextRect.width;
-      const scaleY = previousRect.height / nextRect.height;
-      const hasMotion =
-        hasMeaningfulTranslation(deltaX, deltaY) ||
-        Math.abs(scaleX - 1) >= 0.01 ||
-        Math.abs(scaleY - 1) >= 0.01;
-
-      if (isReducedMotion || !hasMotion) {
-        return;
-      }
-
-      const token = (imageMotionTokensRef.current.get(index) ?? 0) + 1;
-      imageMotionTokensRef.current.set(index, token);
-      image.style.transformOrigin = 'top left';
-      const baseTransform = window.getComputedStyle(image).transform;
-      const initialTransform = baseTransform === 'none'
-        ? `translate(${deltaX}px, ${deltaY}px) scale(${scaleX}, ${scaleY})`
-        : `translate(${deltaX}px, ${deltaY}px) scale(${scaleX}, ${scaleY}) ${baseTransform}`;
-
-      const animation = image.animate(
-        [
-          {
-            transform: initialTransform,
-          },
-          { transform: baseTransform },
-        ],
-        {
-          duration: RESEARCH_CARD_MOTION_MS,
-          easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
-        },
-      );
-
-      animation.finished
-        .catch(() => undefined)
-        .finally(() => {
-          if (imageMotionTokensRef.current.get(index) === token) {
-            image.style.transformOrigin = '';
-            imageMotionTokensRef.current.delete(index);
-          }
-        });
-    });
-
-    previousImageLayoutsRef.current = new Map();
-    cardMotionDeltasRef.current = new Map();
-    nextImageLayoutsRef.current = new Map();
-  }, [closingSystemIndexes, expandedSystemIndexes, orderedSystemIndexes]);
 
   const visibleSystemMap = new Map(
     visibleSystems.map((system) => [system.index, system]),
@@ -488,9 +307,9 @@ export function Materials({ materials }: MaterialsProps) {
     <section className="section material-systems-section">
       <ResearchSectionHeader
         classes={{
-          copy: 'material-systems-heading-copy',
           heading: 'material-systems-heading',
-          visual: 'research-intro-visual',
+          text: 'material-systems-heading-text',
+          visual: 'material-systems-heading-visual',
         }}
         eyebrow={materials.eyebrow}
         imageAlt={materials.overview.imageAlt}
@@ -501,7 +320,6 @@ export function Materials({ materials }: MaterialsProps) {
       <div className="research-theme-grid">
         {orderedVisibleSystems.map(({ theme, index }) => {
           const isExpanded = expandedSystemIndexes.has(index);
-          const isClosing = closingSystemIndexes.has(index) && !isExpanded;
 
           return (
             <ResearchCard
@@ -521,21 +339,12 @@ export function Materials({ materials }: MaterialsProps) {
                   detailRefs.current.delete(index);
                 }
               }}
-              imageRef={(element) => {
-                if (element) {
-                  imageRefs.current.set(index, element);
-                } else {
-                  imageRefs.current.delete(index);
-                }
-              }}
               index={index}
               indexKind="system"
-              isClosing={isClosing}
               isExpanded={isExpanded}
               item={theme}
               key={`material-system-${index}`}
-              onClick={(event) => {
-                recordPointerPosition(event);
+              onClick={() => {
                 if (shouldIgnoreSystemToggleInteraction(index)) {
                   return;
                 }
@@ -543,15 +352,13 @@ export function Materials({ materials }: MaterialsProps) {
                 toggleSystem(index, true);
               }}
               onKeyDown={(event) => handleSystemKeyDown(event, index)}
-              onMouseEnter={(event) => {
-                recordPointerPosition(event);
+              onMouseEnter={() => {
                 expandSystemFromHover(index);
               }}
               onMouseLeave={(event) => {
-                recordPointerPosition(event);
                 clearHoverSuppression(index, event.currentTarget);
               }}
-              onMouseMove={recordPointerPosition}
+              onPointerDown={handlePointerDown}
               tabIndex={0}
               variant="material"
             />
@@ -561,4 +368,3 @@ export function Materials({ materials }: MaterialsProps) {
     </section>
   );
 }
-

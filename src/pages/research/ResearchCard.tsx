@@ -1,10 +1,7 @@
-import {
-  useEffect,
-  useState,
-} from 'react';
 import type {
   KeyboardEventHandler,
   MouseEventHandler,
+  PointerEventHandler,
 } from 'react';
 import { TextWithMath } from '../../components/TextWithMath';
 import type { DetailDescription } from '../../data/siteContent';
@@ -28,10 +25,8 @@ type ResearchCardProps = {
   articleRef: (element: HTMLElement | null) => void;
   bodyClassName?: string;
   detailRef?: (element: HTMLElement | null) => void;
-  imageRef?: (element: HTMLElement | null) => void;
   index: number;
   indexKind: ResearchCardIndexKind;
-  isClosing: boolean;
   isExpanded: boolean;
   item: ResearchCardItem;
   onClick: MouseEventHandler<HTMLElement>;
@@ -39,11 +34,10 @@ type ResearchCardProps = {
   onMouseEnter?: MouseEventHandler<HTMLElement>;
   onMouseLeave?: MouseEventHandler<HTMLElement>;
   onMouseMove?: MouseEventHandler<HTMLElement>;
+  onPointerDown?: PointerEventHandler<HTMLElement>;
   tabIndex: 0;
   variant: ResearchCardVariant;
 };
-
-const MATERIAL_IMAGE_CROSSFADE_MS = 1800;
 
 function classNames(...values: Array<string | false | undefined>) {
   return values.filter(Boolean).join(' ');
@@ -52,7 +46,6 @@ function classNames(...values: Array<string | false | undefined>) {
 function cardClassName(
   variant: ResearchCardVariant,
   isExpanded: boolean,
-  isClosing: boolean,
 ) {
   const variantClassName =
     variant === 'material' ? 'research-theme-card' : 'card research-tool-card';
@@ -63,10 +56,6 @@ function cardClassName(
       (variant === 'material'
         ? 'research-theme-card-expanded research-theme-card-content-expanded'
         : 'research-tool-card-expanded research-tool-card-content-expanded'),
-    isClosing &&
-      (variant === 'material'
-        ? 'research-theme-card-closing'
-        : 'research-tool-card-closing'),
     'floating-tile',
   );
 }
@@ -93,10 +82,8 @@ export function ResearchCard({
   articleRef,
   bodyClassName,
   detailRef,
-  imageRef,
   index,
   indexKind,
-  isClosing,
   isExpanded,
   item,
   onClick,
@@ -104,33 +91,12 @@ export function ResearchCard({
   onMouseEnter,
   onMouseLeave,
   onMouseMove,
+  onPointerDown,
   tabIndex,
   variant,
 }: ResearchCardProps) {
   const targetImageSrc =
     isExpanded && item.expandedImage ? item.expandedImage : item.image;
-  const [settledMaterialImageSrc, setSettledMaterialImageSrc] =
-    useState(targetImageSrc);
-  const isMaterialImageTransitioning =
-    variant === 'material' && settledMaterialImageSrc !== targetImageSrc;
-
-  useEffect(() => {
-    if (
-      variant !== 'material' ||
-      settledMaterialImageSrc === targetImageSrc
-    ) {
-      return undefined;
-    }
-
-    const finishTransitionId = window.setTimeout(() => {
-      setSettledMaterialImageSrc(targetImageSrc);
-    }, MATERIAL_IMAGE_CROSSFADE_MS);
-
-    return () => window.clearTimeout(finishTransitionId);
-  }, [settledMaterialImageSrc, targetImageSrc, variant]);
-
-  const displayImageSrc =
-    variant === 'material' ? settledMaterialImageSrc : targetImageSrc;
 
   const bodyContent = (
     <>
@@ -156,13 +122,14 @@ export function ResearchCard({
           )}
         </div>
       ) : null}
+      <span aria-hidden="true" className="research-card-touch-cue" />
     </>
   );
 
   return (
     <article
       aria-expanded={isExpanded}
-      className={cardClassName(variant, isExpanded, isClosing)}
+      className={cardClassName(variant, isExpanded)}
       data-system-index={indexKind === 'system' ? index : undefined}
       data-tool-index={indexKind === 'tool' ? index : undefined}
       onClick={onClick}
@@ -170,39 +137,21 @@ export function ResearchCard({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onMouseMove={onMouseMove}
+      onPointerDown={onPointerDown}
       ref={articleRef}
       tabIndex={tabIndex}
     >
       <figure>
         {variant === 'material' ? (
-          <span className="research-theme-card-image-frame" ref={imageRef}>
-            {isMaterialImageTransitioning ? (
-              <>
-                <img
-                  alt=""
-                  aria-hidden="true"
-                  className="research-theme-card-image-layer research-theme-card-image-layer-outgoing"
-                  src={assetPath(settledMaterialImageSrc)}
-                />
-                <img
-                  alt={item.imageAlt}
-                  className="research-theme-card-image-layer research-theme-card-image-layer-incoming"
-                  src={assetPath(targetImageSrc)}
-                />
-              </>
-            ) : (
-              <img
-                alt={item.imageAlt}
-                className="research-theme-card-image-layer"
-                src={assetPath(displayImageSrc)}
-              />
-            )}
-          </span>
+          <img
+            alt={item.imageAlt}
+            className="research-theme-card-image-layer"
+            src={assetPath(targetImageSrc)}
+          />
         ) : (
           <img
             alt={item.imageAlt}
-            ref={imageRef}
-            src={assetPath(displayImageSrc)}
+            src={assetPath(targetImageSrc)}
           />
         )}
       </figure>
@@ -214,4 +163,3 @@ export function ResearchCard({
     </article>
   );
 }
-

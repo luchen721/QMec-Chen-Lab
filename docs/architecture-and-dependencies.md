@@ -1,6 +1,8 @@
 # Architecture and Dependencies
 
-This project is a public-only Vite, React, and TypeScript source tree for the QMec Chen Lab website. It was generated from the public website corpus in `/Users/lukema/Documents/webpage_building/my-lab-website/`, but it does not depend on that corpus at build time.
+This project is a public-only Vite, React, and TypeScript source tree for the QMec Chen Lab website. It was generated from the website build source code in a private repo, but it does not depend on that corpus at build time.
+
+The source was refreshed from the recent local corpus. The old corpus remains read-only input; this repository is the clean, maintainable public source.
 
 ## Architecture Summary
 
@@ -18,7 +20,8 @@ The app has four layers:
    - `src/data/siteContent.json` stores public website content.
    - `src/data/siteContent.ts` defines TypeScript types for that content.
    - `src/components/TextWithMath.tsx` renders plain text, inline Markdown-style links, and KaTeX math.
-   - `src/utils/assetPath.ts` builds asset URLs that work under the `/QMec-Chen-Lab/` base path.
+- `src/utils/assetPath.ts` builds asset URLs that work under the `/QMec-Chen-Lab/` base path.
+- `src/utils/paragraphs.ts` normalizes paragraph-like content for lab and research detail sections.
 
 4. **Page layer**
    - `src/pages/` contains public page components grouped by page.
@@ -141,7 +144,7 @@ The generated source preserves public interactions from the source website:
 
 - Lab photos rotate and can be manually stepped.
 - News archive cards rotate.
-- Research material and tool cards expand on hover/click and support keyboard activation.
+- Research material and tool cards expand on hover/click, support keyboard activation, and show a small touch cue on coarse-pointer devices.
 - Highlighted publication cards keep their visual styles and manuscript-prep canvas border behavior.
 
 The source intentionally removes edit-only features:
@@ -152,6 +155,19 @@ The source intentionally removes edit-only features:
 - No draft storage.
 - No Playwright test suite.
 - No ESLint config.
+
+The latest public research-card behavior is implemented without source-editing hooks. For example, `ResearchCard` renders the public card body directly:
+
+```tsx
+<h3>
+  <TextWithMath value={item.title} />
+</h3>
+<p className={summaryClassName(variant)}>
+  <TextWithMath value={item.summary} />
+</p>
+```
+
+`Materials` and `Tools` keep their own hover/click state, card refs, and ResizeObserver measurements. Those are public interaction mechanics, not editor state.
 
 ## Dependencies
 
@@ -197,4 +213,3 @@ The GitHub Pages workflow has two jobs:
 - `deploy`: publishes the uploaded artifact through GitHub Pages.
 
 Because routing uses `HashRouter`, the workflow does not create or copy a `404.html` fallback.
-

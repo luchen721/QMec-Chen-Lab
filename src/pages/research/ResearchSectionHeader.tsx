@@ -2,8 +2,8 @@ import { TextWithMath } from '../../components/TextWithMath';
 import { assetPath } from '../../utils/assetPath';
 
 type ResearchSectionHeaderClasses = {
-  copy: string;
   heading: string;
+  text: string;
   visual: string;
 };
 
@@ -24,9 +24,15 @@ export function ResearchSectionHeader({
   intro,
   title,
 }: ResearchSectionHeaderProps) {
+  const imageFigure = (
+    <figure className={`research-section-visual ${classes.visual}`}>
+      <img src={assetPath(imageSrc)} alt={imageAlt} />
+    </figure>
+  );
+
   return (
-    <div className={`section-heading ${classes.heading}`}>
-      <div className={classes.copy}>
+    <div className={`section-heading research-section-intro ${classes.heading}`}>
+      <div className={`research-section-text ${classes.text}`}>
         <p className="eyebrow">
           <TextWithMath value={eyebrow} />
         </p>
@@ -37,10 +43,7 @@ export function ResearchSectionHeader({
           <TextWithMath value={intro} />
         </p>
       </div>
-      <figure className={classes.visual}>
-        <img src={assetPath(imageSrc)} alt={imageAlt} />
-      </figure>
+      {imageFigure}
     </div>
   );
 }
-

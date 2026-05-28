@@ -183,7 +183,7 @@ Major sections:
 - Publications.
 - News.
 - Lab.
-- Research cards and transitions.
+- Research section headers, responsive research cards, touch cues, and card transitions.
 - People, gallery, join, and footer.
 - Responsive media queries.
 
@@ -435,7 +435,31 @@ const [expandedSystemIndexes, setExpandedSystemIndexes] = useState<Set<number>>(
 );
 ```
 
-The file tracks expanded cards, closing cards, card refs, image refs, and layout snapshots so the public FLIP-style motion remains smooth.
+The file tracks expanded cards, card refs, detail refs, and layout snapshots so card reordering motion remains smooth. It also suppresses synthetic hover immediately after touch input:
+
+```ts
+const handlePointerDown = (event: PointerEvent<HTMLElement>) => {
+  if (event.pointerType !== 'mouse') {
+    suppressSyntheticTouchHover();
+  }
+};
+```
+
+The section header is shared with the research-tools section:
+
+```tsx
+<ResearchSectionHeader
+  classes={{
+    heading: 'material-systems-heading',
+    text: 'material-systems-heading-text',
+    visual: 'material-systems-heading-visual',
+  }}
+  eyebrow={materials.eyebrow}
+  imageSrc={materials.overview.image}
+  intro={materials.intro}
+  title={materials.title}
+/>
+```
 
 ### `src/pages/research/Tools.tsx`
 
@@ -450,6 +474,15 @@ const RESEARCH_TOOL_EXPANDED_MIN_HEIGHT = 700;
 
 The section uses public hover/click/keyboard interactions to expand tool cards.
 
+Important height measurement:
+
+```ts
+const targetHeight = `${Math.ceil(detail.scrollHeight + 2)}px`;
+detail.style.setProperty('--research-tool-card-detail-height', targetHeight);
+```
+
+This lets CSS animate the detail panel to the measured content height instead of guessing.
+
 ### `src/pages/research/ResearchCard.tsx`
 
 Purpose: Shared card renderer for material systems and tools.
@@ -463,6 +496,23 @@ const variantClassName =
 
 The same component renders both card families, while CSS classes provide their different layouts.
 
+Important image choice:
+
+```ts
+const targetImageSrc =
+  isExpanded && item.expandedImage ? item.expandedImage : item.image;
+```
+
+Material cards can use a separate expanded image. Tool cards reuse the same image unless the content data provides another one.
+
+Important touch cue:
+
+```tsx
+<span aria-hidden="true" className="research-card-touch-cue" />
+```
+
+CSS turns this into "Tap for details" or "Tap to close" on touch devices.
+
 ### `src/pages/research/ResearchSectionHeader.tsx`
 
 Purpose: Shared heading + image layout for research sections.
@@ -470,23 +520,53 @@ Purpose: Shared heading + image layout for research sections.
 Important structure:
 
 ```tsx
-<div className={`section-heading ${classes.heading}`}>
-  <div className={classes.copy}>...</div>
-  <figure className={classes.visual}>...</figure>
+<div className={`section-heading research-section-intro ${classes.heading}`}>
+  <div className={`research-section-text ${classes.text}`}>...</div>
+  <figure className={`research-section-visual ${classes.visual}`}>...</figure>
 </div>
 ```
+
+The generic `research-section-*` classes carry the shared layout. The caller-provided classes leave room for section-specific styling without duplicating the component.
 
 ### `src/pages/research/detailDescription.ts`
 
 Purpose: Converts research detail text into paragraph records.
 
+Important block:
+
+```ts
+return paragraphsFromValue(detail);
+```
+
+This accepts a string, an array of strings, or an empty value and returns stable paragraph records for rendering.
+
 ### `src/pages/research/researchOrder.ts`
 
 Purpose: Small ordering helpers for research cards.
 
+Important block:
+
+```ts
+export function indexedItems<T>(items: T[]) {
+  return items.map((item, index) => ({ index, item }));
+}
+```
+
+Research card state uses original indexes as stable identifiers even when cards temporarily reorder during expansion.
+
 ### `src/pages/research/researchMotion.ts`
 
 Purpose: Motion helpers shared by research card sections.
+
+Important block:
+
+```ts
+export function hasMeaningfulTranslation(deltaX: number, deltaY: number) {
+  return Math.abs(deltaX) >= 1 || Math.abs(deltaY) >= 1;
+}
+```
+
+This avoids creating tiny animations for sub-pixel layout differences.
 
 ## People Page
 
@@ -634,4 +714,3 @@ Important pattern:
 ```
 
 Opportunity links are optional and come from `siteContent.json`.
-
