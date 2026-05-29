@@ -6,10 +6,29 @@ type TextSegment = {
   value: string;
 };
 
+type ProtectedTextSegment = {
+  kind: 'protected-text';
+  value: string;
+};
+
 type LinkSegment = {
   href: string;
   kind: 'link';
   label: string;
+};
+
+type TextCitation = {
+  href?: string;
+  label: string;
+  marker: string;
+  status: 'verified' | 'unverified';
+};
+
+type CitationSegment = {
+  href?: string;
+  kind: 'citation';
+  marker: string;
+  status: 'verified' | 'unverified';
 };
 
 type MathSegment = {
@@ -19,7 +38,7 @@ type MathSegment = {
   value: string;
 };
 
-type RichTextSegment = LinkSegment | MathSegment | TextSegment;
+type RichTextSegment = CitationSegment | LinkSegment | MathSegment | TextSegment;
 
 const mathDelimiters = [
   { display: false, left: '\\(', right: '\\)' },
@@ -114,24 +133,122 @@ function isSafeLinkHref(href: string) {
   return /^(https?:\/\/|mailto:|\/)/.test(href);
 }
 
-function splitInlineLinks(value: string): Array<LinkSegment | TextSegment> {
-  const segments: Array<LinkSegment | TextSegment> = [];
-  const linkPattern = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function normalizedCitations(citations: TextCitation[]): TextCitation[] {
+  return citations
+    .filter((citation) => citation.marker.trim().length > 0)
+    .map((citation) => ({
+      ...citation,
+      href: citation.href && isSafeLinkHref(citation.href) ? citation.href : undefined,
+      marker: citation.marker.trim(),
+      status: citation.status === 'verified' ? ('verified' as const) : ('unverified' as const),
+    }))
+    .sort((left, right) => right.marker.length - left.marker.length);
+}
+
+function citationSegmentFor(citation: TextCitation): CitationSegment {
+  return {
+    href: citation.status === 'verified' ? citation.href : undefined,
+    kind: 'citation',
+    marker: citation.marker,
+    status: citation.status,
+  };
+}
+
+function splitKnownCitationCluster(
+  value: string,
+  normalized: TextCitation[],
+  markerPattern: string,
+  allowSingleMarker: boolean,
+): Array<CitationSegment | TextSegment> | null {
+  const separator = '(?:\\s*,\\s*|\\s+and\\s+)';
+  const clusterPattern = allowSingleMarker
+    ? `^\\s*(?:${markerPattern})(?:${separator}(?:${markerPattern}))*\\s*$`
+    : `^\\s*(?:${markerPattern})(?:${separator}(?:${markerPattern}))+\\s*$`;
+
+  if (!new RegExp(clusterPattern, 'i').test(value)) {
+    return null;
+  }
+
+  const segments: Array<CitationSegment | TextSegment> = [];
+  const tokenPattern = new RegExp(markerPattern, 'gi');
   let position = 0;
   let match: RegExpExecArray | null;
 
-  while ((match = linkPattern.exec(value))) {
-    const [source, label, href] = match;
+  while ((match = tokenPattern.exec(value))) {
+    const marker = match[0];
+    const citation = normalized.find((candidate) => candidate.marker.toLowerCase() === marker.toLowerCase());
 
-    if (!label || !href || !isSafeLinkHref(href)) {
-      continue;
+    if (!citation) {
+      return null;
     }
 
     if (match.index > position) {
       segments.push({ kind: 'text', value: value.slice(position, match.index) });
     }
 
-    segments.push({ href, kind: 'link', label });
+    segments.push(citationSegmentFor(citation));
+    position = match.index + marker.length;
+  }
+
+  if (position < value.length) {
+    segments.push({ kind: 'text', value: value.slice(position) });
+  }
+
+  return segments.filter((segment) => segment.kind !== 'text' || segment.value.length > 0);
+}
+
+function isBlockedBareCitationClusterStart(value: string, markerStart: number) {
+  return /\bor\s*[,;:]?\s*$/i.test(value.slice(0, markerStart));
+}
+
+function splitCitationMarkers(value: string, citations: TextCitation[]): Array<CitationSegment | TextSegment> {
+  const normalized = normalizedCitations(citations);
+
+  if (normalized.length === 0) {
+    return [{ kind: 'text', value }];
+  }
+
+  const markerPattern = normalized.map((citation) => escapeRegExp(citation.marker)).join('|');
+  const bareClusterPattern = '\\d+(?:(?:\\s*,\\s*|\\s+and\\s+)\\d+)+';
+  const pattern = new RegExp(
+    `\\(refs?\\.\\s*([^)]*)\\)|\\[([^\\]]+)\\]|(^|[\\s([{])(${bareClusterPattern})(?=\\s*(?:[.;:]|$))`,
+    'gi',
+  );
+  const segments: Array<CitationSegment | TextSegment> = [];
+  let position = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = pattern.exec(value))) {
+    const source = match[0];
+    const refCluster = match[1];
+    const bracketCluster = match[2];
+    const barePrefix = match[3] ?? '';
+    const bareCluster = match[4];
+    const cluster = refCluster ?? bracketCluster ?? bareCluster;
+    const isBracketedMarkdownLink = bracketCluster !== undefined && value[match.index + source.length] === '(';
+    const citationSegments = isBracketedMarkdownLink
+      ? null
+      : splitKnownCitationCluster(cluster, normalized, markerPattern, refCluster !== undefined || bracketCluster !== undefined);
+
+    if (!citationSegments) {
+      continue;
+    }
+
+    const markerStart = match.index + (bareCluster ? barePrefix.length : 0);
+
+    if (bareCluster && isBlockedBareCitationClusterStart(value, markerStart)) {
+      continue;
+    }
+
+    if (markerStart > position) {
+      segments.push({ kind: 'text', value: value.slice(position, markerStart) });
+    }
+
+    segments.push(...citationSegments);
     position = match.index + source.length;
   }
 
@@ -142,18 +259,82 @@ function splitInlineLinks(value: string): Array<LinkSegment | TextSegment> {
   return segments;
 }
 
-function splitRichText(value: string): RichTextSegment[] {
-  return splitMathText(value).flatMap((segment): RichTextSegment[] => (
-    segment.kind === 'text' ? splitInlineLinks(segment.value) : [segment]
-  ));
+function splitInlineLinks(value: string): Array<LinkSegment | ProtectedTextSegment | TextSegment> {
+  const segments: Array<LinkSegment | ProtectedTextSegment | TextSegment> = [];
+  const linkPattern = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+  let position = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = linkPattern.exec(value))) {
+    const [source, label, href] = match;
+
+    if (!label || !href) {
+      continue;
+    }
+
+    if (match.index > position) {
+      segments.push({ kind: 'text', value: value.slice(position, match.index) });
+    }
+
+    if (isSafeLinkHref(href)) {
+      segments.push({ href, kind: 'link', label });
+    } else {
+      segments.push({ kind: 'protected-text', value: source });
+    }
+
+    position = match.index + source.length;
+  }
+
+  if (position < value.length) {
+    segments.push({ kind: 'text', value: value.slice(position) });
+  }
+
+  return segments;
 }
 
-export function TextWithMath({ value }: { value: string }) {
+function splitRichText(value: string, citations: TextCitation[]): RichTextSegment[] {
+  return splitMathText(value).flatMap((segment): RichTextSegment[] => {
+    if (segment.kind !== 'text') {
+      return [segment];
+    }
+
+    return splitInlineLinks(segment.value).flatMap((inlineSegment): RichTextSegment[] => {
+      if (inlineSegment.kind === 'link') {
+        return [inlineSegment];
+      }
+
+      if (inlineSegment.kind === 'protected-text') {
+        return [{ kind: 'text', value: inlineSegment.value }];
+      }
+
+      return splitCitationMarkers(inlineSegment.value, citations);
+    });
+  });
+}
+
+export function TextWithMath({ citations = [], value }: { citations?: TextCitation[]; value: string }) {
   return (
     <>
-      {splitRichText(value).map((segment, index) => {
+      {splitRichText(value, citations).map((segment, index) => {
         if (segment.kind === 'text') {
           return <span key={`text-${index}`}>{segment.value}</span>;
+        }
+
+        if (segment.kind === 'citation') {
+          const label = `[${segment.marker}]`;
+          const className = `publication-abstract-citation-marker ${
+            segment.status === 'verified' && segment.href ? 'is-verified' : 'is-unverified'
+          }`;
+
+          return segment.status === 'verified' && segment.href ? (
+            <a className={className} href={segment.href} key={`citation-${index}`} rel="noreferrer" target="_blank">
+              {label}
+            </a>
+          ) : (
+            <span className={className} key={`citation-${index}`}>
+              {label}
+            </span>
+          );
         }
 
         if (segment.kind === 'link') {
@@ -181,4 +362,3 @@ export function TextWithMath({ value }: { value: string }) {
     </>
   );
 }
-

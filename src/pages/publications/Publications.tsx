@@ -1,9 +1,14 @@
+import { useState } from 'react';
 import { siteContent } from '../../data/siteContent';
 import { PublicationItem } from './PublicationItem';
 
 export function Publications() {
+  const [openAbstractKey, setOpenAbstractKey] = useState<string | null>(null);
   const { manuscriptsInPrep, publications } = siteContent;
   const years = Array.from(new Set(publications.map((publication) => publication.year))).filter(Boolean);
+  const toggleAbstract = (abstractKey: string) => {
+    setOpenAbstractKey((currentKey) => (currentKey === abstractKey ? null : abstractKey));
+  };
 
   return (
     <section className="section publications-section">
@@ -11,12 +16,19 @@ export function Publications() {
         <div className="publication-year">
           <h3>Manuscript in Prep</h3>
           <div className="list">
-            {manuscriptsInPrep.map((publication) => (
-              <PublicationItem
-                key={`manuscript-in-prep-${publication.title}`}
-                publication={publication}
-              />
-            ))}
+            {manuscriptsInPrep.map((publication, publicationIndex) => {
+              const abstractKey = `manuscriptsInPrep-${publicationIndex}`;
+
+              return (
+                <PublicationItem
+                  key={`manuscript-in-prep-${publication.title}`}
+                  abstractKey={abstractKey}
+                  isAbstractOpen={openAbstractKey === abstractKey}
+                  onToggleAbstract={toggleAbstract}
+                  publication={publication}
+                />
+              );
+            })}
           </div>
         </div>
       ) : null}
@@ -26,13 +38,23 @@ export function Publications() {
           <div className="list">
             {publications
               .filter((publication) => publication.year === year)
-              .map((publication) => (
-                <PublicationItem key={`publication-${publication.title}`} publication={publication} />
-              ))}
+              .map((publication) => {
+                const publicationIndex = publications.indexOf(publication);
+                const abstractKey = `publications-${publicationIndex}`;
+
+                return (
+                  <PublicationItem
+                    key={`publication-${publication.title}`}
+                    abstractKey={abstractKey}
+                    isAbstractOpen={openAbstractKey === abstractKey}
+                    onToggleAbstract={toggleAbstract}
+                    publication={publication}
+                  />
+                );
+              })}
           </div>
         </div>
       ))}
     </section>
   );
 }
-

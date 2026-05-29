@@ -1,5 +1,5 @@
 {
-  "version": "2026-05-26-public-content-v1",
+  "version": "2026-05-28-public-content-v2",
   "home": {
     "hero": {
       "labWordmark": "QMec Chen Lab",
@@ -260,14 +260,14 @@
         "status": "Renovation complete.",
         "photos": [
           {
-            "src": "/images/news/mrl-b09-concrete-finished.jpg",
-            "alt": "New concrete floor work in MRL B09 for the measurement lab",
-            "date": "April 2026"
-          },
-          {
             "src": "/images/lab/measurement-lab.png",
             "alt": "MRL B09 measurement lab during renovation",
             "date": "March 2026"
+          },
+          {
+            "src": "/images/lab/lab-photo-mockup.svg",
+            "alt": "Future MRL B09 measurement lab photo placeholder",
+            "date": "Future"
           }
         ]
       },
@@ -280,14 +280,14 @@
         "status": "Under renovation.",
         "photos": [
           {
-            "src": "/images/lab/ESB_120_pic_2.jpg",
-            "alt": "Future ESB 120 sample growth facility photo placeholder",
-            "date": "May 2026"
-          },
-          {
             "src": "/images/lab/sample-growth-facility.png",
             "alt": "ESB 120 shared sample growth facility during renovation",
             "date": "March 2026"
+          },
+          {
+            "src": "/images/lab/lab-photo-mockup.svg",
+            "alt": "Future ESB 120 sample growth facility photo placeholder",
+            "date": "Future"
           }
         ]
       },
@@ -331,7 +331,8 @@
           "label": "arXiv:2310.15892",
           "href": "https://arxiv.org/abs/2310.15892"
         }
-      ]
+      ],
+      "abstract": "It has recently become clear that phonons generate a sizable thermal Hall effect in cuprates, whether they are undoped, electron-doped or hole-doped (inside the pseudogap phase). At higher doping, where cuprates are reasonably good metals, mobile electrons also generate a thermal Hall effect, the thermal equivalent of the standard electrical Hall effect. Here we show that in the cleanest crystals of the electron-doped cuprate \\(\\mathrm{Nd}_{2-x}\\mathrm{Ce}_{x}\\mathrm{CuO}_{4}\\), at high doping, the phonon and electron contributions to the thermal Hall conductivity \\(\\kappa_{xy}\\) are of comparable magnitude, but of opposite sign. In samples of lower quality, phonons dominate \\(\\kappa_{xy}\\), resulting in a negative \\(\\kappa_{xy}\\) at all temperatures. The fact that the negative phononic \\(\\kappa_{xy}\\) in the metallic state is similar in magnitude and temperature dependence to that found in the insulating state at lower doping rules out any mechanism based on skew scattering of phonons off charged impurities, since a local charge should be screened in the metallic regime. The phononic \\(\\kappa_{xy}\\) is found to persist over the entire doping range where antiferromagnetic correlations are known to be significant, suggesting that such correlations may play a role in generating the phonon thermal Hall effect in electron-doped cuprates. If the same mechanism is also at play in hole-doped cuprates, the presence of a phononic \\(\\kappa_{xy}\\) below (and only below) the critical doping \\(p^{\\star}\\) would be evidence that spin correlations are a property of the pseudogap phase."
     },
     {
       "year": "2024",
@@ -349,7 +350,8 @@
           "href": "https://arxiv.org/abs/2310.07696"
         }
       ],
-      "starCount": 5
+      "starCount": 5,
+      "abstract": "A surprising “planar” thermal Hall effect, whereby the field is parallel to the current, has recently been observed in a few magnetic insulators; this effect has been attributed to exotic excitations such as Majorana fermions or chiral magnons. Here, we investigate the possibility of a planar thermal Hall effect in three different cuprate materials, in which the conventional thermal Hall conductivity \\(\\kappa_{xy}\\) (with an out-of-plane field perpendicular to the current) is dominated by either electrons or phonons. Our measurements show that the planar \\(\\kappa_{xy}\\) from electrons in cuprates is zero, as expected from the absence of a Lorentz force in the planar configuration. By contrast, we observe a sizable planar \\(\\kappa_{xy}\\) in those samples where the thermal Hall response is due to phonons, even though it should, in principle, be forbidden by the high crystal symmetry. Our findings call for a careful reexamination of the mechanisms responsible for the phonon thermal Hall effect in insulators."
     },
     {
       "year": "2024",
@@ -365,7 +367,8 @@
           "label": "arXiv:2310.10643",
           "href": "https://arxiv.org/abs/2310.10643"
         }
-      ]
+      ],
+      "abstract": "In a growing number of materials, phonons have been found to generate a thermal Hall effect, but the underlying mechanism remains unclear. Inspired by previous studies that revealed the importance of \\(\\mathrm{Tb}^{3+}\\) ions in generating the thermal Hall effect in a family of pyrochlores, we investigated the role of \\(\\mathrm{Tm}^{3+}\\) ions in \\(\\mathrm{TmVO}_{4}\\), a paramagnetic insulator with a different crystal structure. We observe a negative thermal Hall conductivity in \\(\\mathrm{TmVO}_{4}\\) with a magnitude such that the Hall angle, \\(|\\kappa_{xy}/\\kappa_{xx}|\\), is approximately \\(1 \\times 10^{-3}\\) at \\(H = 15\\,\\mathrm{T}\\) and \\(T = 20\\,\\mathrm{K}\\), typical for a phonon-generated thermal Hall effect. In contrast to the negligible \\(\\kappa_{xy}\\) found in the nonmagnetic pyrochlore analog (where the \\(\\mathrm{Tb}^{3+}\\) ions are replaced with \\(\\mathrm{Y}^{3+}\\)), we observe a negative \\(\\kappa_{xy}\\) in \\(\\mathrm{YVO}_{4}\\) with a Hall angle of magnitude comparable to that of \\(\\mathrm{TmVO}_{4}\\). This shows that the \\(\\mathrm{Tm}^{3+}\\) ions are not essential for the thermal Hall effect in this family of materials. Interestingly, at an intermediate Y concentration of \\(x = 0.3\\) in \\(\\mathrm{Tm}_{1-x}\\mathrm{Y}_{x}\\mathrm{VO}_{4}\\), \\(\\kappa_{xy}\\) was found to have a positive sign, pointing to the importance of impurities in the thermal Hall effect of phonons."
     },
     {
       "year": "2024",
@@ -383,7 +386,8 @@
           "href": "https://arxiv.org/abs/2309.17231"
         }
       ],
-      "starCount": 5
+      "starCount": 5,
+      "abstract": "The thermal Hall effect has emerged as a potential probe of exotic excitations in spin liquids. In the Kitaev magnet \\(\\alpha\\text{-}\\mathrm{RuCl}_{3}\\), the thermal Hall conductivity \\(\\kappa_{xy}\\) has been attributed to Majorana fermions, chiral magnons, or phonons. Theoretically, the former two types of heat carriers can generate a “planar” \\(\\kappa_{xy}\\), whereby the magnetic field is parallel to the heat current, but it is unknown whether phonons also could. Here we show that a planar \\(\\kappa_{xy}\\) is present in another Kitaev candidate material, \\(\\mathrm{Na}_{2}\\mathrm{Co}_{2}\\mathrm{TeO}_{6}\\). Based on the striking similarity between \\(\\kappa_{xy}\\) and the phonon-dominated thermal conductivity \\(\\kappa_{xx}\\), we attribute the effect to phonons. We observe a large difference in \\(\\kappa_{xy}\\) between different configurations of heat current and magnetic field, which reveals that the direction of heat current matters in determining the planar \\(\\kappa_{xy}\\). Our observation calls for a re-evaluation of the planar \\(\\kappa_{xy}\\) observed in \\(\\alpha\\text{-}\\mathrm{RuCl}_{3}\\)."
     },
     {
       "year": "2024",
@@ -395,7 +399,8 @@
           "label": "Nature Physics",
           "href": "https://www.nature.com/articles/s41567-024-02384-5"
         }
-      ]
+      ],
+      "abstract": "A thermal Hall effect occurs in an increasing number of insulators and is often attributed to phonons, but the underlying mechanism is not known in most cases. Two main scenarios have been proposed: either a coupling of phonons to spins or scattering of phonons by impurities or defects, but there is no systematic evidence to support either of them. Here we present evidence for the phonon impurity scattering picture by studying the effect of adding rhodium impurities to the antiferromagnetic insulator \\(\\mathrm{Sr}_{2}\\mathrm{IrO}_{4}\\), substituting for the spin-carrying iridium atoms. We find that adding small concentrations of rhodium impurities increases the thermal Hall conductivity, but adding enough rhodium to suppress the magnetic order eventually decreases it until it nearly vanishes. In contrast, introducing lanthanum impurities that substitute for the strontium atoms, which lie outside the \\(\\mathrm{IrO}_{2}\\) planes that are the seat of magnetism, produces a much smaller enhancement of the thermal Hall conductivity. We conclude that the thermal Hall effect in this material is caused by the scattering of phonons by impurities embedded within a magnetic environment."
     },
     {
       "year": "2023",
@@ -411,7 +416,8 @@
           "label": "arXiv:2205.04030",
           "href": "https://arxiv.org/abs/2205.04030"
         }
-      ]
+      ],
+      "abstract": "Materials tuned to a quantum critical point display universal scaling properties as a function of temperature T and frequency \\(\\omega\\). A long-standing puzzle regarding cuprate superconductors has been the observed power-law dependence of optical conductivity with an exponent smaller than one, in contrast to T-linear dependence of the resistivity and \\(\\omega\\)-linear dependence of the optical scattering rate. Here, we present and analyze resistivity and optical conductivity of \\(\\mathrm{La}_{2-x}\\mathrm{Sr}_{x}\\mathrm{CuO}_{4}\\) with x = 0.24. We demonstrate \\(\\hbar\\omega/k_B T\\) scaling of the optical data over a wide range of frequency and temperature, T-linear resistivity, and optical effective mass proportional to \\(\\sim \\ln T\\) corroborating previous specific heat experiments. We show that a T, \\(\\omega\\)-linear scaling Ansatz for the inelastic scattering rate leads to a unified theoretical description of the experimental data, including the power-law of the optical conductivity. This theoretical framework provides new opportunities for describing the unique properties of quantum critical matter."
     },
     {
       "year": "2022",
@@ -425,7 +431,8 @@
         }
       ],
       "cardStyle": "selected_publication_card",
-      "starCount": 5
+      "starCount": 5,
+      "abstract": "Phonons are known to generate a thermal Hall effect in certain insulators, including oxides with rare-earth impurities, quantum paraelectrics, multiferroic materials, and cuprate Mott insulators. In each case, a special feature of the material is presumed relevant for the underlying mechanism that confers chirality to phonons in a magnetic field. A fundamental question is whether a phonon Hall effect is an unusual occurrence—linked to special characteristics such as skew scattering off rare-earth impurities, structural domains, ferroelectricity, or ferromagnetism—or a much more common property of insulators than hitherto believed. To help answer this question, we have turned to a material with none of the previously encountered special features: the cubic antiferromagnet \\(\\mathrm{Cu}_{3}\\mathrm{TeO}_{6}\\). We find that its thermal Hall conductivity \\(\\kappa_{xy}\\) is among the largest of any insulator so far. We show that this record-high \\(\\kappa_{xy}\\) signal is due to phonons, and it does not require the presence of magnetic order, as it persists above the ordering temperature. We conclude that the phonon Hall effect is likely to be a fairly common property of solids."
     },
     {
       "year": "2022",
@@ -437,7 +444,8 @@
           "label": "Quantum Frontiers",
           "href": "https://link.springer.com/article/10.1007/s44214-022-00011-z"
         }
-      ]
+      ],
+      "abstract": "Spin-orbit coupling is an important ingredient to regulate the many-body physics, especially for many spin liquid candidate materials such as rare-earth magnets and Kitaev materials. The rare-earth chalcogenides \\(\\mathrm{NaYbCh}_{2}\\) (Ch = O, S, Se) is a congenital frustrating system to exhibit the intrinsic landmark of spin liquid by eliminating both the site disorders between \\(\\mathrm{Na}^{+}\\) and \\(\\mathrm{Yb}^{3+}\\) ions with the big ionic size difference and the Dzyaloshinskii-Moriya interaction with the perfect triangular lattice of the \\(\\mathrm{Yb}^{3+}\\) ions. The temperature versus magnetic-field phase diagram is established by the magnetization, specific heat, and neutron-scattering measurements. Notably, the neutron diffraction spectra and the magnetization curve might provide microscopic evidence for a series of spin configuration for in-plane fields, which include the disordered spin liquid state, 120° antiferromagnet, and one-half magnetization state. Furthermore, the ground state is suggested to be a gapless spin liquid from inelastic neutron scattering, and the magnetic field adjusts the spin orbit coupling. Therefore, the strong spin-orbit coupling in the frustrated quantum magnet substantially enriches low-energy spin physics. This rare-earth family could offer a good platform for exploring the quantum spin liquid ground state and quantum magnetic transitions."
     },
     {
       "year": "2022",
@@ -453,6 +461,57 @@
           "label": "arXiv:2203.05035",
           "href": "https://arxiv.org/abs/2203.05035"
         }
+      ],
+      "abstract": "In various so-called strange metals, electrons undergo Planckian dissipation [1], [2], a strong and anomalous scattering that grows linearly with temperature [3], in contrast to the quadratic temperature dependence expected from the standard theory of metals. In some cuprates [4], [5] and pnictides [6], a linear dependence of resistivity on a magnetic field has also been considered anomalous—possibly an additional facet of Planckian dissipation. Here we show that the resistivity of the cuprate strange metals \\(\\mathrm{Nd}_{0.4}\\mathrm{La}_{1.6-x}\\mathrm{Sr}_{x}\\mathrm{CuO}_{4}\\) (ref. 7) and \\(\\mathrm{La}_{2-x}\\mathrm{Sr}_{x}\\mathrm{CuO}_{4}\\) (ref. 8) is quantitatively consistent with the standard Boltzmann theory of electron motion in a magnetic field, in all aspects—field strength, field direction, temperature and disorder level. The linear field dependence is found to be simply the consequence of scattering rate anisotropy. We conclude that Planckian dissipation is anomalous in its temperature dependence, but not in its field dependence. The scattering rate in these cuprates does not depend on field, which means that their Planckian dissipation is robust against fields up to at least 85 T.",
+      "abstractCitations": [
+        {
+          "marker": "1",
+          "label": "Similarity of scattering rates in metals showing T-linear resistivity · Science",
+          "href": "https://doi.org/10.1126/science.1227612",
+          "status": "verified"
+        },
+        {
+          "marker": "2",
+          "label": "Universal T-linear resistivity and Planckian dissipation in overdoped cuprates · Nature Physics",
+          "href": "https://doi.org/10.1038/s41567-018-0334-2",
+          "status": "verified"
+        },
+        {
+          "marker": "3",
+          "label": "Linear-in-temperature resistivity from an isotropic Planckian scattering rate · Nature",
+          "href": "https://doi.org/10.1038/s41586-021-03697-8",
+          "status": "verified"
+        },
+        {
+          "marker": "4",
+          "label": "Scale-invariant magnetoresistance in a cuprate superconductor · Science",
+          "href": "https://doi.org/10.1126/science.aan3178",
+          "status": "verified"
+        },
+        {
+          "marker": "5",
+          "label": "Incoherent transport across the strange-metal regime of overdoped cuprates · Nature",
+          "href": "https://doi.org/10.1038/s41586-021-03622-z",
+          "status": "verified"
+        },
+        {
+          "marker": "6",
+          "label": "Scaling between magnetic field and temperature in the high-temperature superconductor \\(\\mathrm{BaFe}_{2}(\\mathrm{As}_{1-x}\\mathrm{P}_{x})_{2}\\) · Nature Physics",
+          "href": "https://doi.org/10.1038/nphys3773",
+          "status": "verified"
+        },
+        {
+          "marker": "7",
+          "label": "Linear temperature dependence of resistivity and change in the Fermi surface at the pseudogap critical point of a high-Tc superconductor · Nature Physics",
+          "href": "https://doi.org/10.1038/nphys1109",
+          "status": "verified"
+        },
+        {
+          "marker": "8",
+          "label": "Anomalous criticality in the electrical resistivity of \\(\\mathrm{La}_{2-x}\\mathrm{Sr}_{x}\\mathrm{CuO}_{4}\\) · Science",
+          "href": "https://doi.org/10.1126/science.1165015",
+          "status": "verified"
+        }
       ]
     },
     {
@@ -465,7 +524,8 @@
           "label": "Physical Review X",
           "href": "https://link.aps.org/doi/10.1103/PhysRevX.12.021050"
         }
-      ]
+      ],
+      "abstract": "In correlated electronic systems, strong interactions and the interplay between different degrees of freedom may give rise to anomalous charge transport properties, which can be tuned by external parameters like temperature and magnetic field. Recently, magnetic quantum oscillations and metallic low-temperature thermal conductivity have been observed in the Kondo insulator \\(\\mathrm{YbB}_{12}\\), whose resistivity is a few orders of magnitude higher than those of conventional metals. As yet, these unusual observations are not fully understood. Here we present a detailed investigation of the behavior of \\(\\mathrm{YbB}_{12}\\) under intense magnetic fields using both transport and torque magnetometry measurements. A low-field Hall anomaly, reminiscent of the Hall response associated with \"strange-metal\" physics, develops at \\(T < 1.5\\,\\mathrm{K}\\). At two characteristic magnetic fields (\\(\\mu_0 H_1 = 19.6\\,\\mathrm{T}\\) and \\(\\mu_0 H_2 \\sim 31\\,\\mathrm{T}\\)), signatures appear in the Hall coefficient, magnetic torque, and magnetoresistance. We suggest that they are likely to be field-induced Lifshitz transitions. Moreover, above 35 T, the background resistivity displays an unusual, nonmetallic \\(T^{\\alpha}\\)-behavior, with \\(\\alpha\\) being field-dependent and varying between -1.5 and -2. By normalizing the Shubnikov-de Haas oscillation amplitude to this \\(T^{\\alpha}\\)-dependence, the calculated cyclotron mass becomes more consistent with that deduced from de Haas-van Alphen oscillations. Our results support a novel two-fluid scenario in \\(\\mathrm{YbB}_{12}\\): a Fermi-liquid-like fluid of charge-neutral quasiparticles coexists with charge carriers that remain in a nonmetallic state. The former experience successive Lifshitz transitions and develop Landau quantization in applied magnetic fields, whilst scattering between both fluids allows the Shubnikov-de Haas effect to be observed in the electrical transport."
     },
     {
       "year": "2022",
@@ -481,7 +541,8 @@
           "label": "arXiv:2106.05959",
           "href": "https://arxiv.org/abs/2106.05959"
         }
-      ]
+      ],
+      "abstract": "We report measurements of the Seebeck effect in both the \\(ab\\) plane (\\(S_a\\)) and along the \\(c\\) axis (\\(S_c\\)) of the cuprate superconductor \\(\\mathrm{La}_{1.6-x}\\mathrm{Nd}_{0.4}\\mathrm{Sr}_{x}\\mathrm{CuO}_{4}\\) (Nd-LSCO), performed in magnetic fields large enough to suppress superconductivity down to low temperature. We use the Seebeck coefficient as a probe of the particle-hole asymmetry of the electronic structure across the pseudogap critical doping \\(p^{\\star} = 0.23\\). Outside the pseudogap phase, at \\(p = 0.24 > p^{\\star}\\), we observe a positive and essentially isotropic Seebeck coefficient as \\(T \\to 0\\). That \\(S > 0\\) at \\(p = 0.24\\) is at odds with expectations given the electronic band structure of Nd-LSCO above \\(p^{\\star}\\) and its known electronlike Fermi surface. We can reconcile this observation by invoking an energy-dependent scattering rate with a particle-hole asymmetry, possibly rooted in the non-Fermi-liquid nature of cuprates just above \\(p^{\\star}\\). Inside the pseudogap phase, for \\(p < p^{\\star}\\), \\(S_a\\) is seen to rise at low temperature as previously reported, consistent with the drop in carrier density 𝑛 from \\(n \\simeq 1 + p\\) to \\(n \\simeq p\\) across \\(p^{\\star}\\) as inferred from other transport properties. In stark contrast, \\(S_c\\) at low temperature becomes negative below \\(p^{\\star}\\), a novel signature of the pseudogap phase. The sudden drop in \\(S_c\\) reveals a change in the electronic structure of Nd-LSCO upon crossing \\(p^{\\star}\\). We can exclude a profound change of the scattering across \\(p^{\\star}\\) and conclude that the change in the out-of-plane Seebeck coefficient originates from a transformation of the Fermi surface."
     },
     {
       "year": "2021",
@@ -493,7 +554,8 @@
           "label": "Nature Communications",
           "href": "https://www.nature.com/articles/s41467-021-25247-6"
         }
-      ]
+      ],
+      "abstract": "A recent focus of quantum spin liquid (QSL) studies is how disorder/randomness in a QSL candidate affects its true magnetic ground state. The ultimate question is whether the QSL survives disorder or the disorder leads to a “spin-liquid-like” state, such as the proposed random-singlet (RS) state. Since disorder is a standard feature of most QSL candidates, this question represents a major challenge for QSL candidates. \\(\\mathrm{YbMgGaO}_{4}\\), a triangular lattice antiferromagnet with effective spin-\\(1/2\\) \\(\\mathrm{Yb}^{3+}\\) ions, is an ideal system to address this question, since it shows no long-range magnetic ordering with Mg/Ga site disorder. Despite the intensive study, it remains unresolved as to whether \\(\\mathrm{YbMgGaO}_{4}\\) is a QSL or in the RS state. Here, through ultralow-temperature thermal conductivity and magnetic torque measurements, plus specific heat and DC magnetization data, we observed a residual \\(\\kappa_0/T\\) term and series of quantum spin state transitions in the zero temperature limit for \\(\\mathrm{YbMgGaO}_{4}\\). These observations strongly suggest that a QSL state with itinerant excitations and quantum spin fluctuations survives disorder in \\(\\mathrm{YbMgGaO}_{4}\\)."
     },
     {
       "year": "2021",
@@ -509,7 +571,8 @@
           "label": "arXiv:2107.00912",
           "href": "https://arxiv.org/abs/2107.00912"
         }
-      ]
+      ],
+      "abstract": "Kondo insulators have recently aroused great interest because they are promising materials that host a topological insulator state caused by the strong electron interactions. Moreover, recent observations of the quantum oscillations in the insulating state of Kondo insulators have come as a great surprise. Here, to investigate the surface electronic state of a prototype Kondo insulator \\(\\mathrm{YbB}_{12}\\), we measured the transport properties of single crystals and microstructures. In all samples, the temperature dependence of the electrical resistivity is insulating at high temperatures and the resistivity exhibits a plateau at low temperatures. The magnitude of the plateau value decreases with reducing sample thickness, which is quantitatively consistent with the surface electronic conduction in the bulk insulating \\(\\mathrm{YbB}_{12}\\). Moreover, the magnetoresistance of the microstructures exhibits a weak-antilocalization effect at low field. These results are consistent with the presence of a topologically protected surface state, suggesting that \\(\\mathrm{YbB}_{12}\\) is a candidate material for a topological Kondo insulator. The high field resistivity measurements up to \\(\\mu_0 H = 50\\,\\mathrm{T}\\) of the microstructures provide supporting evidence that the quantum oscillations of the resistivity in \\(\\mathrm{YbB}_{12}\\) occurs in the insulating bulk."
     },
     {
       "year": "2021",
@@ -527,7 +590,28 @@
         }
       ],
       "cardStyle": "selected_publication_card",
-      "starCount": 5
+      "starCount": 5,
+      "abstract": "Strong electronic interactions in condensed-matter systems often lead to unusual quantum phases. One such phase occurs in the Kondo insulator \\(\\mathrm{YbB}_{12}\\), the insulating state of which exhibits phenomena that are characteristic of metals, such as magnetic quantum oscillations [1], a gapless fermionic contribution to heat capacity [2], [3] and itinerant-fermion thermal transport [3]. To understand these phenomena, it is informative to study their evolution as the energy gap of the Kondo insulator state is closed by a large magnetic field. Here we show that clear quantum oscillations are observed in the resulting high-field metallic state in \\(\\mathrm{YbB}_{12}\\); this is despite it possessing relatively high resistivity, large effective masses and huge Kadowaki–Woods ratio, a combination that normally precludes quantum oscillations. Both quantum oscillation frequency and cyclotron mass display a strong field dependence. By tracking the Fermi surface area, we conclude that the same quasiparticle band gives rise to quantum oscillations in both insulating and metallic states. These data are understood most simply by using a two-fluid picture in which neutral quasiparticles—contributing little or nothing to charge transport—coexist with charged fermions. Our observations of the complex field-dependent behaviour of the fermion ensemble inhabiting \\(\\mathrm{YbB}_{12}\\) provide strong constraints for existing theoretical models.",
+      "abstractCitations": [
+        {
+          "marker": "1",
+          "label": "Quantum oscillations of electrical resistivity in an insulator · Science",
+          "href": "https://doi.org/10.1126/science.aap9607",
+          "status": "verified"
+        },
+        {
+          "marker": "2",
+          "label": "Magnetic-field-induced Kondo metal realized in \\(\\mathrm{YbB}_{12}\\) · Physical Review Letters",
+          "href": "https://doi.org/10.1103/PhysRevLett.120.257206",
+          "status": "verified"
+        },
+        {
+          "marker": "3",
+          "label": "Unconventional thermal metallic state of charge-neutral fermions in an insulator · Nature Physics",
+          "href": "https://doi.org/10.1038/s41567-019-0552-2",
+          "status": "verified"
+        }
+      ]
     },
     {
       "year": "2020",
@@ -540,7 +624,8 @@
           "href": "https://link.aps.org/doi/10.1103/PhysRevB.102.054503"
         }
       ],
-      "cardStyle": "selected_publication_card"
+      "cardStyle": "selected_publication_card",
+      "abstract": "We present a study of the Nernst effect in an iron-based superconductor with a nontrivial band topology \\({\\mathrm{Fe}}_{1+y}{\\mathrm{Te}}_{1-x}{\\mathrm{Se}}_{x}\\). A nonzero Nernst signal is observed in a narrow temperature region around the superconducting transition temperature \\({T}_{c}\\) at a zero field. This anomalous Nernst signal shows symmetric dependence on the external magnetic field and indicates an unconventional vortex contribution in an \\(s\\)-wave superconductor with a strong spin-orbit coupling, which is originated from the local magnetic moments of the interstitial Fe atoms. Our experiments also provide the first evidence of a locally broken time-reversal symmetry in bulk \\({\\mathrm{Fe}}_{1+y}{\\mathrm{Te}}_{1-x}{\\mathrm{Se}}_{x}\\) single crystals."
     },
     {
       "year": "2019",
@@ -552,7 +637,8 @@
           "label": "Nature Physics",
           "href": "https://www.nature.com/articles/s41567-019-0552-2"
         }
-      ]
+      ],
+      "abstract": "Quantum oscillations in transport and thermodynamic parameters at high magnetic fields are an unambiguous signature of the Fermi surface, the defining characteristic of a metal. Recent observations of quantum oscillations in insulating \\(\\mathrm{SmB}_{6}\\) and \\(\\mathrm{YbB}_{12}\\), therefore, have been a big surprise—despite the large charge gap inferred from the insulating behaviour of the resistivity, these compounds seemingly host a Fermi surface at high magnetic fields. However, the nature of the ground state in zero field has been little explored. Here, we report the use of low-temperature heat-transport measurements to discover gapless, itinerant, charge-neutral excitations in the ground state of \\(\\mathrm{YbB}_{12}\\). At zero field, sizeable linear temperature-dependent terms in the heat capacity and thermal conductivity are clearly resolved in the zero-temperature limit, indicating the presence of gapless fermionic excitations with an itinerant character. Remarkably, linear temperature-dependent thermal conductivity leads to a spectacular violation of the Wiedemann–Franz law: the Lorenz ratio is \\(10^{4}\\)–\\(10^{5}\\) times larger than that expected in conventional metals, indicating that \\(\\mathrm{YbB}_{12}\\) is a charge insulator and a thermal metal. Moreover, we find that these fermions couple to magnetic fields, despite their charge neutrality. Our findings expose novel quasiparticles in this unconventional quantum state."
     },
     {
       "year": "2019",
@@ -565,7 +651,8 @@
           "label": "Applied Physics Letters",
           "href": "https://pubs.aip.org/apl/article/114/25/251904/37368/Anomalous-thermal-conductivity-across-the"
         }
-      ]
+      ],
+      "abstract": "To understand whether the enhancement of thermal conductivity could take place at different types of phase transitions, we conduct thermal measurements in \\(\\mathrm{SmBaMn}_{2}\\mathrm{O}_{6}\\) single crystals which have both structural and magnetic phase transitions. In \\(\\mathrm{SmBaMn}_{2}\\mathrm{O}_{6}\\), successive phase transitions in charge, spin, and lattice degrees of freedoms take place at \\(T_{\\mathrm{CO1}} \\sim 362\\,\\mathrm{K}\\), \\(T_{\\mathrm{CO2}} \\sim 190\\,\\mathrm{K}\\), and \\(T_N \\sim 175\\,\\mathrm{K}\\). An enhancement of thermal conductivity is only observed at the structural transition around \\(T_{\\mathrm{CO1}}\\) while it is absent at the structural transition around \\(T_{\\mathrm{CO2}}\\). One possible explanation is that the spin-phonon coupling in this material strongly modifies the phonon spectra and prevents the evolution of soft-phonon modes around the antiferromagnetic transition \\(T_N\\), which lies right below \\(T_{\\mathrm{CO2}}\\). Our study provides a way to look for enhanced thermal conductivity in materials where multiple phase transitions coexist."
     },
     {
       "year": "2018",
@@ -577,7 +664,8 @@
           "label": "Scientific Reports",
           "href": "https://www.nature.com/articles/s41598-018-24736-x"
         }
-      ]
+      ],
+      "abstract": "In conventional superconductors an external magnetic field generally suppresses superconductivity. This results from a simple thermodynamic competition of the superconducting and magnetic free energies. In this study, we report the unconventional features in the superconducting epitaxial thin film tungsten telluride (\\(\\mathrm{WTe}_{2}\\)). Measuring the electrical transport properties of Molecular Beam Epitaxy (MBE) grown \\(\\mathrm{WTe}_{2}\\) thin films with a high precision rotation stage, we map the upper critical field \\(H_{c2}\\) at different temperatures \\(T\\). We observe the superconducting transition temperature \\(T_c\\) is enhanced by in-plane magnetic fields. The upper critical field \\(H_{c2}\\) is observed to establish an unconventional non-monotonic dependence on temperature. We suggest that this unconventional feature is due to the lifting of inversion symmetry, which leads to the enhancement of \\(H_{c2}\\) in Ising superconductors."
     },
     {
       "year": "2018",
@@ -593,7 +681,8 @@
           "label": "arXiv:1905.05140",
           "href": "https://arxiv.org/abs/1905.05140"
         }
-      ]
+      ],
+      "abstract": "In metals, orbital motions of conduction electrons on the Fermi surface are quantized in magnetic fields, which is manifested by quantum oscillations in electrical resistivity. This Landau quantization is generally absent in insulators. Here, we report a notable exception in an insulator—ytterbium dodecaboride (\\(\\mathrm{YbB}_{12}\\)). The resistivity of \\(\\mathrm{YbB}_{12}\\), which is of a much larger magnitude than the resistivity in metals, exhibits distinct quantum oscillations. These unconventional oscillations arise from the insulating bulk, even though the temperature dependence of the oscillation amplitude follows the conventional Fermi liquid theory of metals with a large effective mass. Quantum oscillations in the magnetic torque are also observed, albeit with a lighter effective mass."
     },
     {
       "year": "2018",
@@ -605,7 +694,8 @@
           "label": "Applied Physics Letters",
           "href": "https://pubs.aip.org/apl/article/113/6/061902/903985/Enhancement-of-thermal-conductivity-across-the"
         }
-      ]
+      ],
+      "abstract": "Metal-to-insulator transition (MIT) in vanadium dioxide (\\(\\mathrm{VO}_{2}\\)) was investigated by electrical and thermal transport measurements. We report an order-of-magnitude enhancement of thermal conductivity across the MIT region in the \\(\\mathrm{VO}_{2}\\) single crystal. The magnetic field dependent measurement reveals that the thermal conductivity peak does not show an obvious dependence on the magnetic field, which indicates that the enhancement of thermal conductivity could come from neutral heat carriers such as phonons. Our experiment provides a direction of achieving thermal management in phase-change materials."
     },
     {
       "year": "2018",
@@ -619,7 +709,8 @@
           "href": "https://link.aps.org/doi/10.1103/PhysRevApplied.9.024005"
         }
       ],
-      "starCount": 5
+      "starCount": 5,
+      "abstract": "A quartz tuning fork is the key component of high-resolution atomic force microscope. Because of its high quality factor, a quartz tuning fork can also be used for high-sensitivity magnetometry. We develop a highly sensitive torque differential magnetometry using the qPlus mode of a quartz tuning fork. The tuning fork is driven by an ac voltage, and its deflection is measured by the resultant ac current. We observe a sharp resonance of the quartz tuning fork at low temperatures down to 1.6 K. We calibrate our torque differential magnetometry by measuring the angular dependence of the hysteresis loop in single-crystal \\(\\mathrm{Fe}_{0.25}\\mathrm{TaS}_{2}\\). Furthermore, we demonstrate the high sensitivity of the torque differential magnetometry by measuring the quantum oscillations of a bismuth single crystal. The extracted Fermi-surface cross sections are consistent with those of bismuth crystals."
     },
     {
       "year": "2017",
@@ -635,7 +726,8 @@
           "label": "arXiv:1710.08945",
           "href": "https://arxiv.org/abs/1710.08945"
         }
-      ]
+      ],
+      "abstract": "The Kondo insulator samarium hexaboride (\\(\\mathrm{SmB}_{6}\\)) has been intensely studied in recent years as a potential candidate of a strongly correlated topological insulator. One of the most exciting phenomena observed in \\(\\mathrm{SmB}_{6}\\) is the clear quantum oscillations appearing in magnetic torque at a low temperature despite the insulating behavior in resistance. These quantum oscillations show multiple frequencies and varied effective masses. The origin of quantum oscillation is, however, still under debate with evidence of both two-dimensional Fermi surfaces and three-dimensional Fermi surfaces. Here, we carry out angle-resolved torque magnetometry measurements in a magnetic field up to 45 T and a temperature range down to 40 mK. With the magnetic field rotated in the (010) plane, the quantum oscillation frequency of the strongest oscillation branch shows a fourfold rotational symmetry. However, in the angular dependence of the amplitude of the same branch, this fourfold symmetry is broken and, instead, a twofold symmetry shows up, which is consistent with the prediction of a two-dimensional Lifshitz-Kosevich model. No deviation of Lifshitz-Kosevich behavior is observed down to 40 mK. Our results suggest the existence of multiple light-mass surface states in \\(\\mathrm{SmB}_{6}\\), with their mobility significantly depending on the surface disorder level."
     },
     {
       "year": "2017",
@@ -651,7 +743,8 @@
           "label": "arXiv:1603.04040",
           "href": "https://arxiv.org/abs/1603.04040"
         }
-      ]
+      ],
+      "abstract": "The search for unconventional superconductivity has been focused on materials with strong spin-orbit coupling and unique crystal lattices. Doped bismuth selenide (\\(\\mathrm{Bi}_{2}\\mathrm{Se}_{3}\\)) is a strong candidate, given the topological insulator nature of the parent compound and its triangular lattice. The coupling between the physical properties in the superconducting state and its underlying crystal symmetry is a crucial test for unconventional superconductivity. In this paper, we report direct evidence that the superconducting magnetic response couples strongly to the underlying trigonal crystal symmetry in the recently discovered superconductor with trigonal crystal structure, niobium (Nb)-doped \\(\\mathrm{Bi}_{2}\\mathrm{Se}_{3}\\). As a result, the in-plane magnetic torque signal vanishes every 60°. More importantly, the superconducting hysteresis loop amplitude is enhanced along one preferred direction, spontaneously breaking the rotational symmetry. This observation indicates the presence of nematic order in the superconducting ground state of Nb-doped \\(\\mathrm{Bi}_{2}\\mathrm{Se}_{3}\\)."
     },
     {
       "year": "2013",
@@ -663,7 +756,8 @@
           "label": "Physical Review Letters",
           "href": "https://link.aps.org/doi/10.1103/PhysRevLett.111.187001"
         }
-      ]
+      ],
+      "abstract": "We study the model high-temperature superconductor \\(\\mathrm{HgBa}_{2}\\mathrm{CuO}_{4+\\delta}\\) with electronic Raman scattering and optical ellipsometry over a wide doping range. The dependence of the resonant Raman cross section on the incident photon energy changes drastically as a function of doping, in a manner that corresponds to a rearrangement of the interband optical transitions seen with ellipsometry. This doping-dependent Raman resonance allows us to reconcile the apparent discrepancy between Raman and x-ray detection of magnetic fluctuations in superconducting cuprates. Intriguingly, the strongest variation occurs across the doping level where the antinodal superconducting gap appears to reach its maximum."
     }
   ],
   "news": {

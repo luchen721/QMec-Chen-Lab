@@ -4,6 +4,8 @@ This project is a public-only Vite, React, and TypeScript source tree for the QM
 
 The source was refreshed from the recent local corpus. The old corpus remains read-only input; this repository is the clean, maintainable public source.
 
+The May 29, 2026 parity audit compared this repo against the current website build source corpus in a private repo. Public content data matched exactly apart from this repo's public version label, all referenced media assets were present, and the remaining source differences were either intentional editor/test removals or the small public layout sync captured in the latest update.
+
 ## Architecture Summary
 
 The app has four layers:
@@ -19,9 +21,9 @@ The app has four layers:
 3. **Content and rendering layer**
    - `src/data/siteContent.json` stores public website content.
    - `src/data/siteContent.ts` defines TypeScript types for that content.
-   - `src/components/TextWithMath.tsx` renders plain text, inline Markdown-style links, and KaTeX math.
-- `src/utils/assetPath.ts` builds asset URLs that work under the `/QMec-Chen-Lab/` base path.
-- `src/utils/paragraphs.ts` normalizes paragraph-like content for lab and research detail sections.
+   - `src/components/TextWithMath.tsx` renders plain text, inline Markdown-style links, abstract citation markers, and KaTeX math.
+   - `src/utils/assetPath.ts` builds asset URLs that work under the `/QMec-Chen-Lab/` base path.
+   - `src/utils/paragraphs.ts` normalizes paragraph-like content for lab and research detail sections.
 
 4. **Page layer**
    - `src/pages/` contains public page components grouped by page.
@@ -102,6 +104,7 @@ This keeps public content centralized while leaving page components focused on l
 
 - Plain text.
 - Inline Markdown-style links such as `[National High Magnetic Field Laboratory](https://nationalmaglab.org)`.
+- Publication abstract citation markers such as `[1]`, where verified citations become links.
 - Inline math with `\(...\)`.
 - Display math with `\[...\]` or `$$...$$`.
 
@@ -112,6 +115,14 @@ Example usage:
   <TextWithMath value={publication.title} />
 </p>
 ```
+
+For publication abstracts, the same component receives a citation list:
+
+```tsx
+<TextWithMath citations={focusableAbstractCitations} value={publication.abstract ?? ''} />
+```
+
+`TextWithMath` first separates math spans, then Markdown links, then known citation markers. That order prevents math and Markdown syntax from being mistaken for publication citations.
 
 The component uses KaTeX:
 
@@ -143,8 +154,9 @@ Components call `assetPath()` before assigning local asset URLs:
 The generated source preserves public interactions from the source website:
 
 - Lab photos rotate and can be manually stepped.
-- News archive cards rotate.
+- News archive cards rotate and keep the same public archive transition wrapper/classes as the source corpus.
 - Research material and tool cards expand on hover/click, support keyboard activation, and show a small touch cue on coarse-pointer devices.
+- Publications expose public abstract accordions. The open abstract can include inline citation-marker links and a citation list.
 - Highlighted publication cards keep their visual styles and manuscript-prep canvas border behavior.
 
 The source intentionally removes edit-only features:

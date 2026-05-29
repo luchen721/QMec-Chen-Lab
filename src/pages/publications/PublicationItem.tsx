@@ -1,4 +1,13 @@
-import { useEffect, useRef, type ReactNode, type RefObject } from 'react';
+import {
+  useEffect,
+  useId,
+  useLayoutEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+  type RefObject,
+} from 'react';
 import { TextWithMath } from '../../components/TextWithMath';
 import type { Publication } from '../../data/siteContent';
 import { defaultPublicationCardStyle, normalizePublicationStarCount } from '../../data/publicationStyles';
@@ -47,6 +56,16 @@ type BorderPathMetrics = {
   top: number;
 };
 
+type AbstractPanelStyle = CSSProperties & {
+  '--publication-abstract-height': string;
+};
+
+const abstractCollapseSettleMs = 460;
+
+function mergeClassName(...classNames: Array<string | undefined>) {
+  return classNames.filter(Boolean).join(' ');
+}
+
 function PublicationLink({
   children,
   link,
@@ -61,6 +80,29 @@ function PublicationLink({
   ) : (
     <span>{children}</span>
   );
+}
+
+function getSafeCitationHref(citation: NonNullable<Publication['abstractCitations']>[number]) {
+  if (citation.status !== 'verified') {
+    return undefined;
+  }
+
+  const safeHref = citation.href?.trim();
+
+  if (!safeHref) {
+    return undefined;
+  }
+
+  if (
+    safeHref.startsWith('https://') ||
+    safeHref.startsWith('http://') ||
+    safeHref.startsWith('mailto:') ||
+    (safeHref.startsWith('/') && !safeHref.startsWith('//'))
+  ) {
+    return safeHref;
+  }
+
+  return undefined;
 }
 
 function numberFromCssSize(value: string) {
@@ -323,17 +365,86 @@ function useManuscriptCircleBorder(
 }
 
 export function PublicationItem({
+  abstractKey,
+  isAbstractOpen,
+  onToggleAbstract,
   publication,
 }: {
+  abstractKey: string;
+  isAbstractOpen: boolean;
+  onToggleAbstract: (abstractKey: string) => void;
   publication: Publication;
 }) {
   const cardRef = useRef<HTMLElement | null>(null);
   const manuscriptCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const abstractContentRef = useRef<HTMLDivElement | null>(null);
+  const abstractPanelId = useId();
+  const [abstractHeight, setAbstractHeight] = useState(0);
+  const [isAbstractSettledClosed, setIsAbstractSettledClosed] = useState(!isAbstractOpen);
   const journalLink = publication.links?.find((link) => !link.label.toLowerCase().includes('arxiv'));
   const arxivLinks = publication.links?.filter((link) => link.label.toLowerCase().includes('arxiv')) ?? [];
   const cardStyle = publication.cardStyle ?? defaultPublicationCardStyle;
   const starCount = normalizePublicationStarCount(publication.starCount);
   const isManuscriptInPrep = cardStyle === 'prep_publication_card';
+  const abstractText = publication.abstract?.trim() ?? '';
+  const hasAbstract = abstractText.length > 0;
+  const abstractCitations = publication.abstractCitations ?? [];
+  const safeAbstractCitations = abstractCitations.map((citation) => {
+    const safeHref = getSafeCitationHref(citation);
+
+    return safeHref ? { ...citation, href: safeHref } : { ...citation, href: undefined };
+  });
+  const focusableAbstractCitations = isAbstractOpen
+    ? safeAbstractCitations
+    : safeAbstractCitations.map((citation) => ({ ...citation, href: undefined }));
+  const abstractPanelStyle: AbstractPanelStyle = { '--publication-abstract-height': `${abstractHeight}px` };
+
+  useEffect(() => {
+    if (isAbstractOpen) {
+      setIsAbstractSettledClosed(false);
+      return undefined;
+    }
+
+    const timeout = window.setTimeout(() => {
+      setIsAbstractSettledClosed(true);
+    }, abstractCollapseSettleMs);
+
+    return () => {
+      window.clearTimeout(timeout);
+    };
+  }, [isAbstractOpen]);
+
+  useLayoutEffect(() => {
+    if (!hasAbstract) {
+      return undefined;
+    }
+
+    const abstractContent = abstractContentRef.current;
+
+    if (!abstractContent) {
+      return undefined;
+    }
+
+    const updateAbstractHeight = () => {
+      setAbstractHeight(abstractContent.scrollHeight);
+    };
+
+    updateAbstractHeight();
+
+    const animationFrame = isAbstractOpen ? window.requestAnimationFrame(updateAbstractHeight) : null;
+    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(updateAbstractHeight);
+    observer?.observe(abstractContent);
+    window.addEventListener('resize', updateAbstractHeight);
+
+    return () => {
+      if (animationFrame !== null) {
+        window.cancelAnimationFrame(animationFrame);
+      }
+
+      observer?.disconnect();
+      window.removeEventListener('resize', updateAbstractHeight);
+    };
+  }, [publication.abstract, publication.abstractCitations, hasAbstract, isAbstractOpen]);
 
   useManuscriptCircleBorder(cardRef, manuscriptCanvasRef, isManuscriptInPrep);
 
@@ -360,6 +471,74 @@ export function PublicationItem({
           <TextWithMath value={publication.description} />
         </p>
       ) : null}
+      {hasAbstract ? (
+        <div
+          aria-hidden={!isAbstractOpen}
+          className={mergeClassName(
+            'publication-abstract-panel',
+            isAbstractOpen ? 'is-open' : undefined,
+            !isAbstractOpen && isAbstractSettledClosed ? 'is-closed' : undefined,
+          )}
+          id={abstractPanelId}
+          style={abstractPanelStyle}
+        >
+          <div className="publication-abstract-panel-inner" ref={abstractContentRef}>
+            <p className="publication-abstract-heading">Abstract</p>
+            <p className="publication-abstract-text">
+              <TextWithMath citations={focusableAbstractCitations} value={publication.abstract ?? ''} />
+            </p>
+            {focusableAbstractCitations.length > 0 ? (
+              <div className="publication-abstract-citations" aria-label="Cited by this abstract">
+                <p className="publication-abstract-citations-heading">Cited by this abstract</p>
+                <ol className="publication-abstract-citation-list">
+                  {focusableAbstractCitations.map((citation, citationIndex) => {
+                    const rowContent = (
+                      <>
+                        <span className="publication-abstract-citation-row-marker">[{citation.marker}]</span>{' '}
+                        <span className="publication-abstract-citation-row-label">
+                          <TextWithMath value={citation.label} />
+                        </span>
+                      </>
+                    );
+
+                    return (
+                      <li
+                        className={mergeClassName(
+                          'publication-abstract-citation-row',
+                          citation.href ? 'is-verified' : 'is-unverified',
+                        )}
+                        key={`${citation.marker}-${citationIndex}`}
+                      >
+                        {citation.href ? (
+                          <a href={citation.href} rel="noreferrer" target="_blank">
+                            {rowContent}
+                          </a>
+                        ) : (
+                          <span>{rowContent}</span>
+                        )}
+                      </li>
+                    );
+                  })}
+                </ol>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+      <button
+        aria-controls={hasAbstract ? abstractPanelId : undefined}
+        aria-expanded={hasAbstract ? isAbstractOpen : undefined}
+        className="publication-abstract-toggle"
+        disabled={!hasAbstract}
+        onClick={() => {
+          if (hasAbstract) {
+            onToggleAbstract(abstractKey);
+          }
+        }}
+        type="button"
+      >
+        {hasAbstract ? (isAbstractOpen ? 'Hide abstract' : 'Show abstract') : 'Abstract unavailable'}
+      </button>
       <div className="publication-links">
         <p className="venue">
           {journalLink ? (
@@ -385,4 +564,3 @@ export function PublicationItem({
     </article>
   );
 }
-

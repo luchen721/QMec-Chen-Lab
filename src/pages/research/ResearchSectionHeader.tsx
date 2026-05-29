@@ -32,18 +32,20 @@ export function ResearchSectionHeader({
 
   return (
     <div className={`section-heading research-section-intro ${classes.heading}`}>
-      <div className={`research-section-text ${classes.text}`}>
-        <p className="eyebrow">
-          <TextWithMath value={eyebrow} />
-        </p>
-        <h2>
-          <TextWithMath value={title} />
-        </h2>
-        <p>
-          <TextWithMath value={intro} />
-        </p>
+      <p className="eyebrow">
+        <TextWithMath value={eyebrow} />
+      </p>
+      <div className="research-section-body">
+        <div className={`research-section-text ${classes.text}`}>
+          <h2>
+            <TextWithMath value={title} />
+          </h2>
+          <p>
+            <TextWithMath value={intro} />
+          </p>
+        </div>
+        {imageFigure}
       </div>
-      {imageFigure}
     </div>
   );
 }

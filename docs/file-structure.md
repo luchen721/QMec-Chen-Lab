@@ -86,6 +86,8 @@ components/
 
 Shared public rendering components live here. At the moment, the only shared component is `TextWithMath`, which renders public text, links, and KaTeX math.
 
+It also understands publication abstract citation markers. That keeps abstract rendering public-only while preserving linked references from the source corpus.
+
 ## `src/data/`
 
 ```text
@@ -100,6 +102,20 @@ This folder centralizes public website content and content types:
 - `siteContent.json`: the actual public text, page data, links, image paths, people, publications, news, and lab panels.
 - `siteContent.ts`: TypeScript types and the typed `siteContent` export.
 - `publicationStyles.ts`: small helpers for publication card style and star counts.
+
+Publication records can include optional abstract text and optional abstract citation records:
+
+```text
+publication
+  abstract
+  abstractCitations
+    marker
+    label
+    href
+    status
+```
+
+The citation data is still public website content, not authoring metadata.
 
 ## `src/pages/`
 
@@ -159,6 +175,8 @@ tsconfig.lite-edit.json
 ```
 
 Those files are not needed to build the public website. Keeping them out of this repo makes the public source easier to read and reduces the chance of confusing the deployable website with private authoring tooling.
+
+The same rule applies to generated scan or review helpers. Verification can be run from the terminal during maintenance, but those scripts are not part of the shipped source tree.
 
 ## TypeScript Config Files
 

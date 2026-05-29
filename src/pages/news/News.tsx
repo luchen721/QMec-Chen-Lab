@@ -175,7 +175,7 @@ export function News() {
             </p>
           </div>
           <div
-            className="archive-news-roller list news-list news-list-compact"
+            className="archive-news-roller archive-news-switch list news-list news-list-compact"
             data-archive-cycle={archiveRotation.cycle}
             style={archiveRollStyle}
           >
@@ -187,7 +187,9 @@ export function News() {
                 data-archive-slot={slotIndex}
                 key={`archive-news-${item.title}`}
               >
-                <NewsItem className="floating-tile" item={item} />
+                <div className="switch-transition-item is-active">
+                  <NewsItem className="floating-tile" item={item} />
+                </div>
               </div>
             ))}
           </div>
@@ -196,4 +198,3 @@ export function News() {
     </>
   );
 }
-

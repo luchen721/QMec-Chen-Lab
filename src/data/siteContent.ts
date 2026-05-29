@@ -126,10 +126,21 @@ export type PeopleContent = {
   };
 };
 
+export type PublicationAbstractCitationStatus = 'verified' | 'unverified';
+
+export type PublicationAbstractCitation = {
+  marker: string;
+  label: string;
+  href?: string;
+  status: PublicationAbstractCitationStatus;
+};
+
 export type Publication = {
   year: string;
   title: string;
   authors: string;
+  abstract?: string;
+  abstractCitations?: PublicationAbstractCitation[];
   description?: string;
   venue: string;
   cardStyle?: PublicationCardStyle;

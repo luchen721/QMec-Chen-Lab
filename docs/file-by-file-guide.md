@@ -180,7 +180,7 @@ Major sections:
 - App shell and navigation.
 - Hero and page-title layout.
 - Shared sections, cards, grids, and typography.
-- Publications.
+- Publications, including abstract accordions and citation-list styling.
 - News.
 - Lab.
 - Research section headers, responsive research cards, touch cues, and card transitions.
@@ -220,17 +220,33 @@ This gives TypeScript definitions for `import.meta.env`.
 
 ### `src/components/TextWithMath.tsx`
 
-Purpose: Public text renderer for regular text, inline links, and math.
+Purpose: Public text renderer for regular text, inline links, publication abstract citations, and math.
 
 Important parsing flow:
 
 ```ts
-function splitRichText(value: string): RichTextSegment[] {
-  return splitMathText(value).flatMap((segment): RichTextSegment[] => (
-    segment.kind === 'text' ? splitInlineLinks(segment.value) : [segment]
-  ));
+function splitRichText(value: string, citations: TextCitation[]): RichTextSegment[] {
+  return splitMathText(value).flatMap((segment): RichTextSegment[] => {
+    if (segment.kind !== 'text') {
+      return [segment];
+    }
+
+    return splitInlineLinks(segment.value).flatMap((inlineSegment): RichTextSegment[] => {
+      if (inlineSegment.kind === 'link') {
+        return [inlineSegment];
+      }
+
+      if (inlineSegment.kind === 'protected-text') {
+        return [{ kind: 'text', value: inlineSegment.value }];
+      }
+
+      return splitCitationMarkers(inlineSegment.value, citations);
+    });
+  });
 }
 ```
+
+The order matters. The component protects math spans and Markdown links first, then looks for known publication citation markers in the remaining plain-text spans.
 
 Render behavior:
 
@@ -243,6 +259,24 @@ if (segment.kind === 'link') {
   );
 }
 ```
+
+Citation rendering:
+
+```tsx
+if (segment.kind === 'citation') {
+  const label = `[${segment.marker}]`;
+
+  return segment.status === 'verified' && segment.href ? (
+    <a className={className} href={segment.href} rel="noreferrer" target="_blank">
+      {label}
+    </a>
+  ) : (
+    <span className={className}>{label}</span>
+  );
+}
+```
+
+Verified citations with safe URLs become links. Unverified citations or unsafe URLs become non-clickable spans.
 
 Math rendering:
 
@@ -293,7 +327,7 @@ It contains:
 - Research materials and tools.
 - People entries and join summaries.
 - Lab panels and photos.
-- Publications and links.
+- Publications, links, abstracts, and abstract citations.
 - News entries.
 - Gallery placeholder entries.
 - Join/contact content.
@@ -320,6 +354,19 @@ export const siteContent = siteContentData as SiteContent;
 ```
 
 Pages import `siteContent` rather than reaching into the JSON file directly.
+
+Publication abstract citation types:
+
+```ts
+export type PublicationAbstractCitation = {
+  marker: string;
+  label: string;
+  href?: string;
+  status: PublicationAbstractCitationStatus;
+};
+```
+
+The public source keeps this as simple content data. It does not carry editor labels, edit paths, draft IDs, or review metadata.
 
 ### `src/data/publicationStyles.ts`
 
@@ -635,7 +682,7 @@ CSS handles opacity and transform transitions.
 
 ### `src/pages/publications/Publications.tsx`
 
-Purpose: Groups publications by year and renders publication cards.
+Purpose: Groups publications by year, tracks which abstract is open, and renders publication cards.
 
 Important grouping:
 
@@ -643,9 +690,20 @@ Important grouping:
 const years = Array.from(new Set(publications.map((publication) => publication.year))).filter(Boolean);
 ```
 
+Important open-state logic:
+
+```ts
+const [openAbstractKey, setOpenAbstractKey] = useState<string | null>(null);
+const toggleAbstract = (abstractKey: string) => {
+  setOpenAbstractKey((currentKey) => (currentKey === abstractKey ? null : abstractKey));
+};
+```
+
+The page owns this state so only one abstract panel is open at a time across manuscript-in-prep and yearly publication sections.
+
 ### `src/pages/publications/PublicationItem.tsx`
 
-Purpose: Renders publication cards, links, highlighted publication stars, and manuscript-prep canvas border effects.
+Purpose: Renders publication cards, abstracts, citation lists, links, highlighted publication stars, and manuscript-prep canvas border effects.
 
 Important link split:
 
@@ -655,6 +713,50 @@ const arxivLinks = publication.links?.filter((link) => link.label.toLowerCase().
 ```
 
 The venue links to the journal when available, and arXiv links are displayed separately.
+
+Important abstract-height measurement:
+
+```ts
+const updateAbstractHeight = () => {
+  setAbstractHeight(abstractContent.scrollHeight);
+};
+
+const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(updateAbstractHeight);
+observer?.observe(abstractContent);
+```
+
+The panel animates from height `0` to the measured content height. This avoids guessing how tall abstracts or citation lists will be.
+
+Important citation safety check:
+
+```ts
+function getSafeCitationHref(citation: NonNullable<Publication['abstractCitations']>[number]) {
+  if (citation.status !== 'verified') {
+    return undefined;
+  }
+
+  const safeHref = citation.href?.trim();
+  return safeHref?.startsWith('https://') ? safeHref : undefined;
+}
+```
+
+The real code also allows `http://`, `mailto:`, and site-local `/...` URLs. Unsafe or unverified citation URLs are rendered as text instead of links.
+
+Important abstract toggle:
+
+```tsx
+<button
+  aria-controls={hasAbstract ? abstractPanelId : undefined}
+  aria-expanded={hasAbstract ? isAbstractOpen : undefined}
+  className="publication-abstract-toggle"
+  disabled={!hasAbstract}
+  type="button"
+>
+  {hasAbstract ? (isAbstractOpen ? 'Hide abstract' : 'Show abstract') : 'Abstract unavailable'}
+</button>
+```
+
+The button remains visible for all cards. Cards without an abstract show a disabled "Abstract unavailable" state.
 
 ## News Page
 
@@ -671,6 +773,32 @@ function compareNewsBySortDate(a: NewsEntry, b: NewsEntry) {
 ```
 
 The newest items appear first.
+
+Important archive animation wrapper:
+
+```tsx
+<div
+  className="archive-news-roller archive-news-switch list news-list news-list-compact"
+  data-archive-cycle={archiveRotation.cycle}
+  style={archiveRollStyle}
+>
+  {archiveRollRows.map(({ item, motion, slotIndex }) => (
+    <div
+      className="archive-news-roll-card"
+      data-archive-motion={motion}
+      data-archive-news-id={news.items.indexOf(item)}
+      data-archive-slot={slotIndex}
+      key={`archive-news-${item.title}`}
+    >
+      <div className="switch-transition-item is-active">
+        <NewsItem className="floating-tile" item={item} />
+      </div>
+    </div>
+  ))}
+</div>
+```
+
+The `archive-news-switch` and `switch-transition-item is-active` classes are public animation/layout hooks. They are not edit-mode code.
 
 ### `src/pages/news/NewsItem.tsx`
 
