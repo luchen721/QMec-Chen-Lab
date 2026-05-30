@@ -87,7 +87,22 @@ export type ResearchContent = {
     eyebrow: string;
     title: string;
     intro: string;
+    overview: ResearchVisual;
     items: ResearchTool[];
+  };
+};
+
+export type PersonImageCrop = {
+  fit?: 'cover' | 'contain';
+  focusX?: number;
+  focusY?: number;
+  zoom?: number;
+  mobile?: {
+    mode?: 'inherit' | 'custom';
+    focusX?: number;
+    focusY?: number;
+    fit?: 'cover' | 'contain';
+    zoom?: number;
   };
 };
 
@@ -100,6 +115,7 @@ export type Person = {
   office?: string;
   details?: string[];
   image?: string;
+  imageCrop?: PersonImageCrop;
 };
 
 export type JoinOpportunity = {

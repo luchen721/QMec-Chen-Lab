@@ -1,10 +1,8 @@
 import {
   useEffect,
   useId,
-  useLayoutEffect,
   useRef,
   useState,
-  type CSSProperties,
   type ReactNode,
   type RefObject,
 } from 'react';
@@ -54,10 +52,6 @@ type BorderPathMetrics = {
   straightHeight: number;
   straightWidth: number;
   top: number;
-};
-
-type AbstractPanelStyle = CSSProperties & {
-  '--publication-abstract-height': string;
 };
 
 const abstractCollapseSettleMs = 460;
@@ -377,9 +371,7 @@ export function PublicationItem({
 }) {
   const cardRef = useRef<HTMLElement | null>(null);
   const manuscriptCanvasRef = useRef<HTMLCanvasElement | null>(null);
-  const abstractContentRef = useRef<HTMLDivElement | null>(null);
   const abstractPanelId = useId();
-  const [abstractHeight, setAbstractHeight] = useState(0);
   const [isAbstractSettledClosed, setIsAbstractSettledClosed] = useState(!isAbstractOpen);
   const journalLink = publication.links?.find((link) => !link.label.toLowerCase().includes('arxiv'));
   const arxivLinks = publication.links?.filter((link) => link.label.toLowerCase().includes('arxiv')) ?? [];
@@ -397,11 +389,9 @@ export function PublicationItem({
   const focusableAbstractCitations = isAbstractOpen
     ? safeAbstractCitations
     : safeAbstractCitations.map((citation) => ({ ...citation, href: undefined }));
-  const abstractPanelStyle: AbstractPanelStyle = { '--publication-abstract-height': `${abstractHeight}px` };
 
   useEffect(() => {
-    if (isAbstractOpen) {
-      setIsAbstractSettledClosed(false);
+    if (isAbstractOpen || isAbstractSettledClosed) {
       return undefined;
     }
 
@@ -412,41 +402,104 @@ export function PublicationItem({
     return () => {
       window.clearTimeout(timeout);
     };
-  }, [isAbstractOpen]);
-
-  useLayoutEffect(() => {
-    if (!hasAbstract) {
-      return undefined;
-    }
-
-    const abstractContent = abstractContentRef.current;
-
-    if (!abstractContent) {
-      return undefined;
-    }
-
-    const updateAbstractHeight = () => {
-      setAbstractHeight(abstractContent.scrollHeight);
-    };
-
-    updateAbstractHeight();
-
-    const animationFrame = isAbstractOpen ? window.requestAnimationFrame(updateAbstractHeight) : null;
-    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(updateAbstractHeight);
-    observer?.observe(abstractContent);
-    window.addEventListener('resize', updateAbstractHeight);
-
-    return () => {
-      if (animationFrame !== null) {
-        window.cancelAnimationFrame(animationFrame);
-      }
-
-      observer?.disconnect();
-      window.removeEventListener('resize', updateAbstractHeight);
-    };
-  }, [publication.abstract, publication.abstractCitations, hasAbstract, isAbstractOpen]);
+  }, [isAbstractOpen, isAbstractSettledClosed]);
 
   useManuscriptCircleBorder(cardRef, manuscriptCanvasRef, isManuscriptInPrep);
+
+  const abstractPanelClassName = mergeClassName(
+    'publication-abstract-panel',
+    isAbstractOpen ? 'is-open' : undefined,
+    !isAbstractOpen && isAbstractSettledClosed ? 'is-closed' : undefined,
+  );
+  const abstractPanelContent = (
+    <div className="publication-abstract-panel-inner">
+      <p className="publication-abstract-heading">Abstract</p>
+      <p className="publication-abstract-text">
+        <TextWithMath citations={focusableAbstractCitations} value={publication.abstract ?? ''} />
+      </p>
+      {focusableAbstractCitations.length > 0 ? (
+        <div className="publication-abstract-citations" aria-label="Cited by this abstract">
+          <p className="publication-abstract-citations-heading">Cited by this abstract</p>
+          <ol className="publication-abstract-citation-list">
+            {focusableAbstractCitations.map((citation, citationIndex) => {
+              return (
+                <li
+                  className={mergeClassName(
+                    'publication-abstract-citation-row',
+                    citation.href ? 'is-verified' : 'is-unverified',
+                  )}
+                  key={`${citation.marker}-${citationIndex}`}
+                >
+                  {citation.href ? (
+                    <a href={citation.href} rel="noreferrer" target="_blank">
+                      <span className="publication-abstract-citation-row-marker">[{citation.marker}]</span>{' '}
+                      <span className="publication-abstract-citation-row-label">
+                        <TextWithMath value={citation.label} />
+                      </span>
+                    </a>
+                  ) : (
+                    <span>
+                      <span className="publication-abstract-citation-row-marker">[{citation.marker}]</span>{' '}
+                      <span className="publication-abstract-citation-row-label">
+                        <TextWithMath value={citation.label} />
+                      </span>
+                    </span>
+                  )}
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+      ) : null}
+    </div>
+  );
+  const abstractPanel = hasAbstract ? (
+    isAbstractOpen ? (
+      <div aria-hidden="false" className={abstractPanelClassName} id={abstractPanelId}>
+        {abstractPanelContent}
+      </div>
+    ) : (
+      <div aria-hidden="true" className={abstractPanelClassName} id={abstractPanelId}>
+        {abstractPanelContent}
+      </div>
+    )
+  ) : null;
+  const handleAbstractToggle = () => {
+    if (!hasAbstract) {
+      return;
+    }
+
+    if (!isAbstractOpen) {
+      setIsAbstractSettledClosed(false);
+    }
+
+    onToggleAbstract(abstractKey);
+  };
+  const abstractToggleButton = !hasAbstract ? (
+    <button className="publication-abstract-toggle" disabled type="button">
+      Abstract unavailable
+    </button>
+  ) : isAbstractOpen ? (
+    <button
+      aria-controls={abstractPanelId}
+      aria-expanded="true"
+      className="publication-abstract-toggle"
+      onClick={handleAbstractToggle}
+      type="button"
+    >
+      Hide abstract
+    </button>
+  ) : (
+    <button
+      aria-controls={abstractPanelId}
+      aria-expanded="false"
+      className="publication-abstract-toggle"
+      onClick={handleAbstractToggle}
+      type="button"
+    >
+      Show abstract
+    </button>
+  );
 
   return (
     <article className={`publication-item floating-tile ${cardStyle}`} ref={cardRef}>
@@ -471,74 +524,8 @@ export function PublicationItem({
           <TextWithMath value={publication.description} />
         </p>
       ) : null}
-      {hasAbstract ? (
-        <div
-          aria-hidden={!isAbstractOpen}
-          className={mergeClassName(
-            'publication-abstract-panel',
-            isAbstractOpen ? 'is-open' : undefined,
-            !isAbstractOpen && isAbstractSettledClosed ? 'is-closed' : undefined,
-          )}
-          id={abstractPanelId}
-          style={abstractPanelStyle}
-        >
-          <div className="publication-abstract-panel-inner" ref={abstractContentRef}>
-            <p className="publication-abstract-heading">Abstract</p>
-            <p className="publication-abstract-text">
-              <TextWithMath citations={focusableAbstractCitations} value={publication.abstract ?? ''} />
-            </p>
-            {focusableAbstractCitations.length > 0 ? (
-              <div className="publication-abstract-citations" aria-label="Cited by this abstract">
-                <p className="publication-abstract-citations-heading">Cited by this abstract</p>
-                <ol className="publication-abstract-citation-list">
-                  {focusableAbstractCitations.map((citation, citationIndex) => {
-                    const rowContent = (
-                      <>
-                        <span className="publication-abstract-citation-row-marker">[{citation.marker}]</span>{' '}
-                        <span className="publication-abstract-citation-row-label">
-                          <TextWithMath value={citation.label} />
-                        </span>
-                      </>
-                    );
-
-                    return (
-                      <li
-                        className={mergeClassName(
-                          'publication-abstract-citation-row',
-                          citation.href ? 'is-verified' : 'is-unverified',
-                        )}
-                        key={`${citation.marker}-${citationIndex}`}
-                      >
-                        {citation.href ? (
-                          <a href={citation.href} rel="noreferrer" target="_blank">
-                            {rowContent}
-                          </a>
-                        ) : (
-                          <span>{rowContent}</span>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ol>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      ) : null}
-      <button
-        aria-controls={hasAbstract ? abstractPanelId : undefined}
-        aria-expanded={hasAbstract ? isAbstractOpen : undefined}
-        className="publication-abstract-toggle"
-        disabled={!hasAbstract}
-        onClick={() => {
-          if (hasAbstract) {
-            onToggleAbstract(abstractKey);
-          }
-        }}
-        type="button"
-      >
-        {hasAbstract ? (isAbstractOpen ? 'Hide abstract' : 'Show abstract') : 'Abstract unavailable'}
-      </button>
+      {abstractPanel}
+      {abstractToggleButton}
       <div className="publication-links">
         <p className="venue">
           {journalLink ? (

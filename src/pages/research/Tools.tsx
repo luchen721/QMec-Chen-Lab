@@ -1,6 +1,7 @@
 import {
   type KeyboardEvent,
   type PointerEvent,
+  useCallback,
   useLayoutEffect,
   useRef,
   useState,
@@ -34,11 +35,12 @@ export function Tools({ tools }: ToolsProps) {
   const pendingToolStateFrameRef = useRef<number | null>(null);
   const previousCardLayoutsRef = useRef(new Map<number, DOMRect>());
   const toolMotionTokensRef = useRef(new Map<number, number>());
+  const expandToolRef = useRef<(index: number) => void>(() => undefined);
 
   const visibleItems = indexedItems(tools.items)
     .map(({ index, item: tool }) => ({ index, tool }));
 
-  const markToolAsMoving = (
+  const markToolAsMoving = useCallback((
     index: number,
     durationMs = RESEARCH_TOOL_MOTION_GUARD_MS,
   ) => {
@@ -59,13 +61,13 @@ export function Tools({ tools }: ToolsProps) {
           !hoverSuppressedIndexesRef.current.has(index) &&
           element.matches(':hover')
         ) {
-          expandTool(index);
+          expandToolRef.current(index);
         }
       }
     }, durationMs);
 
     return token;
-  };
+  }, []);
 
   const markToolsBelowAsMoving = (anchorIndex: number) => {
     const anchorRect = cardRefs.current.get(anchorIndex)?.getBoundingClientRect();
@@ -241,6 +243,10 @@ export function Tools({ tools }: ToolsProps) {
   };
 
   useLayoutEffect(() => {
+    expandToolRef.current = expandTool;
+  });
+
+  useLayoutEffect(() => {
     measureToolDetails();
   });
 
@@ -305,7 +311,7 @@ export function Tools({ tools }: ToolsProps) {
     });
 
     previousCardLayoutsRef.current = new Map();
-  }, [expandedToolIndexes]);
+  }, [expandedToolIndexes, markToolAsMoving]);
 
   return (
     <section className="section muted experimental-tools-section">
@@ -316,8 +322,8 @@ export function Tools({ tools }: ToolsProps) {
           visual: 'research-tools-heading-visual',
         }}
         eyebrow={tools.eyebrow}
-        imageAlt="Experimental measurement tools overview"
-        imageSrc="/images/research/experimental_tool.png"
+        imageAlt={tools.overview.imageAlt}
+        imageSrc={tools.overview.image}
         intro={tools.intro}
         title={tools.title}
       />

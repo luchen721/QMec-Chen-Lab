@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { TextWithMath } from '../../components/TextWithMath';
 import type { Person } from '../../data/siteContent';
 import { assetPath } from '../../utils/assetPath';
+import { personImageCropStyle } from './personImageCrop';
 
 function getInitials(name: string) {
   return name
@@ -23,7 +24,10 @@ export function PersonCard({
   const showImage = imageSrc && !imageFailed;
 
   return (
-    <article className={['person-card', featured ? 'person-card-featured' : '', 'floating-tile'].filter(Boolean).join(' ')}>
+    <article
+      className={['person-card', featured ? 'person-card-featured' : '', 'floating-tile'].filter(Boolean).join(' ')}
+      style={personImageCropStyle(person.imageCrop)}
+    >
       <div className="person-media" aria-hidden="true">
         {showImage ? (
           <img
@@ -82,4 +86,3 @@ export function PersonCard({
     </article>
   );
 }
-

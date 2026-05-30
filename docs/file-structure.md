@@ -146,6 +146,8 @@ The `pages/` folder is organized by public page or shared page shell:
 - `gallery/`: gallery placeholder page.
 - `join-us/`: recruiting and contact page.
 
+The people folder also includes `personImageCrop.ts`, a small public helper that turns person `imageCrop` content into CSS variables for desktop and mobile photo framing.
+
 ## `src/utils/`
 
 ```text

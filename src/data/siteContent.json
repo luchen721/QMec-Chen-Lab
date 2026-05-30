@@ -1,5 +1,5 @@
 {
-  "version": "2026-05-28-public-content-v2",
+  "version": "2026-05-29-public-content-v3",
   "home": {
     "hero": {
       "labWordmark": "QMec Chen Lab",
@@ -91,6 +91,10 @@
       "eyebrow": "How we study",
       "title": "What are the Tools?",
       "intro": "We employ a broad range of complementary low-temperature and high-magnetic-field experimental techniques to connect microscopic quantum states with macroscopic electrical, thermal, and magnetic properties in bulk quantum materials. Our primary experimental capabilities include electrical transport, thermal transport, torque differential magnetometry, and thermoelectric measurements, which together provide sensitive probes across multiple energy and length scales. In addition to advanced measurement capabilities, our group maintains an in-house crystal growth laboratory capable of synthesizing high-quality single crystals. The close integration of materials synthesis and precision measurements places our group on a unique and powerful platform for exploring fascinating physics in quantum materials. ",
+      "overview": {
+        "image": "/images/research/experimental_tool.png",
+        "imageAlt": "Experimental measurement tools overview"
+      },
       "items": [
         {
           "title": "Electrical Transport",
@@ -165,6 +169,18 @@
         "email": "lchen721[at]illinois[dot]edu",
         "office": "MRL 204",
         "image": "/images/people/lu-chen.jpg",
+        "imageCrop": {
+          "focusX": 82,
+          "focusY": 100,
+          "zoom": 110,
+          "mobile": {
+            "mode": "custom",
+            "fit": "cover",
+            "focusX": 82,
+            "focusY": 32,
+            "zoom": 110
+          }
+        },
         "details": [
           "B.S. in physics, Peking University, 2014",
           "PhD in physics, University of Michigan Ann Arbor, 2020",
@@ -178,7 +194,19 @@
         "role": "Ph.D. Candidate",
         "department": "Physics",
         "email": "lingyux2[at]illinois[dot]edu",
-        "image": "/images/people/lingyu-xie.jpg"
+        "image": "/images/people/lingyu-xie.jpg",
+        "imageCrop": {
+          "focusX": 45,
+          "focusY": 31,
+          "zoom": 100,
+          "mobile": {
+            "mode": "custom",
+            "fit": "cover",
+            "focusX": 37,
+            "focusY": 11,
+            "zoom": 154
+          }
+        }
       },
       {
         "group": "Graduate Students",
@@ -186,7 +214,19 @@
         "role": "Ph.D. Candidate",
         "department": "Physics",
         "email": "jackmm4[at]illinois[dot]edu",
-        "image": "/images/people/jack-moriarty.jpg"
+        "image": "/images/people/jack-moriarty.jpg",
+        "imageCrop": {
+          "focusX": 16,
+          "focusY": 24,
+          "zoom": 110,
+          "mobile": {
+            "mode": "custom",
+            "fit": "cover",
+            "focusX": 40,
+            "focusY": 22,
+            "zoom": 131
+          }
+        }
       },
       {
         "group": "Undergraduate Students",
@@ -194,7 +234,19 @@
         "role": "Junior Undergraduate Student",
         "department": "Physics",
         "email": "wenjie5[at]illinois[dot]edu",
-        "image": "/images/people/wenjie-chou.jpg"
+        "image": "/images/people/wenjie-chou.jpg",
+        "imageCrop": {
+          "focusX": 35,
+          "focusY": 16,
+          "zoom": 110,
+          "mobile": {
+            "mode": "custom",
+            "fit": "contain",
+            "focusX": 52,
+            "focusY": 0,
+            "zoom": 107
+          }
+        }
       },
       {
         "group": "Undergraduate Students",
@@ -202,7 +254,19 @@
         "role": "Junior Undergraduate Student",
         "department": "Physics",
         "email": "vedang2[at]illinois[dot]edu",
-        "image": "/images/people/vedang-mahajan.jpg"
+        "image": "/images/people/vedang-mahajan.jpg",
+        "imageCrop": {
+          "focusX": 45,
+          "focusY": 21,
+          "zoom": 126,
+          "mobile": {
+            "mode": "custom",
+            "fit": "cover",
+            "focusX": 45,
+            "focusY": 31,
+            "zoom": 151
+          }
+        }
       },
       {
         "group": "Undergraduate Students",
@@ -210,7 +274,20 @@
         "role": "Junior Undergraduate Student",
         "department": "Physics",
         "email": "gavinxu2[at]illinois[dot]edu",
-        "image": "/images/people/xihong-xu.jpg"
+        "image": "/images/people/xihong-xu.jpg",
+        "imageCrop": {
+          "focusX": 95,
+          "focusY": 72,
+          "zoom": 115,
+          "mobile": {
+            "mode": "custom",
+            "fit": "contain",
+            "focusX": 50,
+            "focusY": 20,
+            "zoom": 109
+          },
+          "fit": "contain"
+        }
       },
       {
         "group": "Lab AI Agents",
@@ -220,7 +297,16 @@
         "image": "/images/people/flux-liquid-glass.gif",
         "details": [
           "Supports website maintenance and content organization for QMec Chen Lab."
-        ]
+        ],
+        "imageCrop": {
+          "mobile": {
+            "fit": "cover",
+            "focusX": 50,
+            "focusY": 50,
+            "mode": "custom",
+            "zoom": 110
+          }
+        }
       }
     ],
     "joinSummary": {
@@ -260,14 +346,14 @@
         "status": "Renovation complete.",
         "photos": [
           {
+            "src": "/images/lab/MRL_B09_pic_2.jpg",
+            "alt": "Default future lab photo mockup illustration",
+            "date": "April 2026"
+          },
+          {
             "src": "/images/lab/measurement-lab.png",
             "alt": "MRL B09 measurement lab during renovation",
             "date": "March 2026"
-          },
-          {
-            "src": "/images/lab/lab-photo-mockup.svg",
-            "alt": "Future MRL B09 measurement lab photo placeholder",
-            "date": "Future"
           }
         ]
       },
@@ -280,14 +366,14 @@
         "status": "Under renovation.",
         "photos": [
           {
+            "src": "/images/lab/ESB_120_pic_2.jpg",
+            "alt": "Default future lab photo mockup illustration",
+            "date": "May 2026"
+          },
+          {
             "src": "/images/lab/sample-growth-facility.png",
             "alt": "ESB 120 shared sample growth facility during renovation",
             "date": "March 2026"
-          },
-          {
-            "src": "/images/lab/lab-photo-mockup.svg",
-            "alt": "Future ESB 120 sample growth facility photo placeholder",
-            "date": "Future"
           }
         ]
       },
@@ -303,11 +389,6 @@
             "src": "/images/lab/sample-preparation-lab.png",
             "alt": "MRL 234 sample preparation lab with microscope workstations",
             "date": "March 2026"
-          },
-          {
-            "src": "/images/lab/lab-photo-mockup.svg",
-            "alt": "Future MRL 234 sample preparation lab photo placeholder",
-            "date": "Future"
           }
         ]
       }
@@ -772,12 +853,12 @@
         "date": "May 2026",
         "image": "/images/news/first-maglab-trip.jpg",
         "imageAlt": "First MagLab trip with two people standing above a measurement setup",
-        "sortDate": "2099-01-01",
+        "sortDate": "2026-05-18",
         "title": "Trip to MagLab",
         "summary": "Lu and her graduate student Lingyu ran the group's first experiment at [National High Magnetic Field Laboratory](https://nationalmaglab.org) in Tallahassee, FL. This experiment is part of the collaboration work with [Professor Analytis's Group](https://physics.berkeley.edu/research-faculty/research-groups/analytis-lab) in UC Berkeley. Lu and Lingyu ran measurements on unconventional superconductors up to 41 Tesla and down to He-3 temperature. The data may further advance researchers' understanding of the Fermi Surface Structure of these materials. "
       },
       {
-        "date": "April TEST 2026",
+        "date": "April 2026",
         "image": "/images/news/mrl-b09-concrete-finished.jpg",
         "imageAlt": "New concrete floor work in MRL B09 for the measurement lab",
         "sortDate": "2026-04-01",

@@ -324,9 +324,9 @@ Purpose: Central public content file.
 It contains:
 
 - Home hero, about, highlights, and news settings.
-- Research materials and tools.
-- People entries and join summaries.
-- Lab panels and photos.
+- Research materials and tools, including section overview images.
+- People entries, join summaries, and optional desktop/mobile photo crop settings.
+- Lab panels and photos, including per-photo fit and position.
 - Publications, links, abstracts, and abstract citations.
 - News entries.
 - Gallery placeholder entries.
@@ -367,6 +367,26 @@ export type PublicationAbstractCitation = {
 ```
 
 The public source keeps this as simple content data. It does not carry editor labels, edit paths, draft IDs, or review metadata.
+
+Person photo crop type:
+
+```ts
+export type PersonImageCrop = {
+  fit?: 'cover' | 'contain';
+  focusX?: number;
+  focusY?: number;
+  zoom?: number;
+  mobile?: {
+    mode?: 'inherit' | 'custom';
+    focusX?: number;
+    focusY?: number;
+    fit?: 'cover' | 'contain';
+    zoom?: number;
+  };
+};
+```
+
+The crop values are public display data. `PersonCard` passes them to `personImageCropStyle()`.
 
 ### `src/data/publicationStyles.ts`
 
@@ -521,6 +541,18 @@ const RESEARCH_TOOL_EXPANDED_MIN_HEIGHT = 700;
 
 The section uses public hover/click/keyboard interactions to expand tool cards.
 
+Important overview image:
+
+```tsx
+<ResearchSectionHeader
+  imageAlt={tools.overview.imageAlt}
+  imageSrc={tools.overview.image}
+  ...
+/>
+```
+
+The overview image now comes from `siteContent.json`, matching the materials section and avoiding a hardcoded path.
+
 Important height measurement:
 
 ```ts
@@ -635,6 +667,17 @@ The page renders principal investigator, graduate researchers, undergraduate res
 
 Purpose: Renders a single person card.
 
+Important crop style:
+
+```tsx
+<article
+  className={['person-card', featured ? 'person-card-featured' : '', 'floating-tile'].filter(Boolean).join(' ')}
+  style={personImageCropStyle(person.imageCrop)}
+>
+```
+
+The helper returns CSS variables such as `--person-photo-focus-x`, `--person-photo-zoom`, and mobile equivalents.
+
 Important image fallback:
 
 ```tsx
@@ -646,6 +689,26 @@ Important image fallback:
 ```
 
 If a photo fails to load, the card shows initials.
+
+### `src/pages/people/personImageCrop.ts`
+
+Purpose: Converts public `PersonImageCrop` data into CSS variables used by `src/index.css`.
+
+Important normalization:
+
+```ts
+export function normalizePersonImageCrop(imageCrop?: PersonImageCrop): NormalizedPersonImageCrop {
+  const fit = normalizedFit(imageCrop?.fit);
+  const focusX = clampPercent(imageCrop?.focusX, defaultFocusX);
+  const focusY = clampPercent(imageCrop?.focusY, defaultFocusY);
+  const zoom = clampZoom(imageCrop?.zoom, defaultZoom, fit);
+  const mobileMode = imageCrop?.mobile?.mode === 'custom' ? 'custom' : 'inherit';
+  const mobileFit = mobileMode === 'custom' ? normalizedFit(imageCrop?.mobile?.fit) : fit;
+  ...
+}
+```
+
+Percent values are clamped to `0` through `100`. Zoom is clamped to `100` through `200` for cropped images, and `50` through `200` when the image uses `contain`.
 
 ## Lab Page
 

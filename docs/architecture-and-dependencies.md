@@ -4,7 +4,7 @@ This project is a public-only Vite, React, and TypeScript source tree for the QM
 
 The source was refreshed from the recent local corpus. The old corpus remains read-only input; this repository is the clean, maintainable public source.
 
-The May 29, 2026 parity audit compared this repo against the current website build source corpus in a private repo. Public content data matched exactly apart from this repo's public version label, all referenced media assets were present, and the remaining source differences were either intentional editor/test removals or the small public layout sync captured in the latest update.
+The May 29, 2026 parity audit compared this repo against the current website build source corpus in a private repo. Public content data matched exactly apart from this repo's public version label, all referenced media assets were present, and the remaining source differences were either intentional editor/test removals or the small public layout sync captured in the latest update. The later May 29 content regeneration carried over updated lab/news content, restored lab photos, person photo crop settings, and the research-tools overview record.
 
 ## Architecture Summary
 
@@ -24,6 +24,7 @@ The app has four layers:
    - `src/components/TextWithMath.tsx` renders plain text, inline Markdown-style links, abstract citation markers, and KaTeX math.
    - `src/utils/assetPath.ts` builds asset URLs that work under the `/QMec-Chen-Lab/` base path.
    - `src/utils/paragraphs.ts` normalizes paragraph-like content for lab and research detail sections.
+   - `src/pages/people/personImageCrop.ts` converts public person-photo crop data into CSS variables.
 
 4. **Page layer**
    - `src/pages/` contains public page components grouped by page.
@@ -155,6 +156,7 @@ The generated source preserves public interactions from the source website:
 
 - Lab photos rotate and can be manually stepped.
 - News archive cards rotate and keep the same public archive transition wrapper/classes as the source corpus.
+- People photos use public `imageCrop` values for desktop and mobile framing.
 - Research material and tool cards expand on hover/click, support keyboard activation, and show a small touch cue on coarse-pointer devices.
 - Publications expose public abstract accordions. The open abstract can include inline citation-marker links and a citation list.
 - Highlighted publication cards keep their visual styles and manuscript-prep canvas border behavior.
