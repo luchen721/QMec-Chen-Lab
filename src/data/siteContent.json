@@ -1,5 +1,5 @@
 {
-  "version": "2026-05-29-public-content-v3",
+  "version": "2026-06-03-public-content-v4",
   "home": {
     "hero": {
       "labWordmark": "QMec Chen Lab",
@@ -225,6 +225,26 @@
             "focusX": 40,
             "focusY": 22,
             "zoom": 131
+          }
+        }
+      },
+      {
+        "group": "Undergraduate Students",
+        "name": "Davis Clarke",
+        "role": "Junior Undergraduate Student",
+        "department": "Physics",
+        "email": "dclarke2[at]illinois[dot]edu",
+        "image": "images/people/davis-clarke.jpg",
+        "imageCrop": {
+          "focusX": 0,
+          "focusY": 0,
+          "zoom": 0,
+          "mobile": {
+            "mode": "custom",
+            "fit": "contain",
+            "focusX": 50,
+            "focusY": 39,
+            "zoom": 141
           }
         }
       },
@@ -849,6 +869,14 @@
     "visibleArchiveCount": 2,
     "rotationIntervalMs": 1000,
     "items": [
+      {
+        "date": "June 2026",
+        "image": "/images/news/davis-joins.jpg",
+        "imageAlt": "Default news photo mockup illustration",
+        "sortDate": "2099-01-01",
+        "title": "Davis joins the group as an undergraduate student",
+        "summary": "Davis will focus on the project related to the torque differential magnetometer setup."
+      },
       {
         "date": "May 2026",
         "image": "/images/news/first-maglab-trip.jpg",

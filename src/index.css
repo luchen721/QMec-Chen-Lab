@@ -601,6 +601,17 @@ p {
   width: 100%;
 }
 
+@media (min-width: 901px) {
+  .home-news-section .news-media img {
+    height: 200px;
+    width: 300px;
+  }
+
+  .news-list:not(.news-list-compact) .news-media img {
+    height: 220px;
+  }
+}
+
 .news-media .news-image-contain {
   object-fit: contain;
 }
@@ -1116,7 +1127,7 @@ p {
 }
 
 .research-theme-card:not(.research-theme-card-expanded) .research-theme-card-body {
-  min-height: max-content;
+  min-height: auto;
   overflow: visible;
 }
 
@@ -1412,7 +1423,6 @@ p {
 .research-theme-card:not(.research-theme-card-expanded) .research-theme-card-summary,
 .research-theme-card:not(.research-theme-card-expanded) .research-theme-card-caption {
   -webkit-line-clamp: initial;
-  line-clamp: initial;
   display: block;
   max-height: none;
   overflow: visible;
@@ -1629,14 +1639,13 @@ figcaption {
 .publication-abstract-panel {
   --publication-abstract-visibility-delay: 0.42s;
 
-  display: grid;
-  grid-template-rows: 0fr;
+  height: 0;
   margin: 0;
   opacity: 0;
   overflow: hidden;
   pointer-events: none;
   transition:
-    grid-template-rows 0.42s cubic-bezier(0.2, 0.8, 0.2, 1),
+    height 0.42s cubic-bezier(0.2, 0.8, 0.2, 1),
     margin 0.42s cubic-bezier(0.2, 0.8, 0.2, 1),
     opacity 0.22s ease,
     visibility 0s linear var(--publication-abstract-visibility-delay);
@@ -1646,7 +1655,7 @@ figcaption {
 .publication-abstract-panel.is-open {
   --publication-abstract-visibility-delay: 0s;
 
-  grid-template-rows: 1fr;
+  height: var(--publication-abstract-height);
   margin: 16px 0 12px;
   opacity: 1;
   pointer-events: auto;
@@ -1654,7 +1663,7 @@ figcaption {
 }
 
 .publication-abstract-panel.is-closed {
-  grid-template-rows: 0fr !important;
+  height: 0 !important;
   margin: 0 !important;
   opacity: 0 !important;
   transition: none;
@@ -1665,8 +1674,6 @@ figcaption {
   background: #eef5f3;
   border-left: 3px solid #155e63;
   border-radius: 0 6px 6px 0;
-  min-height: 0;
-  overflow: hidden;
   padding: 14px 16px;
 }
 
@@ -1797,7 +1804,7 @@ figcaption {
     --publication-abstract-visibility-delay: 0.01s;
 
     transition:
-      grid-template-rows 0.01s ease,
+      height 0.01s ease,
       margin 0.01s ease,
       opacity 0.01s ease,
       visibility 0s linear var(--publication-abstract-visibility-delay);
@@ -2032,7 +2039,7 @@ figcaption {
   }
 
   .hero {
-    min-height: 0;
+    min-height: auto;
   }
 
   .card-grid,

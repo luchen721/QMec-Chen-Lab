@@ -1,8 +1,10 @@
 import {
   useEffect,
   useId,
+  useLayoutEffect,
   useRef,
   useState,
+  type CSSProperties,
   type ReactNode,
   type RefObject,
 } from 'react';
@@ -52,6 +54,10 @@ type BorderPathMetrics = {
   straightHeight: number;
   straightWidth: number;
   top: number;
+};
+
+type AbstractPanelStyle = CSSProperties & {
+  '--publication-abstract-height': string;
 };
 
 const abstractCollapseSettleMs = 460;
@@ -371,7 +377,9 @@ export function PublicationItem({
 }) {
   const cardRef = useRef<HTMLElement | null>(null);
   const manuscriptCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const abstractContentRef = useRef<HTMLDivElement | null>(null);
   const abstractPanelId = useId();
+  const [abstractHeight, setAbstractHeight] = useState(0);
   const [isAbstractSettledClosed, setIsAbstractSettledClosed] = useState(!isAbstractOpen);
   const journalLink = publication.links?.find((link) => !link.label.toLowerCase().includes('arxiv'));
   const arxivLinks = publication.links?.filter((link) => link.label.toLowerCase().includes('arxiv')) ?? [];
@@ -389,6 +397,7 @@ export function PublicationItem({
   const focusableAbstractCitations = isAbstractOpen
     ? safeAbstractCitations
     : safeAbstractCitations.map((citation) => ({ ...citation, href: undefined }));
+  const abstractPanelStyle: AbstractPanelStyle = { '--publication-abstract-height': `${abstractHeight}px` };
 
   useEffect(() => {
     if (isAbstractOpen || isAbstractSettledClosed) {
@@ -404,6 +413,38 @@ export function PublicationItem({
     };
   }, [isAbstractOpen, isAbstractSettledClosed]);
 
+  useLayoutEffect(() => {
+    if (!hasAbstract) {
+      return undefined;
+    }
+
+    const abstractContent = abstractContentRef.current;
+
+    if (!abstractContent) {
+      return undefined;
+    }
+
+    const updateAbstractHeight = () => {
+      setAbstractHeight(abstractContent.scrollHeight);
+    };
+
+    updateAbstractHeight();
+
+    const animationFrame = isAbstractOpen ? window.requestAnimationFrame(updateAbstractHeight) : null;
+    const observer = typeof ResizeObserver === 'undefined' ? null : new ResizeObserver(updateAbstractHeight);
+    observer?.observe(abstractContent);
+    window.addEventListener('resize', updateAbstractHeight);
+
+    return () => {
+      if (animationFrame !== null) {
+        window.cancelAnimationFrame(animationFrame);
+      }
+
+      observer?.disconnect();
+      window.removeEventListener('resize', updateAbstractHeight);
+    };
+  }, [publication.abstract, publication.abstractCitations, hasAbstract, isAbstractOpen]);
+
   useManuscriptCircleBorder(cardRef, manuscriptCanvasRef, isManuscriptInPrep);
 
   const abstractPanelClassName = mergeClassName(
@@ -412,7 +453,7 @@ export function PublicationItem({
     !isAbstractOpen && isAbstractSettledClosed ? 'is-closed' : undefined,
   );
   const abstractPanelContent = (
-    <div className="publication-abstract-panel-inner">
+    <div className="publication-abstract-panel-inner" ref={abstractContentRef}>
       <p className="publication-abstract-heading">Abstract</p>
       <p className="publication-abstract-text">
         <TextWithMath citations={focusableAbstractCitations} value={publication.abstract ?? ''} />
@@ -455,11 +496,11 @@ export function PublicationItem({
   );
   const abstractPanel = hasAbstract ? (
     isAbstractOpen ? (
-      <div aria-hidden="false" className={abstractPanelClassName} id={abstractPanelId}>
+      <div aria-hidden="false" className={abstractPanelClassName} id={abstractPanelId} style={abstractPanelStyle}>
         {abstractPanelContent}
       </div>
     ) : (
-      <div aria-hidden="true" className={abstractPanelClassName} id={abstractPanelId}>
+      <div aria-hidden="true" className={abstractPanelClassName} id={abstractPanelId} style={abstractPanelStyle}>
         {abstractPanelContent}
       </div>
     )
