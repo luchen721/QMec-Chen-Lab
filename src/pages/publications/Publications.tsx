@@ -14,7 +14,7 @@ export function Publications() {
     <section className="section publications-section">
       {manuscriptsInPrep.length > 0 ? (
         <div className="publication-year">
-          <h3>Manuscript in Prep</h3>
+          <h3>Manuscripts in Preprints</h3>
           <div className="list">
             {manuscriptsInPrep.map((publication, publicationIndex) => {
               const abstractKey = `manuscriptsInPrep-${publicationIndex}`;
