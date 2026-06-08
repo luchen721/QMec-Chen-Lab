@@ -1,5 +1,5 @@
 {
-  "version": "2026-06-03-public-content-v4",
+  "version": "2026-06-08-public-content-v5",
   "home": {
     "hero": {
       "labWordmark": "QMec Chen Lab",
@@ -414,7 +414,25 @@
       }
     ]
   },
-  "manuscriptsInPrep": [],
+  "manuscriptsInPrep": [
+    {
+      "year": "Future Work in Prep",
+      "title": "Bulk Superconductivity driven by Disorder-Induced Delocalization in \\(\\mathbf{4Hb\\text{-}Ta(S_{1−x}Se_x)_2}\\)",
+      "authors": "Lu Chen, Sae-Hee Ryu, Avior Almoalem, Yuanqi Lyu, Koh Yamakawa, Luke Pritchard Cairns, Ryan Day, Ehud Altman, Daniel Podolsky, Dung-Hai Lee, Vidya Madhavan, Eli Rotenberg, James G. Analytis",
+      "abstract": "The unconventional superconductor \\(\\mathrm{4Hb\\text{-}TaS_2}\\) is a natural heterostructure that can be broadly understood as interleaving Mott-like and metallic layers. We study the properties of this material as a function of quenched disorder in the form of \\(\\mathrm{Se/S}\\) substitution and find that while disordered samples show bulk superconductivity, clean samples do not. We show that a disorder-driven delocalization of carriers in the Mott-like (1T-) layer forms a new Fermi surface that is absent in the cleanest samples. This suggests that one of the primary drivers for superconductivity is the fragility of the Mott state, whose delocalization brings to life a sea of strongly correlated electrons.",
+      "venue": "Journal Link",
+      "cardStyle": "prep_publication_card",
+      "links": [
+        {
+          "label": "Journal Link"
+        },
+        {
+          "label": "arXiv:2606.07509",
+          "href": "https://arxiv.org/abs/2606.07509"
+        }
+      ]
+    }
+  ],
   "publications": [
     {
       "year": "2026",
