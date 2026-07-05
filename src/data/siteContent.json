@@ -383,17 +383,17 @@
           "This shared centralized growth facility will host multiple muffle, tube, two-zone, and optical floating-zone furnaces plus a glove box.",
           "Methods include solid-state reaction, chemical vapor transport, flux growth, and floating-zone synthesis."
         ],
-        "status": "Under renovation.",
+        "status": "Renovation complete",
         "photos": [
           {
-            "src": "/images/lab/ESB_120_pic_2.jpg",
+            "src": "/images/lab/ESB_120_pic_3.jpg",
             "alt": "Default future lab photo mockup illustration",
-            "date": "May 2026"
+            "date": "July 2026"
           },
           {
-            "src": "/images/lab/sample-growth-facility.png",
+            "src": "/images/lab/ESB_120_pic_4.jpg",
             "alt": "ESB 120 shared sample growth facility during renovation",
-            "date": "March 2026"
+            "date": "July 2026"
           }
         ]
       },
@@ -888,10 +888,18 @@
     "rotationIntervalMs": 1000,
     "items": [
       {
+        "date": "JULY 2026",
+        "image": "/images/news/esb-120-renovation-complete.jpg",
+        "imageAlt": "Completed ESB 120 sample growth facility with laboratory fume hoods",
+        "sortDate": "2026-07-01",
+        "title": "ESB-120 Sample Growth Lab Ready",
+        "summary": "Renovation of the ESB 120 sample growth facility is complete. The room is now ready to move the furnaces in!"
+      },
+      {
         "date": "June 2026",
         "image": "/images/news/davis-joins.jpg",
         "imageAlt": "Default news photo mockup illustration",
-        "sortDate": "2099-01-01",
+        "sortDate": "2026-06-01",
         "title": "Davis joins the group as an undergraduate student",
         "summary": "Davis will focus on the project related to the torque differential magnetometer setup."
       },
