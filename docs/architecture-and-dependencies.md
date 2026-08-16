@@ -1,6 +1,6 @@
 # Architecture and Dependencies
 
-This project is a public-only Vite, React, and TypeScript source tree for the QMec Chen Lab website. It was generated from the website build source code in a private repo, but it does not depend on that corpus at build time.
+This project is a Vite, React, and TypeScript source tree for the QMec Chen Lab website. It includes the public website plus a lightweight local-only visual editor. It was generated from website build source code in a private repo, but it does not depend on that corpus at build time.
 
 The source was refreshed from the recent local corpus. The old corpus remains read-only input; this repository is the clean, maintainable public source.
 
@@ -8,7 +8,7 @@ The May 29, 2026 parity audit compared this repo against the current website bui
 
 ## Architecture Summary
 
-The app has four layers:
+The app has five layers:
 
 1. **Build and deploy layer**
    - `vite.config.ts` tells Vite to build the site for the GitHub Pages project path `/QMec-Chen-Lab/`.
@@ -30,6 +30,11 @@ The app has four layers:
    - `src/pages/` contains public page components grouped by page.
    - Most page components import `siteContent` directly, then render a specific part of the data.
    - Research, lab, news, and publication pages keep their public interactions and animations.
+
+5. **Local editor layer**
+   - `src/editor/` provides the development-only click-to-edit panel.
+   - The local Vite middleware in `vite.config.ts` saves approved fields to `src/data/siteContent.json` and stores replacement images under `public/images/`.
+   - `import.meta.env.DEV` keeps the editor out of the production bundle, and the middleware uses Vite's `apply: 'serve'` setting so it is unavailable after deployment.
 
 ## Routing
 
@@ -56,7 +61,7 @@ The hash route is handled entirely by the browser. GitHub Pages only receives th
 ```ts
 export default defineConfig({
   base: '/QMec-Chen-Lab/',
-  plugins: [react()],
+  plugins: [react(), localEditorPlugin()],
 });
 ```
 
@@ -161,14 +166,7 @@ The generated source preserves public interactions from the source website:
 - Publications expose public abstract accordions. The open abstract can include inline citation-marker links and a citation list.
 - Highlighted publication cards keep their visual styles and manuscript-prep canvas border behavior.
 
-The source intentionally removes edit-only features:
-
-- No edit mode.
-- No source-apply middleware.
-- No edit labels or edit paths.
-- No draft storage.
-- No Playwright test suite.
-- No ESLint config.
+The production website intentionally contains no edit mode, edit labels, draft storage, or save endpoint. Local development adds a lightweight editor that finds structured content fields from the clicked page element and saves through a loopback-only Vite middleware. The original private `lite-edit` application, its draft system, Playwright suite, and ESLint configuration remain excluded.
 
 The latest public research-card behavior is implemented without source-editing hooks. For example, `ResearchCard` renders the public card body directly:
 

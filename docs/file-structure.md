@@ -2,7 +2,7 @@
 
 This document explains the folder layout in this repo.
 
-It keeps only the public website source, public content data, public assets, build configuration, deployment workflow, and human documentation.
+It keeps the public website source, a lightweight local editor, public content data, public assets, build configuration, deployment workflow, and human documentation.
 
 ## Top-Level Layout
 
@@ -71,11 +71,22 @@ src/
   vite-env.d.ts
   components/
   data/
+  editor/
   pages/
   utils/
 ```
 
-`src/` contains all TypeScript, React, CSS, and structured content used by the public site.
+`src/` contains all TypeScript, React, CSS, and structured content used by the public site and its development-only editor.
+
+## `src/editor/`
+
+```text
+editor/
+  LocalEditor.tsx
+  localEditor.css
+```
+
+This folder contains the local visual editor. `App.tsx` loads it only when Vite is running in development mode, so it is not part of the GitHub Pages production bundle. The editor lets a maintainer click visible content, search all content fields, replace images, and save through the loopback-only middleware in `vite.config.ts`.
 
 ## `src/components/`
 
@@ -176,7 +187,7 @@ eslint.config.js
 tsconfig.lite-edit.json
 ```
 
-Those files are not needed to build the public website. Keeping them out of this repo makes the public source easier to read and reduces the chance of confusing the deployable website with private authoring tooling.
+Those original private tools are not needed to build the public website. This repository now has a smaller replacement editor under `src/editor/`; the historical `lite-edit/` application and its supporting corpus remain excluded.
 
 The same rule applies to generated scan or review helpers. Verification can be run from the terminal during maintenance, but those scripts are not part of the shipped source tree.
 

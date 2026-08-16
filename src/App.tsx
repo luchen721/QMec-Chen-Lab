@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import { Footer } from './pages/Footer';
 import { Navbar } from './pages/Navbar';
@@ -9,6 +10,8 @@ import { News } from './pages/news/News';
 import { People } from './pages/people/People';
 import { Publications } from './pages/publications/Publications';
 import { Research } from './pages/research/Research';
+
+const LocalEditor = import.meta.env.DEV ? lazy(() => import('./editor/LocalEditor')) : null;
 
 export default function App() {
   const location = useLocation();
@@ -31,7 +34,11 @@ export default function App() {
         </div>
       </main>
       <Footer />
+      {LocalEditor ? (
+        <Suspense fallback={null}>
+          <LocalEditor />
+        </Suspense>
+      ) : null}
     </div>
   );
 }
-

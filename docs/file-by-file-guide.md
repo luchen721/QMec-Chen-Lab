@@ -26,6 +26,7 @@ Important block:
 ```json
 "scripts": {
   "dev": "vite",
+  "edit": "vite --host 127.0.0.1 --open /QMec-Chen-Lab/",
   "build": "tsc -b && vite build",
   "preview": "vite preview"
 }
@@ -54,11 +55,11 @@ Important block:
 ```ts
 export default defineConfig({
   base: '/QMec-Chen-Lab/',
-  plugins: [react()],
+  plugins: [react(), localEditorPlugin()],
 });
 ```
 
-The `base` value makes the built site work under the GitHub Pages project path.
+The `base` value makes the built site work under the GitHub Pages project path. `localEditorPlugin()` is applied only while the development server is running. It accepts loopback-only save requests for existing content fields and replacement images; it is not included in a production deployment.
 
 ### `tsconfig.json`
 
@@ -905,3 +906,17 @@ Important pattern:
 ```
 
 Opportunity links are optional and come from `siteContent.json`.
+
+## Local Visual Editor
+
+### `src/editor/LocalEditor.tsx`
+
+Purpose: Provides the development-only editing panel.
+
+The editor flattens `siteContent.json` into searchable fields. In Edit mode, it matches clicked text and images to those fields, lets the maintainer change a selected value, and sends the approved value to the local Vite middleware. It also provides page switching, field search, and image replacement.
+
+`App.tsx` loads this component only when `import.meta.env.DEV` is true, so the editor is removed from the production bundle.
+
+### `src/editor/localEditor.css`
+
+Purpose: Styles the floating Edit button, editing outline, and responsive side panel. On wider screens it makes room for the panel so the website remains clickable; on small screens the panel uses the full viewport.

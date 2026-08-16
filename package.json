@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "edit": "vite --host 127.0.0.1 --open /QMec-Chen-Lab/",
     "build": "tsc -b && vite build",
     "preview": "vite preview"
   },
