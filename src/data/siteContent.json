@@ -291,11 +291,11 @@
       },
       {
         "group": "Undergraduate Students",
-        "name": "Xinran Xu (Sunny)",
+        "name": "Xinran Chen (Sunny)",
         "role": "Junior Undergraduate Student",
         "department": "Physics",
         "email": "xinran18[at]illinois[dot]edu",
-        "image": "/images/people/xinran-xu.jpg",
+        "image": "/images/people/xinran-chen.jpg",
         "imageCrop": {
           "focusX": 70,
           "focusY": 45,
@@ -889,11 +889,11 @@
     "items": [
       {
         "date": "August 2026",
-        "image": "/images/people/xinran-xu.jpg",
-        "imageAlt": "Xinran Xu (Sunny) outdoors with mountains and farmland in the background",
+        "image": "/images/people/xinran-chen.jpg",
+        "imageAlt": "Xinran Chen (Sunny) outdoors with mountains and farmland in the background",
         "imagePosition": "68% 45%",
         "sortDate": "2026-08-01",
-        "title": "Xinran Xu (Sunny) joins the group as an undergraduate student",
+        "title": "Xinran Chen (Sunny) joins the group as an undergraduate student",
         "summary": "Sunny will focus on the growth and tuning of quantum materials in our lab."
       },
       {
