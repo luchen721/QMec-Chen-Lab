@@ -363,8 +363,14 @@
           "The basement measurement lab will host a Quantum Design Oxford ProteoxMX dilution refrigerator and a Quantum Design Oxford TeslatronPT system, each with a 14 T magnet.",
           "Platforms support electrical transport, thermal transport, thermoelectric, torque differential magnetometry at low temperature and high field."
         ],
-        "status": "Renovation complete.",
+        "status": "Renovation Complete and the Teslatron PT with 14 T magnet has been installed and tested.",
         "photos": [
+          {
+            "src": "/images/lab/mrl-b09-teslatron-installed.jpg",
+            "alt": "Teslatron PT with a 14 T magnet installed in the MRL B09 measurement lab",
+            "date": "August 2026",
+            "imageFit": "contain"
+          },
           {
             "src": "/images/lab/MRL_B09_pic_2.jpg",
             "alt": "Default future lab photo mockup illustration",
@@ -403,7 +409,7 @@
           "This lab supports sample preparation under microscopes.",
           "Sample preparation processes include cutting, polishing, mounting, and contacting samples for various types of experiments."
         ],
-        "status": "Renovation complete.",
+        "status": "Renovation complete and in active use.",
         "photos": [
           {
             "src": "/images/lab/sample-preparation-lab.png",
@@ -887,6 +893,14 @@
     "visibleArchiveCount": 2,
     "rotationIntervalMs": 1000,
     "items": [
+      {
+        "date": "August 2026",
+        "image": "/images/news/teslatron-pt-14t-installed.jpg",
+        "imageAlt": "Members of the Chen Lab standing beside the newly installed Teslatron PT 14 T magnet system",
+        "sortDate": "2026-08-24",
+        "title": "Our First System Is Ready!",
+        "summary": "The Teslatron PT with a 14 T magnet from Oxford Quantum Design has been successfully installed and tested. The system is now ready for operation, and we are excited to start generating data with it!"
+      },
       {
         "date": "August 2026",
         "image": "/images/people/xinran-chen.jpg",
