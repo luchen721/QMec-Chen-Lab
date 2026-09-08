@@ -363,8 +363,14 @@
           "The basement measurement lab will host a Quantum Design Oxford ProteoxMX dilution refrigerator and a Quantum Design Oxford TeslatronPT system, each with a 14 T magnet.",
           "Platforms support electrical transport, thermal transport, thermoelectric, torque differential magnetometry at low temperature and high field."
         ],
-        "status": "Renovation Complete and the Teslatron PT with 14 T magnet has been installed and tested.",
+        "status": "Renovation Complete. A Teslatron PT with 14 T magnet and a ProteoxMX with 14 T magnet has been installed and tested.",
         "photos": [
+          {
+            "src": "/images/lab/mrl-b09-proteoxmx-installed.jpg",
+            "alt": "ProteoxMX dilution refrigerator with a 14 T magnet installed in the MRL B09 measurement lab",
+            "date": "September 2026",
+            "imageFit": "contain"
+          },
           {
             "src": "/images/lab/mrl-b09-teslatron-installed.jpg",
             "alt": "Teslatron PT with a 14 T magnet installed in the MRL B09 measurement lab",
@@ -893,6 +899,14 @@
     "visibleArchiveCount": 2,
     "rotationIntervalMs": 1000,
     "items": [
+      {
+        "date": "September 2026",
+        "image": "/images/news/proteoxmx-dilution-refrigerator-14t.jpg",
+        "imageAlt": "Group standing in front of the installed Quantum Design Oxford ProteoxMX dilution refrigerator with a 14 T magnet",
+        "sortDate": "2026-09-01",
+        "title": "ProteoxMX Dilution Refrigerator Reaches Base Temperature",
+        "summary": "Our ProteoxMX dilution refrigerator with a 14 T magnet from Quantum Design Oxford has been successfully installed and cooled to base temperature."
+      },
       {
         "date": "August 2026",
         "image": "/images/news/teslatron-pt-14t-installed.jpg",
