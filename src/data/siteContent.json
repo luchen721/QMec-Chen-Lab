@@ -316,7 +316,8 @@
         "department": "QMec Chen Lab",
         "image": "/images/people/flux-liquid-glass.gif",
         "details": [
-          "Supports website maintenance and content organization for QMec Chen Lab."
+          "Supports website maintenance and content organization for QMec Chen Lab.",
+          "Builds data acquisition programs for measurement systems."
         ],
         "imageCrop": {
           "mobile": {
