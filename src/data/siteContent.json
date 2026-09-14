@@ -449,6 +449,25 @@
   "publications": [
     {
       "year": "2026",
+      "title": "Electronic mean free path of the cuprate superconductor \\(\\mathbf{Bi_2Sr_2CaCu_2O_{8+\\delta}}\\) from thermal Hall conductivity",
+      "authors": "Emma Campillo, Manel Mezidi, Lu Chen, Ashvini Vallipuram, Jordan Baglo, Munkhtuguldur Altangerel, Gaël Grissonnanche, Genda Gu, Louis Taillefer",
+      "venue": "Physical Review B 114, 134508 (2026)",
+      "cardStyle": "basic_publication_card",
+      "starCount": 0,
+      "links": [
+        {
+          "label": "Physical Review B",
+          "href": "https://doi.org/10.1103/c4gc-hkfn"
+        },
+        {
+          "label": "arXiv:2508.05196",
+          "href": "https://arxiv.org/abs/2508.05196"
+        }
+      ],
+      "abstract": "Thermal transport measurements are used to determine the electronic mean free path of d-wave quasiparticles in \\(\\mathrm{Bi_2Sr_2CaCu_2O_{8+\\delta}}\\) (Bi2212). Measurements of \\(\\kappa_{xx}\\) and \\(\\kappa_{xy}\\) across three doping levels reveal pronounced enhancements below \\(T_c\\) in the overdoped and optimally doped samples, while the underdoped sample shows no comparable response because of stronger disorder. Analysis of the thermal Hall data indicates that elastic impurity scattering controls the enhancement at higher doping and that the mean free path in Bi2212 is about seven times shorter than in \\(\\mathrm{YBa_2Cu_3O_7}\\). These results establish thermal Hall measurements as a practical method for comparing quasiparticle mean free paths across cuprate superconductors."
+    },
+    {
+      "year": "2026",
       "title": "Thermal Hall conductivity of electron-doped cuprates: Electrons and phonons",
       "authors": "Marie-Eve Boulanger, Lu Chen, Vincent Oliviero, David Vignolles, Gaël Grissonnanche, Ke-Jun Xu, Zhi-Xun Shen, Cyril Proust, Jordan Baglo, Louis Taillefer",
       "venue": "Physical Review B 113(9), 094511 (2026)",
