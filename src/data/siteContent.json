@@ -1091,6 +1091,8 @@
     "email": "lchen721 [at] illinois [dot] edu",
     "department": "Department of Physics, The Grainger College of Engineering",
     "address": "Materials Research Laboratory, 104 S Goodwin Ave, Urbana, IL 61801",
-    "image": "/images/Grainger-Engineering-logo.png"
+    "image": "/images/Grainger-Engineering-logo.png",
+    "mrsecImage": "/images/nsf-mrsec-logo-dark.png",
+    "mrsecHref": "https://mrsec.illinois.edu/"
   }
 }

@@ -1911,20 +1911,77 @@ figcaption {
   gap: 16px;
 }
 
+.footer-logo-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: clamp(16px, 2vw, 28px);
+  justify-content: flex-end;
+}
+
+.footer-logo-link {
+  border-radius: 6px;
+  color: #f7f8f4;
+  display: block;
+  text-decoration: none;
+}
+
+.footer-logo-link:focus-visible {
+  outline: 3px solid #f4d35e;
+  outline-offset: 6px;
+}
+
+.footer-logo-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  margin-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .contact-email {
   color: #f7f8f4;
   font-weight: 750;
 }
 
 .footer-illinois-logo {
+  background: #ffffff;
+  border-radius: 10px;
+  box-sizing: border-box;
   display: block;
   height: auto;
-  max-width: 340px;
-  width: min(340px, 100%);
+  max-width: 270px;
+  padding: 10px 12px;
+  width: min(270px, 36vw);
+}
+
+.footer-mrsec-logo {
+  display: block;
+  height: auto;
+  max-width: 270px;
+  width: min(270px, 37vw);
 }
 
 .contact-email-button {
   cursor: default;
+}
+
+@media (max-width: 1180px) {
+  .site-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-contact {
+    align-items: flex-start;
+  }
+
+  .footer-logo-row {
+    justify-content: flex-start;
+  }
 }
 
 @media (max-width: 640px) {
@@ -1947,6 +2004,17 @@ figcaption {
 
   .footer-contact {
     align-items: flex-start;
+  }
+
+  .footer-logo-row {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .footer-illinois-logo,
+  .footer-mrsec-logo {
+    width: min(100%, 340px);
   }
 
   .hero,

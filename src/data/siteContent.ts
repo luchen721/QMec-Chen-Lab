@@ -235,6 +235,8 @@ export type FooterContent = {
   department: string;
   address: string;
   image: string;
+  mrsecImage: string;
+  mrsecHref: string;
 };
 
 export type SiteContent = {

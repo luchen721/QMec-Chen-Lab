@@ -24,13 +24,28 @@ export function Footer() {
         </p>
       </div>
       <div className="footer-contact">
-        <img
-          className="footer-illinois-logo"
-          src={assetPath(footer.image)}
-          alt="The Grainger College of Engineering"
-        />
+        <div className="footer-logo-row">
+          <a
+            className="footer-logo-link"
+            href={footer.mrsecHref}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Visit the Illinois Materials Research Science and Engineering Center website"
+          >
+            <img
+              className="footer-mrsec-logo"
+              src={assetPath(footer.mrsecImage)}
+              alt="U.S. National Science Foundation Materials Research Science and Engineering Centers"
+            />
+            <span className="footer-logo-label">Illinois I-MRSEC</span>
+          </a>
+          <img
+            className="footer-illinois-logo"
+            src={assetPath(footer.image)}
+            alt="The Grainger College of Engineering"
+          />
+        </div>
       </div>
     </footer>
   );
 }
-
