@@ -310,6 +310,26 @@
         }
       },
       {
+        "group": "Undergraduate Students",
+        "name": "Justin Ji",
+        "role": "Sophomore Undergraduate Student",
+        "department": "Materials Science and Engineering",
+        "email": "justinj7[at]illinois[dot]edu",
+        "image": "/images/people/justin-ji.jpg",
+        "imageCrop": {
+          "focusX": 33,
+          "focusY": 43,
+          "zoom": 110,
+          "mobile": {
+            "mode": "custom",
+            "fit": "cover",
+            "focusX": 50,
+            "focusY": 50,
+            "zoom": 100
+          }
+        }
+      },
+      {
         "group": "Lab AI Agents",
         "name": "Flux",
         "role": "AI Agent 24/7",
@@ -926,6 +946,14 @@
         "sortDate": "2026-09-28",
         "title": "Lingyu Receives I-MRSEC Graduate Fellowship",
         "summary": "Congratulations to Lingyu Xie on receiving the I-MRSEC Graduate Fellowship! The fellowship will support her research on strain-tuned quantum materials for one year. We are excited to join the I-MRSEC community."
+      },
+      {
+        "date": "September 2026",
+        "image": "/images/people/justin-ji.jpg",
+        "imageAlt": "Justin Ji standing by the ocean",
+        "sortDate": "2026-09-01",
+        "title": "Justin Ji joins the group as an undergraduate student",
+        "summary": "Justin joined the lab in September 2026 as a sophomore undergraduate student. He will focus on single-crystal growth and the synthesis of organic-inorganic frameworks."
       },
       {
         "date": "September 2026",
