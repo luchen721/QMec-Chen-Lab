@@ -413,11 +413,17 @@
       {
         "title": "ESB 120: Sample growth facility",
         "paragraphs": [
-          "This shared centralized growth facility will host multiple muffle, tube, two-zone, and optical floating-zone furnaces plus a glove box.",
+          "This shared centralized growth facility includes box furnaces, two-zone furnaces, an optical floating-zone furnace, an Ar glovebox, and other crystal-growth equipment.",
           "Methods include solid-state reaction, chemical vapor transport, flux growth, and floating-zone synthesis."
         ],
-        "status": "Renovation complete",
+        "status": "Complete.",
         "photos": [
+          {
+            "src": "/images/lab/esb-120-shared-growth-lab-mosaic-nov-2026.png",
+            "alt": "Mosaic of furnaces, fume hoods, optical floating-zone equipment, and an argon glovebox in the completed ESB 120 shared sample growth facility",
+            "date": "November 2026",
+            "imageFit": "contain"
+          },
           {
             "src": "/images/lab/ESB_120_pic_3.jpg",
             "alt": "Default future lab photo mockup illustration",
@@ -939,6 +945,14 @@
     "visibleArchiveCount": 2,
     "rotationIntervalMs": 1000,
     "items": [
+      {
+        "date": "November 2026",
+        "image": "/images/lab/esb-120-shared-growth-lab-mosaic-nov-2026.png",
+        "imageAlt": "Mosaic of the completed shared sample growth facility and its crystal-growth equipment",
+        "sortDate": "2026-11-10",
+        "title": "Shared Sample Growth Facility Is Ready",
+        "summary": "Our shared sample growth facility is now fully equipped and ready for use. We thank Professor Greg MacDougall for his great efforts and help in setting up this shared growth facility."
+      },
       {
         "date": "September 2026",
         "image": "/images/people/lingyu-xie.jpg",
