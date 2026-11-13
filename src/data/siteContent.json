@@ -413,7 +413,7 @@
       {
         "title": "ESB 120: Sample growth facility",
         "paragraphs": [
-          "This shared centralized growth facility includes box furnaces, two-zone furnaces, an optical floating-zone furnace, an Ar glovebox, and other crystal-growth equipment.",
+          "This shared centralized growth facility includes box furnaces, two-zone furnaces, two optical floating-zone furnaces, one vertical annealing furnace, an Ar glovebox, and other crystal-growth equipment.",
           "Methods include solid-state reaction, chemical vapor transport, flux growth, and floating-zone synthesis."
         ],
         "status": "Complete.",
